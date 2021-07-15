@@ -13,23 +13,28 @@ class PostItem extends Component {
     render() { 
         return( 
             <li>
-                <div class = "postItem">
-                    <span class = "wrap_content">
-                        <span class = "info_text">
-                            <a>{this.props.row.brdno}</a>
-                            <a>{this.props.row.brdwriter}</a>
+                <div class = "div-box">
+                    <div class = "postItem">
+                        <span class = "wrap_content">
+                            <span class = "info_text">
+                                <div class="box">
+                                    <img class="profile" src="img/profile-example.jpg"></img>
+                                </div>
+                                <div class="name">
+                                <a>{this.props.row.brdwriter}</a>
+                                </div>
+                                
+                            </span>
+                            <div class = "title_text">
+                                <strong onClick={this.handleSelectRow}>{this.props.row.brdtitle}</strong>
+                                <button onClick={this.handleRemove}>X</button>
+                            </div>
+                            <span class = "hashtag_text">
+                                <a>{this.props.row.hashtag}</a>
+                            </span>
                         </span>
-                        <a class = "title_text">
-                            <strong onClick={this.handleSelectRow}>{this.props.row.brdtitle}</strong>
-                            <button onClick={this.handleRemove}>X</button>
-                        </a>
-                        <span class = "hashtag_text">
-                            <a>#tag1 #tag2 #tag3</a>
-                        </span>
-                    </span>
-                    
-                </div>
-                
+                    </div>
+                </div>  
             </li>
         ); 
     } 

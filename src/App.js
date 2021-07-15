@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Navigation/>
-        <span id="content-article">
+        <article class="content-article">
           <Switch>
             <Route exact path="/">
               <div>main</div>
@@ -29,7 +29,7 @@ class App extends Component {
               <Login/>
             </Route>
           </Switch>
-        </span>
+        </article>
       </BrowserRouter>
     );
   }
