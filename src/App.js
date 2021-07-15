@@ -10,20 +10,22 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Navigation/>
-        <Switch>
-          <Route exact path="/">
-            <div>main</div>
-          </Route>
-          <Route exact path="/posts">
-            <Posts/>
-          </Route>
-          <Route exact path="/report">
-            <div>report</div>
-          </Route>
-          <Route exact path="/reserve">
-            <div>reserve</div>
-          </Route>
-        </Switch>
+        <span id="content-article">
+          <Switch>
+            <Route exact path="/">
+              <div>main</div>
+            </Route>
+            <Route exact path="/posts">
+              <Posts/>
+            </Route>
+            <Route exact path="/report">
+              <div>report</div>
+            </Route>
+            <Route exact path="/reserve">
+              <div>reserve</div>
+            </Route>
+          </Switch>
+        </span>
       </BrowserRouter>
     );
   }

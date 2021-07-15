@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PostItem from './PostItem.js'
 import PostForm from './PostForm.js'
+import './Posts.css'
 
 class Posts extends Component {
 
@@ -54,21 +55,13 @@ class Posts extends Component {
             return (
                 <div> 
                     <PostForm selectedBoard = {selectedBoard} onSaveData={this.handleSaveData}/>
-                    <table border="1"> 
-                        <tbody> 
-                            <tr align="center"> 
-                            <td width="50">No.</td>
-                            <td width="300">Title</td> 
-                            <td width="100">Name</td> 
-                            <td width="100">Date</td> 
-                            </tr> 
-                            { 
+                    <ul id = "postsList">
+                    { 
                                 boards.map(row => 
                                     (<PostItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow}/>) 
                                 )
                             } 
-                        </tbody> 
-                    </table> 
+                    </ul>
                 </div>
             );
         }

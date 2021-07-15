@@ -12,13 +12,25 @@ class PostItem extends Component {
 
     render() { 
         return( 
-            <tr>
-                <td>{this.props.row.brdno}</td>
-                <td><a onClick={this.handleSelectRow}>{this.props.row.brdtitle}</a></td>
-                <td>{this.props.row.brdwriter}</td>
-                <td>{this.props.row.brddate.toLocaleDateString('ko-KR')}</td>
-                <td><button onClick={this.handleRemove}>X</button></td>
-            </tr>
+            <li>
+                <div class = "postItem">
+                    <span class = "wrap_content">
+                        <span class = "info_text">
+                            <a>{this.props.row.brdno}</a>
+                            <a>{this.props.row.brdwriter}</a>
+                        </span>
+                        <a class = "title_text">
+                            <strong onClick={this.handleSelectRow}>{this.props.row.brdtitle}</strong>
+                            <button onClick={this.handleRemove}>X</button>
+                        </a>
+                        <span class = "hashtag_text">
+                            <a>#tag1 #tag2 #tag3</a>
+                        </span>
+                    </span>
+                    
+                </div>
+                
+            </li>
         ); 
     } 
 }

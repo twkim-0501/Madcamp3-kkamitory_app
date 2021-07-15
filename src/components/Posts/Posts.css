@@ -1,0 +1,43 @@
+#postsList{
+
+}
+
+ul{
+    list-style:none;
+}
+
+.postItem{
+    margin-top : 36px;
+    vertical-align : top;
+    padding : 0 15px;
+    width : 500px;
+    border-radius : 14px;
+    background-color : white;
+    box-shadow : 4px 12px 30px 6px rgb(0 0 0 / 9%);
+}
+
+.wrap_content{
+    display:block;
+    position:relative;
+    padding:25px 24px 0;
+    box-sizing : border-box;
+}
+
+.info_text{
+    display:block;
+    height:36px;
+    margin-top:-1px;
+    padding-right:20px;
+}
+.title_text{
+    height:64px;
+    font-size:22px;
+    line-height:32px;
+}
+.hashtag_text{
+    margin-top:18px;
+    font-size:13px;
+    line-height:19px;
+    display:block;
+}
+
