@@ -1,23 +1,22 @@
 import React, {Component} from 'react';
 import PostItem from './PostItem.js'
 import PostForm from './PostForm.js'
+import axios from "axios";
 import './Posts.css'
 
 class Posts extends Component {
-
     state = {
-        maxNo: 3,
         boards: [
             {
-                brdno: 1,
+                _id: 1,
                 brdwriter: 'Lee SunSin',
                 brdtitle: 'If you intend to live then you die',
                 hashtag: '#hashtag1 #hashtag2',
                 brddate: new Date(),
-                brdcontent : "content example"
+                brdcontent : "content example1"
             },
             {
-                brdno: 2,
+                _id: 2,
                 brdwriter: 'So SiNo',
                 brdtitle: 'Founder for two countries',
                 hashtag : '#hashtag1 #hashtag3',
@@ -27,25 +26,43 @@ class Posts extends Component {
         ],
          selectedBoard:{}
     }
+
+    componentDidMount() {
+        axios.get(`/api/post/`)
+        .then(response => {
+            this.setState({boards: [...response.data]})
+        });
+    }
     
     handleSaveData = (data) => {
-        if (!data.brdno) {            // new : Insert
-            this.setState({
-                maxNo: this.state.maxNo+1,
-                boards: this.state.boards.concat({brdno: this.state.maxNo, brddate: new Date(), ...data }),
-                selectedBoard: {}
+        if (!data._id) {            // new : Insert
+            axios.post(`/api/post/add`, 
+                {brddate: new Date(), ...data }
+            )
+            .then(() => axios.get(`/api/post/`))
+            .then(response => {
+                this.setState({
+                    selectedBoard: {},
+                    boards: [...response.data]
+                })
             });
+            /*
+            this.setState({
+                boards: this.state.boards.concat({brddate: new Date(), ...data }),
+                selectedBoard: {}
+            });*/
+
         } else {                                                        // Update
             this.setState({
-                boards: this.state.boards.map(row => data.brdno === row.brdno ? {...data }: row),
+                boards: this.state.boards.map(row => data._id.equals(row._id)  ? {...data }: row),
                 selectedBoard: {}
             })            
         }
     }
     
-    handleRemove = (brdno) => {
+    handleRemove = (_id) => {
         this.setState({
-            boards: this.state.boards.filter(row => row.brdno !== brdno)
+            boards: this.state.boards.filter(row => !row._id.equals(_id))
         })
     }
     
@@ -75,7 +92,7 @@ class Posts extends Component {
                     <ul id = "postsList">
                     { 
                                 boards.map(row => 
-                                    (<PostItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow}/>) 
+                                    (<PostItem key={row._id} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow}/>) 
                                 )
                             } 
                     </ul>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 class PostItem extends Component { 
     handleRemove = () => {
         const { row, onRemove } = this.props;
-        onRemove(row.brdno);
+        onRemove(row._id);
     }    
     
     handleSelectRow = () => {

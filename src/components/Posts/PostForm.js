@@ -3,7 +3,7 @@ class PostForm extends Component {
     
     shouldComponentUpdate(nextProps, nextState) { 
         let selectedBoard = nextProps.selectedBoard; 
-        if (!selectedBoard.brdno) { 
+        if (!selectedBoard._id) { 
             this.brdtitle.value = ""; 
             this.brdwriter.value = ""; 
             this.hashtag.value = "";
@@ -25,9 +25,10 @@ class PostForm extends Component {
             brdtitle: this.brdtitle.value,
             brdcontent:this.brdcontent.value,
             hashtag: this.hashtag.value
-        } 
-        if (selectedBoard.brdno) { 
-            data.brdno = selectedBoard.brdno 
+        }
+        
+        if (selectedBoard._id) { 
+            data._id = selectedBoard._id
             data.brddate = selectedBoard.brddate 
             data.hashtag = selectedBoard.hashtag
             data.brdcontent=selectedBoard.brdcontent
