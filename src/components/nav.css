@@ -1,0 +1,12 @@
+div.navbar {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+
+div.navbar > * {
+    margin-right: 30px;
+    text-decoration: none;
+}

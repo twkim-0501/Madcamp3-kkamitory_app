@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import Navigation from './components/nav';
+import Mainpage from './components/Main/Mainpage';
+import Loginpage from './components/LoginPage/Loginpage';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import KakaoLogout from './components/LoginPage/KakaoLogout';
 import './App.css';
 
 class App extends Component {
@@ -8,19 +11,12 @@ class App extends Component {
   render(){
     return (
       <BrowserRouter>
-        <Navigation/>
         <Switch>
           <Route exact path="/">
-            <div>main</div>
+            <Loginpage/>
           </Route>
-          <Route exact path="posts">
-            <div>Posts</div>
-          </Route>
-          <Route exact path="report">
-            <div>Report</div>
-          </Route>
-          <Route exact path="reserve">
-            <div>Reserve</div>
+          <Route exact path="/main">
+            <Mainpage/>
           </Route>
         </Switch>
       </BrowserRouter>

@@ -1,10 +1,12 @@
 import React from 'react'
+import "./nav.css";
 import { Link } from "react-router-dom";
 
 const Navigation = () => 
-  <div className="Navigtion">
-    <Link to="/">
-      Main
+  <div className="navbar">
+
+    <Link to="/main">
+      Home
     </Link>
     <Link to="/posts">
       Posts
