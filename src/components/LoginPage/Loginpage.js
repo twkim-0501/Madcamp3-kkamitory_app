@@ -1,13 +1,13 @@
 import React, {Component} from "react";
-import KakaoLogin from "./KakaoLogin";
 
 class Loginpage extends Component {
     render(){
         return (
-            <div>
-                <KakaoLogin/>
-            </div>
+            <div>Mainpage</div>
+                
+            
         );
     }
 }
+
 export default Loginpage;

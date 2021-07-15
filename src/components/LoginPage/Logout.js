@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 const { Kakao } = window;
 
-class KakaoLogout extends Component {
+class Logout extends Component {
   state = {
     isLogin: true,
   };
@@ -43,4 +43,4 @@ class KakaoLogout extends Component {
   }
 }
 
-export default withRouter(KakaoLogout);
+export default withRouter(Logout);

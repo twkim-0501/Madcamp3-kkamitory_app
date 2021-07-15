@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => 
   <div className="navbar">
-
     <Link to="/main">
       Home
     </Link>
@@ -16,6 +15,9 @@ const Navigation = () =>
     </Link>
     <Link to="/report">
       Report
+    </Link>
+    <Link to="/testlogin">
+      로그인테스트하는즁...
     </Link>
   </div>
 export default Navigation;

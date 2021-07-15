@@ -1,24 +1,35 @@
 import React, {Component} from 'react';
 import Navigation from './components/nav';
-import Mainpage from './components/Main/Mainpage';
-import Loginpage from './components/LoginPage/Loginpage';
+import Login from './components/LoginPage/Login';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import KakaoLogout from './components/LoginPage/KakaoLogout';
 import './App.css';
+import Posts from './components/Posts/Posts.js'
 
 class App extends Component {
 
   render(){
     return (
       <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            <Loginpage/>
-          </Route>
-          <Route exact path="/main">
-            <Mainpage/>
-          </Route>
-        </Switch>
+        <Navigation/>
+        <span id="content-article">
+          <Switch>
+            <Route exact path="/">
+              <div>main</div>
+            </Route>
+            <Route exact path="/posts">
+              <Posts/>
+            </Route>
+            <Route exact path="/report">
+              <div>report</div>
+            </Route>
+            <Route exact path="/reserve">
+              <div>reserve</div>
+            </Route>
+            <Route exact path="/testlogin">
+              <Login/>
+            </Route>
+          </Switch>
+        </span>
       </BrowserRouter>
     );
   }
