@@ -1,0 +1,18 @@
+.list_tab{
+    display : block;
+    height : 50px;
+}
+.post_board_name{
+    list-style : none;
+    text-decoration-line : none;
+    display : inline-block;
+    margin : 10px 12px 0 0;
+    height : 44px;
+    padding : 0 20px;
+    background : #eee;
+    font-size : 16px;
+    line-height : 43px;
+    letter-spacing : -.5px;
+    color : black;
+    border-radius : 20px;
+}

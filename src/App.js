@@ -3,7 +3,7 @@ import Navigation from './components/nav';
 import Login from './components/LoginPage/Login';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './App.css';
-import Posts from './components/Posts/Posts.js'
+import PostsHome from './components/PostsHome/PostsHome.js'
 
 class App extends Component {
 
@@ -16,8 +16,8 @@ class App extends Component {
             <Route exact path="/">
               <div>main</div>
             </Route>
-            <Route exact path="/posts">
-              <Posts/>
+            <Route path="/posts">
+              <PostsHome/>
             </Route>
             <Route exact path="/report">
               <div>report</div>

@@ -63,7 +63,7 @@ class Posts extends Component {
                     <PostForm selectedBoard = {selectedBoard} onSaveData={this.handleSaveData}/>
                     
                     <h3 class= "page_title">
-                        <img class = "main_img" src= "img/house.png"></img>
+                        <img class = "main_img" src= "/img/house.png"></img>
                         <em class="main_text">
                             자유게시판
                         </em>
