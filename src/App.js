@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Navigation from './components/nav';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './App.css';
+import Posts from './components/Posts/Posts.js'
 
 class App extends Component {
 
@@ -13,14 +14,14 @@ class App extends Component {
           <Route exact path="/">
             <div>main</div>
           </Route>
-          <Route exact path="posts">
-            <div>Posts</div>
+          <Route exact path="/posts">
+            <Posts/>
           </Route>
-          <Route exact path="report">
-            <div>Report</div>
+          <Route exact path="/report">
+            <div>report</div>
           </Route>
-          <Route exact path="reserve">
-            <div>Reserve</div>
+          <Route exact path="/reserve">
+            <div>reserve</div>
           </Route>
         </Switch>
       </BrowserRouter>
