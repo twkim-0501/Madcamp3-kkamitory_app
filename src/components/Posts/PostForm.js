@@ -7,11 +7,13 @@ class PostForm extends Component {
             this.brdtitle.value = ""; 
             this.brdwriter.value = ""; 
             this.hashtag.value = "";
+            this.brdcontent.value = "";
             return true; 
         } 
         this.brdtitle.value = selectedBoard.brdtitle; 
         this.brdwriter.value = selectedBoard.brdwriter; 
         this.hashtag.value = selectedBoard.hashtag;
+        this.brdcontent.value = selectedBoard.brdcontent;
         return true; 
     }
 
@@ -21,12 +23,14 @@ class PostForm extends Component {
         let data = { 
             brdwriter: this.brdwriter.value, 
             brdtitle: this.brdtitle.value,
+            brdcontent:this.brdcontent.value,
             hashtag: this.hashtag.value
         } 
         if (selectedBoard.brdno) { 
             data.brdno = selectedBoard.brdno 
             data.brddate = selectedBoard.brddate 
             data.hashtag = selectedBoard.hashtag
+            data.brdcontent=selectedBoard.brdcontent
         } 
         this.props.onSaveData(data);
     }
@@ -37,6 +41,7 @@ class PostForm extends Component {
                 <input placeholder="title" ref={node => this.brdtitle = node}/>
                 <input placeholder="name" ref={node => this.brdwriter = node}/>
                 <input placeholder="hashtag" ref={node => this.hashtag = node}/>
+                <input placeholder="brdcontent" ref ={node => this.brdcontent = node}/>
                 <button type="submit">Save</button> 
             </form>
         );

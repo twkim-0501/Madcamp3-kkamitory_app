@@ -13,14 +13,16 @@ class Posts extends Component {
                 brdwriter: 'Lee SunSin',
                 brdtitle: 'If you intend to live then you die',
                 hashtag: '#hashtag1 #hashtag2',
-                brddate: new Date()
+                brddate: new Date(),
+                brdcontent : "content example"
             },
             {
                 brdno: 2,
                 brdwriter: 'So SiNo',
                 brdtitle: 'Founder for two countries',
                 hashtag : '#hashtag1 #hashtag3',
-                brddate: new Date()
+                brddate: new Date(),
+                brdcontent : "content example2"
             }
         ],
          selectedBoard:{}
