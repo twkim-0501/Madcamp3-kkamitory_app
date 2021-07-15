@@ -7,8 +7,7 @@ li{
 
 #postsList{
     margin-top:-20px;
-    height:1000px;
-    /* overflow:auto; */
+    height:500px;
 }
 
 .div-box{
@@ -102,4 +101,8 @@ li{
 .page_title{
     margin-top:50px;
     margin-left:60px;
+}
+
+.post_form_box{
+    display : block;
 }

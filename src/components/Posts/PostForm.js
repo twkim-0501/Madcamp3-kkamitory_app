@@ -38,7 +38,7 @@ class PostForm extends Component {
 
     render(){
         return(
-            <form onSubmit={this.handleSubmit}> 
+            <form  class = "post_form_box" onSubmit={this.handleSubmit}> 
                 <input placeholder="title" ref={node => this.brdtitle = node}/>
                 <input placeholder="name" ref={node => this.brdwriter = node}/>
                 <input placeholder="hashtag" ref={node => this.hashtag = node}/>
