@@ -15,6 +15,7 @@ class Posts extends Component {
             selectedBoard:{},  //selected board contains one or zero board content to rewrite/remove
             nickname: 0,
             profile: "",
+            isLogin: false
         }
     }
     //첫로딩
@@ -36,6 +37,16 @@ class Posts extends Component {
                 nickname: profile.nickname,
                 profile: profile.profile_image_url,
               });
+              if(profile.profile_image_url != null){
+                GetUser.setState({
+                    isLogin: true
+                  });
+              }
+              else{
+                GetUser.setState({
+                    isLogin: false
+                });
+              }
               //console.log(GetUser.state.profile_image_url);
             },
             fail: function (error) {
@@ -53,36 +64,42 @@ class Posts extends Component {
       };
     
     handleSaveData = (data) => { //새글 등록하기
-        console.log("handleSaveData");
-        if (!data._id) { // new : Insert
-            axios.post(`/api/post/add`, 
-                {brddate: new Date(), ...data, profile: this.state.profile, brdwriter: this.state.nickname}
-            )
-            .then(() => axios.get(`/api/post/`))
-            .then(response => {
-                this.setState({
-                    selectedBoard: {},
-                    boards: [...response.data]
+        //console.log("handleSaveData");
+        if(this.state.isLogin){
+            if (!data._id) { // new : Insert
+                axios.post(`/api/post/add`, 
+                    {brddate: new Date(), ...data, profile: this.state.profile, brdwriter: this.state.nickname}
+                )
+                .then(() => axios.get(`/api/post/`))
+                .then(response => {
+                    this.setState({
+                        selectedBoard: {},
+                        boards: [...response.data]
+                    })
+                    console.log(this.state.boards);
+                });
+    
+    
+            } else {                                                        // Update
+    
+                axios.post(`/api/post/update`, {
+                    brddate: new Date(), ...data, profile: this.state.profile
                 })
-                console.log(this.state.boards);
-            });
-
-
-        } else {                                                        // Update
-
-            axios.post(`/api/post/update`, {
-                brddate: new Date(), ...data, profile: this.state.profile
-            })
-            .then(() => axios.get(`/api/post/`))
-            .then(response => {
-                this.setState({
-                    selectedBoard: {},
-                    boards: [...response.data]
-                })
-            });
+                .then(() => axios.get(`/api/post/`))
+                .then(response => {
+                    this.setState({
+                        selectedBoard: {},
+                        boards: [...response.data]
+                    })
+                });
+            }
+    
+            this.closeModal();
         }
-
-        this.closeModal();
+        else{
+            console.log("not login");
+        }
+        
     }
 
     onBackButtonClicked = () => { //새글 등록 취소
