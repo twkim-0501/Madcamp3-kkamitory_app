@@ -23,7 +23,6 @@ class PostItem extends Component {
                                 <div class="name">
                                 <a>{this.props.row.brdwriter}</a>
                                 </div>
-                                
                             </span>
                             <div class = "title_text">
                                 <strong onClick={this.handleSelectRow}>{this.props.row.brdtitle}</strong>

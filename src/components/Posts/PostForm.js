@@ -3,7 +3,6 @@ class PostForm extends Component {
     
     shouldComponentUpdate(nextProps, nextState) { //rewrite postform contents
         let selectedBoard = nextProps.selectedBoard; 
-        console.log("selected board in postform is" + selectedBoard.brdtitle);
         if (!selectedBoard._id) { 
             this.brdtitle.value = ""; 
             this.brdwriter.value = ""; 
@@ -30,10 +29,11 @@ class PostForm extends Component {
         
         if (selectedBoard._id) { 
             data._id = selectedBoard._id
-            data.brddate = selectedBoard.brddate 
-            data.hashtag = selectedBoard.hashtag
-            data.brdcontent=selectedBoard.brdcontent
-        } 
+            //data.brddate = selectedBoard.brddate 
+            //data.hashtag = selectedBoard.hashtag
+            //data.brdcontent=selectedBoard.brdcontent
+        }
+
         this.props.onSaveData(data);
     }
 
@@ -42,6 +42,7 @@ class PostForm extends Component {
     }
 
     render(){
+        //console.log("selected board is" + this.props.selectedBoard.brdtitle);
         return(
             <form  class = "post_form_box" onSubmit={this.handleSubmit}> 
                 <input class = "post_form_box_category" placeholder="title" ref={node => this.brdtitle = node}/>

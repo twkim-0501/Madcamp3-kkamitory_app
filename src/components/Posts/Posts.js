@@ -32,6 +32,7 @@ class Posts extends Component {
     }
     
     handleSaveData = (data) => {
+        console.log("handleSaveData");
         if (!data._id) { // new : Insert
             axios.post(`/api/post/add`, 
                 {brddate: new Date(), ...data }
@@ -44,11 +45,19 @@ class Posts extends Component {
                 })
             });
 
-        } else { // Update
-            this.setState({
-                boards: this.state.boards.map(row => data._id.equals(row._id)  ? {...data }: row),
-                selectedBoard: {}
-            })            
+
+        } else {                                                        // Update
+
+            axios.post(`/api/post/update`, {
+                brddate: new Date(), ...data
+            })
+            .then(() => axios.get(`/api/post/`))
+            .then(response => {
+                this.setState({
+                    selectedBoard: {},
+                    boards: [...response.data]
+                })
+            });
         }
 
         this.closeModal();
