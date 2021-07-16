@@ -1,33 +1,25 @@
 import React, {Component} from 'react';
 class PostForm extends Component {
-    shouldComponentUpdate(nextProps, nextState) { //rewrite postform contents
-        let selectedBoard = nextProps.selectedBoard; 
-        if (!selectedBoard._id) { 
-            this.brdtitle.value = ""; 
-            this.brdwriter.value = ""; 
-            this.hashtag.value = "";
-            this.brdcontent.value = "";
-            return true; 
-        } 
-        this.brdtitle.value = selectedBoard.brdtitle; 
-        this.brdwriter.value = selectedBoard.brdwriter; 
-        this.hashtag.value = selectedBoard.hashtag;
-        this.brdcontent.value = selectedBoard.brdcontent;
-        return true; 
-    }
     componentDidMount(){
         let selectedBoard = this.props.selectedBoard;
-        this.brdtitle.value = selectedBoard.brdtitle; 
-        this.brdwriter.value = selectedBoard.brdwriter; 
-        this.hashtag.value = selectedBoard.hashtag;
-        this.brdcontent.value = selectedBoard.brdcontent;
+        if(selectedBoard._id!=undefined){
+            console.log("modify post");
+            this.brdtitle.value = selectedBoard.brdtitle; 
+            this.hashtag.value = selectedBoard.hashtag;
+            this.brdcontent.value = selectedBoard.brdcontent;
+        }
+        else{
+            console.log("new post");
+            this.brdtitle.value = ""; 
+            this.hashtag.value = "";
+            this.brdcontent.value = "";
+        }
     }
 
     handleSubmit = (e) => { //Posts.js의 handleSaveData에 저장되어있음.
         e.preventDefault();
         let selectedBoard = this.props.selectedBoard; 
         let data = { 
-            //brdwriter: this.brdwriter.value, 
             brdtitle: this.brdtitle.value,
             brdcontent:this.brdcontent.value,
             hashtag: this.hashtag.value
@@ -35,9 +27,6 @@ class PostForm extends Component {
         
         if (selectedBoard._id) { 
             data._id = selectedBoard._id
-            //data.brddate = selectedBoard.brddate 
-            //data.hashtag = selectedBoard.hashtag
-            //data.brdcontent=selectedBoard.brdcontent
         }
 
         this.props.onSaveData(data);
@@ -48,11 +37,9 @@ class PostForm extends Component {
     }
 
     render(){
-        //console.log("selected board is" + this.props.selectedBoard.brdtitle);
         return(
             <form  name = "post_upload" class = "post_form_box" onSubmit={this.handleSubmit}> 
                 <input class = "post_form_box_category" placeholder="title" ref={node => this.brdtitle = node}/>
-                <input class = "post_form_box_category" placeholder="name" ref={node => this.brdwriter = node}/>
                 <input class = "post_form_box_category" placeholder="hashtag" ref={node => this.hashtag = node}/>
                 <input class = "post_form_box_category form_brdcontent" placeholder="brdcontent" ref ={node => this.brdcontent = node}/>
                 <button type="submit">Save</button> 

@@ -44,15 +44,15 @@ class Posts extends Component {
           });
     }
 
-    openModal = () => {
+    openModal = () => { //등록 / 수정창 열기 (front)
         this.setState({ isModalOpen: true });
       };
     
-    closeModal = () => {
+    closeModal = () => { //등록 / 수정창 닫기 (front)
         this.setState({ isModalOpen: false });
       };
     
-    handleSaveData = (data) => {
+    handleSaveData = (data) => { //새글 등록하기
         console.log("handleSaveData");
         if (!data._id) { // new : Insert
             axios.post(`/api/post/add`, 
@@ -85,11 +85,11 @@ class Posts extends Component {
         this.closeModal();
     }
 
-    onBackButtonClicked = () => {
+    onBackButtonClicked = () => { //새글 등록 취소
         this.closeModal();
     }
     
-    handleRemove = (_id) => {
+    handleRemove = (_id) => { //글 삭제하기
         axios.post(`/api/post/remove`, {_id: _id})
         .then(() => axios.get(`/api/post/`))
         .then(response => {
@@ -106,6 +106,10 @@ class Posts extends Component {
         this.openModal();
     }
 
+    handleNewPost = ()=>{
+        this.handleSelectRow({});
+    }
+
 
     
     render() {
@@ -114,7 +118,7 @@ class Posts extends Component {
             return (
                 <div>
                     <div className = "modal_btn_wraper">
-                        <button onClick={this.openModal} className = "plus_btn"><img className = "plus_btn_img" src = "/img/addBtn.png"></img></button>
+                        <button onClick={this.handleNewPost} className = "plus_btn"><img className = "plus_btn_img" src = "/img/addBtn.png"></img></button>
                     </div>
                     <div className = "modal_wraper">
                         <Modal isOpen={this.state.isModalOpen} close={this.closeModal} >
