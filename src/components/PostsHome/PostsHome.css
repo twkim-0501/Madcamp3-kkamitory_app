@@ -1,18 +1,27 @@
-.list_tab{
+.list_tab_wrap{
     display : block;
     height : 50px;
+    text-align: center;
+    margin-bottom : 50px;
+}
+.list_tab{
+    display:inline-block;
+}
+.post_board_btn{
+    display : inline-block;
+    margin : 10px 15px 0 0;
+    height : 44px;
+    padding : 0 20px;
+    background : #eee;
+    border-radius : 20px;
+    color : black;
 }
 .post_board_name{
     list-style : none;
     text-decoration-line : none;
     display : inline-block;
-    margin : 10px 12px 0 0;
-    height : 44px;
-    padding : 0 20px;
-    background : #eee;
+    
     font-size : 16px;
     line-height : 43px;
     letter-spacing : -.5px;
-    color : black;
-    border-radius : 20px;
 }
