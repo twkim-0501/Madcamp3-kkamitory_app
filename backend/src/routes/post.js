@@ -16,5 +16,14 @@ router.post("/add", (req,res) => {
         }
     );
 })
+router.post("/remove", (req,res) => {
+    db.remove(
+        req.body._id,
+        () =>{
+            res.status(200).send();
+        }
+    );
+})
+
 
 module.exports = router;

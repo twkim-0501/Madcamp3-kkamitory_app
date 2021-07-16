@@ -19,8 +19,14 @@ function add(body, callback){
         callback(res);
     });
 }
+function remove(_id, callback) {
+    PostModel.deleteOne({_id: _id}, (error) => {
+        callback();
+    });
+}
 
 module.exports = {
     getAll,
-    add
+    add,
+    remove
 };

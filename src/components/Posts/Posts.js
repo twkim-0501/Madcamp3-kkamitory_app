@@ -46,11 +46,6 @@ class Posts extends Component {
                     boards: [...response.data]
                 })
             });
-            /*
-            this.setState({
-                boards: this.state.boards.concat({brddate: new Date(), ...data }),
-                selectedBoard: {}
-            });*/
 
         } else {                                                        // Update
             this.setState({
@@ -61,9 +56,14 @@ class Posts extends Component {
     }
     
     handleRemove = (_id) => {
-        this.setState({
-            boards: this.state.boards.filter(row => !row._id.equals(_id))
-        })
+        axios.post(`/api/post/remove`, {_id: _id})
+        .then(() => axios.get(`/api/post/`))
+        .then(response => {
+            this.setState({
+                selectedBoard: {},
+                boards: [...response.data]
+            })
+        });
     }
     
     handleSelectRow = (row) => {
