@@ -5,7 +5,7 @@ const postRouter = require('./src/routes/post');
 
 const mongoose = require("mongoose");
 const app = express();
-const port = 8080;
+const port = 80;
 
 mongoose.connect("mongodb://localhost:27017/kkamitory", {
   useNewUrlParser: true,
