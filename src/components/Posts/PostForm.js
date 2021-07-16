@@ -38,14 +38,19 @@ class PostForm extends Component {
         this.props.onSaveData(data);
     }
 
+    backBtnClicked = () => {
+        this.props.onBackButtonClicked();
+    }
+
     render(){
         return(
             <form  class = "post_form_box" onSubmit={this.handleSubmit}> 
-                <input placeholder="title" ref={node => this.brdtitle = node}/>
-                <input placeholder="name" ref={node => this.brdwriter = node}/>
-                <input placeholder="hashtag" ref={node => this.hashtag = node}/>
-                <input placeholder="brdcontent" ref ={node => this.brdcontent = node}/>
+                <input class = "post_form_box_category" placeholder="title" ref={node => this.brdtitle = node}/>
+                <input class = "post_form_box_category" placeholder="name" ref={node => this.brdwriter = node}/>
+                <input class = "post_form_box_category" placeholder="hashtag" ref={node => this.hashtag = node}/>
+                <input class = "post_form_box_category form_brdcontent" placeholder="brdcontent" ref ={node => this.brdcontent = node}/>
                 <button type="submit">Save</button> 
+                <button type="back" onClick = {this.backBtnClicked}>cancel</button> 
             </form>
         );
     }

@@ -107,3 +107,35 @@ li{
     display : inline-block;
     margin : 0 auto;
 }
+.modal_wraper{
+    display: flex;
+    align-items: center;
+}
+.ReactModal__Content{
+    display : inline-block;
+    width : 700px;
+    height : 500px;
+    margin : 0 auto;
+    margin-top : 100px;
+    vertical-align : middle;
+}
+
+.plus_btn{
+    background-color : white;
+    border-width : 0px;
+}
+.plus_btn_img{
+    width :100px;
+    height : 100px;
+
+}
+
+.post_form_box_category{
+    display : block;
+    margin : 10px;
+    width : 500px;
+    height : 30px;
+}
+.form_brdcontent{
+    height : 100px;
+}
