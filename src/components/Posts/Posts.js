@@ -2,9 +2,15 @@ import React, {Component} from 'react';
 import Modal from 'react-modal';
 import PostItem from './PostItem.js'
 import PostForm from './PostForm.js'
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import axios from "axios";
 import './Posts.css'
 
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 class Posts extends Component {
     constructor(props){
         super(props);
@@ -15,6 +21,9 @@ class Posts extends Component {
             selectedBoard:{},  //selected board contains one or zero board content to rewrite/remove
             nickname: 0,
             profile: "",
+            isLogin: false,
+            alertopen: false,
+            addalert: false
         }
     }
     //첫로딩
@@ -36,6 +45,16 @@ class Posts extends Component {
                 nickname: profile.nickname,
                 profile: profile.profile_image_url,
               });
+              if(profile.profile_image_url != null){
+                GetUser.setState({
+                    isLogin: true
+                  });
+              }
+              else{
+                GetUser.setState({
+                    isLogin: false
+                });
+              }
               //console.log(GetUser.state.profile_image_url);
             },
             fail: function (error) {
@@ -53,7 +72,8 @@ class Posts extends Component {
       };
     
     handleSaveData = (data) => { //새글 등록하기
-        console.log("handleSaveData");
+    //console.log("handleSaveData");
+        this.setState({alertopen: false});
         if (!data._id) { // new : Insert
             axios.post(`/api/post/add`, 
                 {brddate: new Date(), ...data, profile: this.state.profile, brdwriter: this.state.nickname}
@@ -77,12 +97,22 @@ class Posts extends Component {
             .then(response => {
                 this.setState({
                     selectedBoard: {},
-                    boards: [...response.data]
+                    boards: [...response.data],
                 })
             });
         }
-
+        this.setState({addalert: true});
         this.closeModal();
+    }
+
+    handleCloseAlert = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.setState({
+            alertopen: false,
+            addalert: false
+        });
     }
 
     onBackButtonClicked = () => { //새글 등록 취소
@@ -107,7 +137,14 @@ class Posts extends Component {
     }
 
     handleNewPost = ()=>{
-        this.handleSelectRow({});
+        if(this.state.isLogin){
+            this.handleSelectRow({});
+        }
+        else{
+            this.setState({alertopen: true});
+            console.log("not login");
+        }
+        
     }
 
 
@@ -124,7 +161,17 @@ class Posts extends Component {
                         <Modal isOpen={this.state.isModalOpen} close={this.closeModal} >
                             <PostForm selectedBoard = {selectedBoard} onSaveData={this.handleSaveData} onBackButtonClicked={this.onBackButtonClicked}/>
                         </Modal>
-                        </div>
+                    </div>
+                    <Snackbar open={this.state.alertopen} autoHideDuration={6000} onClose={this.handleCloseAlert}>
+                        <Alert onClose={this.handleCloseAlert} severity="warning">
+                        로그인이 되어 있지 않습니다
+                        </Alert>
+                    </Snackbar>
+                    <Snackbar open={this.state.addalert} autoHideDuration={6000} onClose={this.handleCloseAlert}>
+                        <Alert onClose={this.handleCloseAlert} severity="success">
+                        새로운 게시물이 추가되었습니다
+                        </Alert>
+                    </Snackbar>
                     <h3 className= "page_title">
                         <img className = "main_img" src= "/img/house.png"></img>
                         <em className="main_text">
