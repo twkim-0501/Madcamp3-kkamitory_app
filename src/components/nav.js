@@ -16,8 +16,8 @@ const Navigation = () =>
     <Link to="/report">
       Report
     </Link>
-    <Link to="/testlogin">
-      로그인테스트하는즁...
+    <Link to="/login">
+      Login
     </Link>
   </div>
 export default Navigation;

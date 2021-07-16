@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Navigation from './components/nav';
 import Login from './components/LoginPage/Login';
+import Reserve from './components/Reserve/Reserve';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './App.css';
 import PostsHome from './components/PostsHome/PostsHome.js'
@@ -23,9 +24,9 @@ class App extends Component {
               <div>report</div>
             </Route>
             <Route exact path="/reserve">
-              <div>reserve</div>
+              <Reserve/>
             </Route>
-            <Route exact path="/testlogin">
+            <Route exact path="/login">
               <Login/>
             </Route>
           </Switch>
