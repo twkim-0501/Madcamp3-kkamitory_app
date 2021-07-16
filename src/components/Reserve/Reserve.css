@@ -171,3 +171,143 @@ label {
     color: #fff;
     background-color: #111;
 }
+.group_bottom_btn.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.group_bottom_btn {
+    position: relative;
+    height: 78px;
+    padding: 16px;
+    margin-top: 20px;
+    background-color: #fff;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.group_bottom_btn .item_bottom_info+.item_bottom_btn {
+    width: 51%;
+}
+
+
+.group_bottom_btn .item_bottom_info+.item_bottom_btn {
+    width: 51%;
+}
+.group_bottom_btn .item_bottom_btn {
+    display: block;
+    width: 50%;
+    height: 50px;
+    float: left;
+    padding-left: 4px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+ .btn_bottom_btn {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    padding: 15px 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #1F2247;
+
+    font-size: 16px;
+    line-height: 19px;
+    border-radius: 3px;
+    box-shadow: 0 2px 14px 0 rgb(0 0 0 / 30%);
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+.washer {
+    display: -webkit-box;
+    overflow: hidden;
+    font-family: KHDS-Bold,system-ui,AppleSDGothicNeo-Regular,맑은 고딕,Malgun Gothic,돋움,dotum,sans-serif;
+    font-size: 15px;
+    line-height: 18px;
+    color: #111;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    white-space: normal;
+
+    margin-left: 40px;
+}
+ .group_washer {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f3f3f3;
+}
+.card_washer {
+    padding: 24px 0;
+}
+.bundle_timeRadioTagList {
+    display: -moz-box;
+    display: flex;
+    margin: 0 -16px;
+    padding: 0 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 0;
+}
+.bundle_timeRadioTagList .item_timeRadioTagList {
+    position: relative;
+    display: inline-block;
+    height: 38px;
+    margin-bottom: 8px;
+    padding-right: 4px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+.bundle_timeRadioTagList .item_timeRadioTagList .item_radio {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .01;
+    cursor: pointer;
+    border: 0;
+    vertical-align: top;
+    -webkit-appearance: none;
+}
+.bundle_timeRadioTagList .item_timeRadioTagList .item_radio:checked+.item_label {
+    color: #fff;
+    background-color: #111;
+}
+.bundle_timeRadioTagList .item_timeRadioTagList .item_label {
+    display: -moz-box;
+    display: flex;
+    min-width: 66px;
+    height: 36px;
+    margin: 0;
+    padding: 10px 16px;
+    border-radius: 19px;
+    font-family: KHDS-Regular,system-ui,AppleSDGothicNeo-Regular,맑은 고딕,Malgun Gothic,돋움,dotum,sans-serif;
+    font-size: 15px;
+    line-height: 18px;
+    color: #111;
+    background-color: #f5f5f5;
+    text-align: center;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
