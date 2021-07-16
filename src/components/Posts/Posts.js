@@ -48,10 +48,22 @@ class Posts extends Component {
             });
 
         } else {                                                        // Update
+
+            axios.post(`/api/post/update`, {
+                brddate: new Date(), ...data
+            })
+            .then(() => axios.get(`/api/post/`))
+            .then(response => {
+                this.setState({
+                    selectedBoard: {},
+                    boards: [...response.data]
+                })
+            });
+            /*
             this.setState({
                 boards: this.state.boards.map(row => data._id.equals(row._id)  ? {...data }: row),
                 selectedBoard: {}
-            })            
+            })         */   
         }
     }
     
@@ -73,6 +85,8 @@ class Posts extends Component {
     
     render() {
             const { boards , selectedBoard } = this.state;
+
+            
             return (
                 <div>
 

@@ -24,9 +24,20 @@ function remove(_id, callback) {
         callback();
     });
 }
+function update(_id, body, callback) {
+    PostModel.findOneAndUpdate({_id: _id}, {
+        brdwriter: body.brdwriter,
+        brdtitle: body.brdtitle,
+        brdcontent: body.content,
+        hashtag: body.hashtag,
+        brddate: body.brddate
+    },
+    (error) => {callback();});
+}
 
 module.exports = {
     getAll,
     add,
-    remove
+    remove,
+    update
 };

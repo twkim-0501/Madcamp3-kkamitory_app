@@ -19,6 +19,7 @@ class PostForm extends Component {
 
     handleSubmit = (e) => { //Posts.js의 handleSaveData에 저장되어있음.
         e.preventDefault();
+        //console.log(selectedBoard);
         let selectedBoard = this.props.selectedBoard; 
         let data = { 
             brdwriter: this.brdwriter.value, 
@@ -29,10 +30,11 @@ class PostForm extends Component {
         
         if (selectedBoard._id) { 
             data._id = selectedBoard._id
-            data.brddate = selectedBoard.brddate 
-            data.hashtag = selectedBoard.hashtag
-            data.brdcontent=selectedBoard.brdcontent
-        } 
+            //data.brddate = selectedBoard.brddate 
+            //data.hashtag = selectedBoard.hashtag
+            //data.brdcontent=selectedBoard.brdcontent
+        }
+
         this.props.onSaveData(data);
     }
 
