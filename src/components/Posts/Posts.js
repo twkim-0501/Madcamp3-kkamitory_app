@@ -10,25 +10,8 @@ class Posts extends Component {
         super(props);
         this.state = {
             isModalOpen : false, //flag for modal window
-            boards: [        //important list which contains core data of posts
-                {
-                    _id: 1,
-                    brdwriter: 'Lee SunSin',
-                    brdtitle: 'If you intend to live then you die',
-                    hashtag: '#hashtag1 #hashtag2',
-                    brddate: new Date(),
-                    brdcontent : "content example1"
-                },
-                {
-                    _id: 2,
-                    brdwriter: 'So SiNo',
-                    brdtitle: 'Founder for two countries',
-                    hashtag : '#hashtag1 #hashtag3',
-                    brddate: new Date(),
-                    brdcontent : "content example2"
-                }
-            ],
-             selectedBoard:{}  //selected board contains one or zero board content to rewrite/remove
+            boards: [],
+            selectedBoard:{}  //selected board contains one or zero board content to rewrite/remove
         }
     }
     
@@ -49,7 +32,7 @@ class Posts extends Component {
     }
     
     handleSaveData = (data) => {
-        if (!data._id) {            // new : Insert
+        if (!data._id) { // new : Insert
             axios.post(`/api/post/add`, 
                 {brddate: new Date(), ...data }
             )
@@ -61,7 +44,7 @@ class Posts extends Component {
                 })
             });
 
-        } else {                                                        // Update
+        } else { // Update
             this.setState({
                 boards: this.state.boards.map(row => data._id.equals(row._id)  ? {...data }: row),
                 selectedBoard: {}
@@ -88,12 +71,14 @@ class Posts extends Component {
     
     handleSelectRow = (row) => {
         this.setState({selectedBoard:row});
+        console.log("selectedRow is "+ row.brdtitle);
+        this.openModal();
     }
 
 
     
     render() {
-            const { boards , selectedBoard , modalIsOpen, setModalIsOpen} = this.state;
+            const { boards , selectedBoard} = this.state;
             
             return (
                 <div>

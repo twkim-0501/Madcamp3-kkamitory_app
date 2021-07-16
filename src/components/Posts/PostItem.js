@@ -30,7 +30,7 @@ class PostItem extends Component {
                                 <button onClick={this.handleRemove}>X</button>
                             </div>
                             <span class = "hashtag_text">
-                                <a>{this.props.row.hashtag}</a>
+                                <a>{this.props.row.hashtag}</a> 
                             </span>
                         </span>
                     </div>

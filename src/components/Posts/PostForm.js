@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 class PostForm extends Component { 
     
-    shouldComponentUpdate(nextProps, nextState) { 
+    shouldComponentUpdate(nextProps, nextState) { //rewrite postform contents
         let selectedBoard = nextProps.selectedBoard; 
+        console.log("selected board in postform is" + selectedBoard.brdtitle);
         if (!selectedBoard._id) { 
             this.brdtitle.value = ""; 
             this.brdwriter.value = ""; 
