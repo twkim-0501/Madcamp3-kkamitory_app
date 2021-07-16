@@ -13,7 +13,7 @@ class GetUser extends React.Component {
     // login함수와 비슷하다. 사용자 정보를 가져오면 success콜백
     window.Kakao.API.request({
       url: "/v2/user/me",
-      success: function ({ id, kakao_account }) {
+      success: function ({ kakao_account }) {
         const { profile } = kakao_account;
         // 수집한 사용자 정보로 페이지를 수정하기 위해 setState
         GetUser.setState({

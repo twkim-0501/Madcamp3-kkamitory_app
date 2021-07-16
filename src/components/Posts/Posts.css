@@ -111,6 +111,7 @@ li{
     display: flex;
     align-items: center;
 }
+
 .ReactModal__Content{
     display : inline-block;
     width : 700px;

@@ -18,7 +18,7 @@ class PostItem extends Component {
                         <span class = "wrap_content">
                             <span class = "info_text">
                                 <div class="box">
-                                    <img class="profile" src="img/profile-example.jpg"></img>
+                                    <img class="profile" src={this.props.row.profile}></img>
                                 </div>
                                 <div class="name">
                                 <a>{this.props.row.brdwriter}</a>

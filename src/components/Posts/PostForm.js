@@ -22,7 +22,7 @@ class PostForm extends Component {
         //console.log(selectedBoard);
         let selectedBoard = this.props.selectedBoard; 
         let data = { 
-            brdwriter: this.brdwriter.value, 
+            //brdwriter: this.brdwriter.value, 
             brdtitle: this.brdtitle.value,
             brdcontent:this.brdcontent.value,
             hashtag: this.hashtag.value

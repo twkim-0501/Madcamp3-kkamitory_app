@@ -28,10 +28,38 @@ class Posts extends Component {
                     brdcontent : "content example2"
                 }
             ],
-             selectedBoard:{}  //selected board contains one or zero board content to rewrite/remove
+            selectedBoard:{},  //selected board contains one or zero board content to rewrite/remove
+            nickname: 0,
+            profile: "",
         }
     }
-    
+    //첫로딩
+    componentDidMount() {
+        //db에서 getAll
+        axios.get(`/api/post/`)
+        .then(response => {
+            this.setState({boards: [...response.data]})
+        });
+
+        const GetUser = this;
+
+        window.Kakao.API.request({
+            url: "/v2/user/me",
+            success: function ({ kakao_account }) {
+              const { profile } = kakao_account;
+              // 수집한 사용자 정보로 페이지를 수정하기 위해 setState
+              GetUser.setState({
+                nickname: profile.nickname,
+                profile: profile.profile_image_url,
+              });
+              //console.log(GetUser.state.profile_image_url);
+            },
+            fail: function (error) {
+              console.log(error);
+            },
+          });
+    }
+
     openModal = () => {
         this.setState({ isModalOpen: true });
       };
@@ -40,18 +68,10 @@ class Posts extends Component {
         this.setState({ isModalOpen: false });
       };
     
-
-    componentDidMount() {
-        axios.get(`/api/post/`)
-        .then(response => {
-            this.setState({boards: [...response.data]})
-        });
-    }
-    
     handleSaveData = (data) => {
         if (!data._id) {            // new : Insert
             axios.post(`/api/post/add`, 
-                {brddate: new Date(), ...data }
+                {brddate: new Date(), ...data, profile: this.state.profile, brdwriter: this.state.nickname}
             )
             .then(() => axios.get(`/api/post/`))
             .then(response => {
@@ -59,12 +79,13 @@ class Posts extends Component {
                     selectedBoard: {},
                     boards: [...response.data]
                 })
+                console.log(this.state.boards);
             });
 
         } else {                                                        // Update
 
             axios.post(`/api/post/update`, {
-                brddate: new Date(), ...data
+                brddate: new Date(), ...data, profile: this.state.profile
             })
             .then(() => axios.get(`/api/post/`))
             .then(response => {

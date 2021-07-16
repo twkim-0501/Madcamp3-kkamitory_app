@@ -7,7 +7,7 @@ function getAll(callback){
 }
 function add(body, callback){
     const newPost = new PostModel({
-        //profile: body.profile,
+        profile: body.profile,
         //dormitory: body.dormitory,
         brdwriter: body.brdwriter,
         brdtitle: body.brdtitle,
