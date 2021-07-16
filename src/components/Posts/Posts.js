@@ -1,31 +1,45 @@
 import React, {Component} from 'react';
+import Modal from 'react-modal';
 import PostItem from './PostItem.js'
 import PostForm from './PostForm.js'
 import axios from "axios";
 import './Posts.css'
 
 class Posts extends Component {
-    state = {
-        boards: [
-            {
-                _id: 1,
-                brdwriter: 'Lee SunSin',
-                brdtitle: 'If you intend to live then you die',
-                hashtag: '#hashtag1 #hashtag2',
-                brddate: new Date(),
-                brdcontent : "content example1"
-            },
-            {
-                _id: 2,
-                brdwriter: 'So SiNo',
-                brdtitle: 'Founder for two countries',
-                hashtag : '#hashtag1 #hashtag3',
-                brddate: new Date(),
-                brdcontent : "content example2"
-            }
-        ],
-         selectedBoard:{}
+    constructor(props){
+        super(props);
+        this.state = {
+            isModalOpen : false, //flag for modal window
+            boards: [        //important list which contains core data of posts
+                {
+                    _id: 1,
+                    brdwriter: 'Lee SunSin',
+                    brdtitle: 'If you intend to live then you die',
+                    hashtag: '#hashtag1 #hashtag2',
+                    brddate: new Date(),
+                    brdcontent : "content example1"
+                },
+                {
+                    _id: 2,
+                    brdwriter: 'So SiNo',
+                    brdtitle: 'Founder for two countries',
+                    hashtag : '#hashtag1 #hashtag3',
+                    brddate: new Date(),
+                    brdcontent : "content example2"
+                }
+            ],
+             selectedBoard:{}  //selected board contains one or zero board content to rewrite/remove
+        }
     }
+    
+    openModal = () => {
+        this.setState({ isModalOpen: true });
+      };
+    
+    closeModal = () => {
+        this.setState({ isModalOpen: false });
+      };
+    
 
     componentDidMount() {
         axios.get(`/api/post/`)
@@ -65,6 +79,8 @@ class Posts extends Component {
                 selectedBoard: {}
             })         */   
         }
+
+        this.closeModal();
     }
     
     handleRemove = (_id) => {
@@ -82,6 +98,7 @@ class Posts extends Component {
         this.setState({selectedBoard:row});
     }
 
+
     
     render() {
             const { boards , selectedBoard } = this.state;
@@ -91,8 +108,10 @@ class Posts extends Component {
                 <div>
 
                     {/* 새로운글 등록 */}
-                    <PostForm selectedBoard = {selectedBoard} onSaveData={this.handleSaveData}/>
-                    
+                        <button onClick={this.openModal}>Modal Open</button>
+                        <Modal isOpen={this.state.isModalOpen} close={this.closeModal} >
+                            <PostForm selectedBoard = {selectedBoard} onSaveData={this.handleSaveData}/>
+                        </Modal>
                     <h3 class= "page_title">
                         <img class = "main_img" src= "/img/house.png"></img>
                         <em class="main_text">

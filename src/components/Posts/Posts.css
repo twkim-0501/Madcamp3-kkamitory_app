@@ -104,5 +104,6 @@ li{
 }
 
 .post_form_box{
-    display : block;
+    display : inline-block;
+    margin : 0 auto;
 }
