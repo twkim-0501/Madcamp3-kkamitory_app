@@ -11,22 +11,6 @@ class Posts extends Component {
         this.state = {
             isModalOpen : false, //flag for modal window
             boards: [        //important list which contains core data of posts
-                {
-                    _id: 1,
-                    brdwriter: 'Lee SunSin',
-                    brdtitle: 'If you intend to live then you die',
-                    hashtag: '#hashtag1 #hashtag2',
-                    brddate: new Date(),
-                    brdcontent : "content example1"
-                },
-                {
-                    _id: 2,
-                    brdwriter: 'So SiNo',
-                    brdtitle: 'Founder for two countries',
-                    hashtag : '#hashtag1 #hashtag3',
-                    brddate: new Date(),
-                    brdcontent : "content example2"
-                }
             ],
             selectedBoard:{},  //selected board contains one or zero board content to rewrite/remove
             nickname: 0,
