@@ -70,6 +70,10 @@ class Posts extends Component {
 
         this.closeModal();
     }
+
+    onBackButtonClicked = () => {
+        this.closeModal();
+    }
     
     handleRemove = (_id) => {
         axios.post(`/api/post/remove`, {_id: _id})
@@ -93,18 +97,20 @@ class Posts extends Component {
             
             return (
                 <div>
-
-                    {/* 새로운글 등록 */}
-                        <button onClick={this.openModal}>Modal Open</button>
+                    <div className = "modal_btn_wraper">
+                        <button onClick={this.openModal} className = "plus_btn"><img className = "plus_btn_img" src = "/img/addBtn.png"></img></button>
+                    </div>
+                    <div className = "modal_wraper">
                         <Modal isOpen={this.state.isModalOpen} close={this.closeModal} >
-                            <PostForm selectedBoard = {selectedBoard} onSaveData={this.handleSaveData}/>
+                            <PostForm selectedBoard = {selectedBoard} onSaveData={this.handleSaveData} onBackButtonClicked={this.onBackButtonClicked}/>
                         </Modal>
-                    <h3 class= "page_title">
-                        <img class = "main_img" src= "/img/house.png"></img>
-                        <em class="main_text">
+                        </div>
+                    <h3 className= "page_title">
+                        <img className = "main_img" src= "/img/house.png"></img>
+                        <em className="main_text">
                             자유게시판
                         </em>
-                        <span class="detail_text">
+                        <span className="detail_text">
                             가장 빠른 기숙사 새소식 업데이트
                         </span>
                     </h3> 
