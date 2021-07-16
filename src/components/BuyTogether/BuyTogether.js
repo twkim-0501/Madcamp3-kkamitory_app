@@ -27,12 +27,12 @@ class BuyTogether extends Component {
     return (
       <div>
           <h3 class= "page_title">
-              <img class = "main_img" src= "/img/conference.png"></img>
+              <img class = "main_img" src= "/img/youth.png"></img>
               <em class="main_text">
                   공구하기
               </em>
               <span class="detail_text">
-                  함께라면 살수있어
+                  함께라면 살 수 있어
               </span>
           </h3> 
           
