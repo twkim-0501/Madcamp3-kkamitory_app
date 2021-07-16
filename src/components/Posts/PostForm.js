@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-class PostForm extends Component { 
-    
+class PostForm extends Component {
     shouldComponentUpdate(nextProps, nextState) { //rewrite postform contents
         let selectedBoard = nextProps.selectedBoard; 
         if (!selectedBoard._id) { 
@@ -16,12 +15,19 @@ class PostForm extends Component {
         this.brdcontent.value = selectedBoard.brdcontent;
         return true; 
     }
+    componentDidMount(){
+        let selectedBoard = this.props.selectedBoard;
+        this.brdtitle.value = selectedBoard.brdtitle; 
+        this.brdwriter.value = selectedBoard.brdwriter; 
+        this.hashtag.value = selectedBoard.hashtag;
+        this.brdcontent.value = selectedBoard.brdcontent;
+    }
 
     handleSubmit = (e) => { //Posts.js의 handleSaveData에 저장되어있음.
         e.preventDefault();
         let selectedBoard = this.props.selectedBoard; 
         let data = { 
-            brdwriter: this.brdwriter.value, 
+            //brdwriter: this.brdwriter.value, 
             brdtitle: this.brdtitle.value,
             brdcontent:this.brdcontent.value,
             hashtag: this.hashtag.value
@@ -44,7 +50,7 @@ class PostForm extends Component {
     render(){
         //console.log("selected board is" + this.props.selectedBoard.brdtitle);
         return(
-            <form  class = "post_form_box" onSubmit={this.handleSubmit}> 
+            <form  name = "post_upload" class = "post_form_box" onSubmit={this.handleSubmit}> 
                 <input class = "post_form_box_category" placeholder="title" ref={node => this.brdtitle = node}/>
                 <input class = "post_form_box_category" placeholder="name" ref={node => this.brdwriter = node}/>
                 <input class = "post_form_box_category" placeholder="hashtag" ref={node => this.hashtag = node}/>
@@ -52,7 +58,7 @@ class PostForm extends Component {
                 <button type="submit">Save</button> 
                 <button type="back" onClick = {this.backBtnClicked}>cancel</button> 
             </form>
-        );
+        );  
     }
 }
 
