@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import Navigation from './components/nav';
 import Login from './components/LoginPage/Login';
 import Reserve from './components/Reserve/Reserve';
+import ReportHome from './components/Report/ReportStudent.js'
+import PostsHome from './components/PostsHome/PostsHome.js'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './App.css';
-import PostsHome from './components/PostsHome/PostsHome.js'
 
 class App extends Component {
   state = {
@@ -46,7 +47,7 @@ class App extends Component {
               <PostsHome kakaoID = {kakaoID}/>
             </Route>
             <Route exact path="/report">
-              <div>report</div>
+              <ReportHome kakaoID={kakaoID}/>
             </Route>
             <Route exact path="/reserve">
               <Reserve kakaoID = {kakaoID}/>

@@ -26,6 +26,7 @@ class BuyTogetherForm extends Component {
             brdcontent:this.brdcontent.value,
             total_member: this.total_member.value,
             total_price: this.total_price.value,
+            join_profile_list : this.props.selectedBoard.join_profile_list
         }
         if (selectedBoard._id) { 
             data._id = selectedBoard._id
