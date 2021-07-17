@@ -1,32 +1,40 @@
 import React, {Component} from 'react';
+import axios from "axios";
 import { Route } from 'react-router-dom';
 class EatTogetherItem extends Component { 
-    state = {
-        join_profile_list : [
-            // {profile_img:"/img/delivery.png", profile_id : "lhmin0614"},
-        ]
-    } //해당 배달팟에 참여하는 사람들 정보 목록.
     
 
     handleRemove = () => {
-        const { row, onRemove } = this.props;
+        const {row, onRemove } = this.props;
         onRemove(row._id);
     }    
     
     handleSelectRow = () => {
         const { row, onSelectRow } = this.props;
         onSelectRow(row);
-    }    
-
-    handleJoin = () => {
-        // if(id 이미 존재하면 거절)
-        console.log(this.props.profile);
-        this.setState({join_profile_list: [...this.state.join_profile_list, {profile_img : this.props.profile, profile_id : this.props.kakao_id}]});
-        console.log(this.state.join_profile_list);
+    }  
+    
+    handleJoin = (e) => {
+        e.preventDefault();
+        let row = this.props.row; 
+        let data = {
+            _id : row._id,
+            brdwriter : row.brdwriter,
+            brdtitle: row.brdtitle,
+            brdcontent:row.brdcontent,
+            total_member:row.total_member,
+            join_profile_list : [...row.join_profile_list, 
+                {
+                    profile_id : this.props.kakao_id, 
+                    profile_nickname: this.props.nickname,
+                    profile_img :this.props.profile
+                }]
+        }
+        this.props.onSaveData(data); //data
     }
 
+
     render() { 
-        const { join_profile_list} = this.state;
         return( 
             <li>
                 <div class = "div-box">
@@ -34,10 +42,10 @@ class EatTogetherItem extends Component {
                         <span class = "wrap_content">
                             <span class = "info_text">
                                 <div class="profile_box">
-                                    <img class="profile" src="/logo192.png"></img>
+                                    <img class="profile" src={this.props.profile}></img>
                                 </div>
                                 <div class="name">
-                                <a>{this.props.row.brdwriter}</a>
+                                <a>{this.props.nickname}</a>
                                 </div>
                                 
                             </span>
@@ -53,8 +61,8 @@ class EatTogetherItem extends Component {
                             </div>
                             <div className = "join_profile_list_box">
                                 { 
-                                    join_profile_list.map(row => 
-                                         (<div className = "join_profile_box"><img class = "join_profile" src={row.profile_img}></img>
+                                    this.props.row.join_profile_list.map(row => 
+                                        (<div className = "join_profile_box"><img class = "join_profile" src={row.profile_img}></img>
                                         </div>)
                                      )
                                 } 

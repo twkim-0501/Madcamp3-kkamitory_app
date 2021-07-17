@@ -84,7 +84,6 @@ class Posts extends Component {
                     selectedBoard: {},
                     boards: [...response.data]
                 })
-                console.log(this.state.boards);
             });
 
 
