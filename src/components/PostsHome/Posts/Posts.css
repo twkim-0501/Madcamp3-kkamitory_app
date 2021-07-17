@@ -15,7 +15,7 @@ li{
     margin : 0 15px;
 }
 
-.EatTogetherItem{
+.postItem{
     display:inline-block;
     margin-top : 36px;
     vertical-align : top;
@@ -31,7 +31,7 @@ li{
     width : 270px;
     padding:25px 24px 0;
     box-sizing : border-box;
-    height: 250px;
+    height: 197px;
 }
 
 .info_text{
@@ -57,18 +57,18 @@ li{
     -webkit-line-clamp:3; /* 라인수 */
     -webkit-box-orient:vertical;
 }
-.content_text{
+.hashtag_text{
     margin-top:18px;
     font-size:13px;
     line-height:19px;
     display:block;
 }
 
-.profile_box {
+.box {
     display:inline-block;
     margin-right:10px;
-    width: 40px;
-    height: 40px; 
+    width: 30px;
+    height: 30px; 
     border-radius: 70%;
     overflow: hidden;
     vertical-align:middle;
@@ -78,19 +78,6 @@ li{
     height: 100%;
     object-fit: cover;
     vertical-align:middle;
-}
-.join_profile_list_box{
-    margin-top : 10px;
-}
-.join_profile_box{
-    display : inline-block;
-}
-.join_profile{
-    margin : 5px 10px 0px 0px;
-    width : 30px;
-    height :30px;
-    border-radius: 100%;
-    background-color : gray;
 }
 
 .main_img{
@@ -135,7 +122,6 @@ li{
 }
 
 .plus_btn{
-    background-color : white;
     border-width : 0px;
 }
 .plus_btn_img{
