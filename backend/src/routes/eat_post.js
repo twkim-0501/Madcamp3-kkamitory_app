@@ -21,15 +21,9 @@ router.post("/add", (req,res) => {
 router.post("/remove", (req,res) => {
     db.remove(
         req.body._id,
-        (msg) =>{
-            if(msg == 200){
-                res.status(200).send();
-            }
-            else{
-                res.status(400).send();
-            }
-        }
-    );
+        () =>{
+            res.status(200).send();
+        });
 })
 router.post("/update", (req,res) => {
     db.update(
