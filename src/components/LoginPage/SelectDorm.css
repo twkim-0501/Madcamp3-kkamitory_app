@@ -1,0 +1,5 @@
+.select_container{
+    flex:1 ;
+    flex-direction: 'column';
+    vertical-align: auto;
+}

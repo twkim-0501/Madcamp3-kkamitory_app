@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
         res.json(posts);
     })
 });
+
 router.post("/add", (req,res) => {
     db.add(
         req.body,

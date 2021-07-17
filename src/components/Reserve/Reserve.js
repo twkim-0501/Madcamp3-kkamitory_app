@@ -12,12 +12,13 @@ class Reserve extends Component {
             temp: false
         }
     }
-
+    
     render() {
+        const {kakaoID} = this.props;
         return (
 
             <body>
-                <ReserveInfo/>
+                <ReserveInfo kakaoID={kakaoID}/>
                 <SelectDate/>
                 <SelectWasher/>
                 <div class="group_bottom_btn fixed">

@@ -7,8 +7,33 @@ import './App.css';
 import PostsHome from './components/PostsHome/PostsHome.js'
 
 class App extends Component {
+  state = {
+    dormitory: '',
+    kakaoID: ''
+  };
+  getInfo = (dorm, kakaoID) => {
+    this.setState({dormitory: dorm,
+    kakaoID: kakaoID});
+  }
+
+  componentDidMount(){
+    const GetID = this;
+    window.Kakao.API.request({
+      url: "/v2/user/me",
+      success: function ({ id }) {
+        GetID.setState({
+          kakaoID: id
+        });
+      },
+      fail: function (error) {
+        console.log(error);
+      },
+    });
+  };
 
   render(){
+    const {kakaoID} = this.state;
+    console.log(kakaoID);
     return (
       <BrowserRouter>
         <Navigation/>
@@ -18,16 +43,16 @@ class App extends Component {
               <div>main</div>
             </Route>
             <Route path="/posts">
-              <PostsHome/>
+              <PostsHome kakaoID = {kakaoID}/>
             </Route>
             <Route exact path="/report">
               <div>report</div>
             </Route>
             <Route exact path="/reserve">
-              <Reserve/>
+              <Reserve kakaoID = {kakaoID}/>
             </Route>
             <Route exact path="/login">
-              <Login/>
+              <Login getInfo = {this.getInfo}/>
             </Route>
           </Switch>
         </article>

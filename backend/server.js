@@ -2,6 +2,7 @@ var express = require('express');
 const path = require("path");
 const bodyParser = require('body-parser');
 const postRouter = require('./src/routes/post');
+const userRouter = require('./src/routes/user');
 
 const mongoose = require("mongoose");
 const app = express();
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/post', postRouter);
+app.use('/user', userRouter);
 app.get('/', (req, res) => {
     res.status(418).send("Project Kkamitory");
 });
