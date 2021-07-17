@@ -5,8 +5,14 @@ import Logout from './Logout';
 class Login extends React.Component {
     state = {
     loginResult: false,// 로그인 여부에 따라 페이지를 편집하기 위해 추가
+    dormitory: '',
+    kakaoID: ''
   };
 
+  getInfo = (dorm, kakaoID) => {
+    this.setState({dormitory: dorm, kakaoID: kakaoID});
+    this.props.getInfo(dorm,kakaoID);
+  }
 componentDidMount() {
     	/*
 	**  scope는 수집할 사용자 정보를 명시한다.
@@ -23,7 +29,7 @@ componentDidMount() {
       success: function (response) {
        //카카오 SDK에 사용자 토큰을 설정한다.
         window.Kakao.Auth.setAccessToken(response.access_token);
-        console.log(`is set?: ${window.Kakao.Auth.getAccessToken()}`);
+        //console.log(`is set?: ${window.Kakao.Auth.getAccessToken()}`);
         loginResult = true;
         // 성공 사항에 따라 페이지를 수정하기 위한 setState
         home.setState({ loginResult });
@@ -48,7 +54,7 @@ componentDidMount() {
     }
     return(
       <div>
-        <h1>kakologin{this.state.loginResult ? <GetUser/> : " not yet"}</h1>
+        <h1>kakologin{this.state.loginResult ? <GetUser getInfo={this.getInfo}/> : " not yet"}</h1>
         <Logout/>
       </div>
     );

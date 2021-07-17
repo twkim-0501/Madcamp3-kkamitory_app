@@ -4,9 +4,35 @@ import LocalLaundryServiceIcon from '@material-ui/icons/LocalLaundryService';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import OneDate from './OneDate';
 
+let daylist = ['월','화','수','목','금','토','일'];
 class SelectDate extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            date: [],
+            days: [],
+            selectDate: 0
+        }
+    }
 
+    componentDidMount() {
+        let today = new Date();
+        let temp = new Date();
+        let date = [];
+        let days = [];
+        for(var i = 0; i<=6 ; i++){
+            temp.setDate(today.getDate()+i);
+            date.push(temp.getDate());
+            days.push(daylist[temp.getDay()]);
+        }
+        this.setState({date: date, days: days});
+    }
+    handleRadio= (date) => {
+        this.setState({selectDate: date});
+        console.log("date is!!!: "+date);
+    }
     render(){
+        const {date,days}=this.state;
         return(
             <div class="area_reservePage area_date">
                     <strong class="title_area"><CalendarTodayIcon fontSize="small"/>날짜 선택</strong>
@@ -14,13 +40,13 @@ class SelectDate extends Component {
                         <div class="cover_day">
                             <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
                                 <div class="swiper-wrapper">
-                                    <OneDate day="토" date={17} isToday={true}/>
-                                    <OneDate day="일" date={18} isToday={false}/>
-                                    <OneDate day="월" date={19} isToday={false}/>
-                                    <OneDate day="화" date={20} isToday={false}/>
-                                    <OneDate day="수" date={21} isToday={false}/>
-                                    <OneDate day="목" date={22} isToday={false}/>
-                                    <OneDate day="금" date={23} isToday={false}/>
+                                    <OneDate day={days[0]} date={date[0]} isToday={true} onSelect={this.handleRadio}/>
+                                    <OneDate day={days[1]} date={date[1]} isToday={false} onSelect={this.handleRadio}/>
+                                    <OneDate day={days[2]} date={date[2]} isToday={false} onSelect={this.handleRadio}/>
+                                    <OneDate day={days[3]} date={date[3]} isToday={false} onSelect={this.handleRadio}/>
+                                    <OneDate day={days[4]} date={date[4]} isToday={false} onSelect={this.handleRadio}/>
+                                    <OneDate day={days[5]} date={date[5]} isToday={false} onSelect={this.handleRadio}/>
+                                    <OneDate day={days[6]} date={date[6]} isToday={false} onSelect={this.handleRadio}/>
                                 </div>
                             </div>
                         </div>
