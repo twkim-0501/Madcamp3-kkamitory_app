@@ -17,8 +17,7 @@ class ReserveInfo extends Component {
                 axios.get(`/api/user/${id}`)
                 .then(response => {
                     GetID.setState({json1: response.data})
-                    console.log(this.state);
-            });
+                });
             }
     },
     fail: function (error) {

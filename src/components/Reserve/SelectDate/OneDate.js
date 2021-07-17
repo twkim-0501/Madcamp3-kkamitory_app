@@ -14,12 +14,13 @@ class OneDate extends Component {
     handleRadio = (e) => {
         this.setState({selectDate: e.target.value});
         this.props.onSelect(e.target.value);
+        console.log(e.target.name);
     }
     render(){
         const {day, date, isToday} = this.props;
         return(
             <div class="swiper-slide item_day">
-                <input type="radio" name="radio_day" id="radio_day16" class="radio_item" value={date}
+                <input type="radio" name="radio_day_name" id="radio_day16" class="radio_item" value={date}
                 onChange={this.handleRadio}/>
                 <label class="label_item" for="radio_day_16">
                     <span class="name_item">{day}</span>

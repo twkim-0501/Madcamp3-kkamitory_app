@@ -6,14 +6,15 @@ import Washer from './Washer';
 class SelectWasher extends Component {
 
     render(){
+        const {handleTime} = this.props;
         return(
             <div class="area_reservePage">
                     <strong class="title_area"><LocalLaundryServiceIcon />세탁기 선택</strong>
-                    <Washer washername ="세탁기1"/>
-                    <Washer washername ="세탁기2"/>
-                    <Washer washername ="세탁기3"/>
-                    <Washer washername ="세탁기4"/>
-                    <Washer washername ="세탁기5"/>
+                    <Washer washername ="세탁기1" washerno={1} handleTime={handleTime}/>
+                    <Washer washername ="세탁기2" washerno={2} handleTime={handleTime}/>
+                    <Washer washername ="세탁기3" washerno={3} handleTime={handleTime}/>
+                    <Washer washername ="세탁기4" washerno={4} handleTime={handleTime}/>
+                    <Washer washername ="세탁기5" washerno={5} handleTime={handleTime}/>
                 </div>
         );
     }

@@ -7,6 +7,7 @@ const ReserveSchema = new mongoose.Schema({
     dormitory: String,
     washer_no: String,
     reserve_time: String,
+    user_ID: String
 });
 
 const ReserveModel = mongoose.model("reserve", ReserveSchema);
