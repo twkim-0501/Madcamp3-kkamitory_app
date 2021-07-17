@@ -4,7 +4,7 @@ import LocalLaundryServiceIcon from '@material-ui/icons/LocalLaundryService';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import OneDate from './OneDate';
 
-let daylist = ['월','화','수','목','금','토','일'];
+let daylist = ['일','월','화','수','목','금','토'];
 class SelectDate extends Component {
     constructor(props){
         super(props);
@@ -29,7 +29,7 @@ class SelectDate extends Component {
     }
     handleRadio= (date) => {
         this.setState({selectDate: date});
-        console.log("date is!!!: "+date);
+        this.props.handleDate(date);
     }
     render(){
         const {date,days}=this.state;

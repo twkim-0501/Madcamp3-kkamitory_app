@@ -262,6 +262,12 @@ button {
     box-sizing: border-box;
     font-size: 0;
 }
+.item_radio.reserved{
+    color: #ff695b;
+}
+.item_label.reserved{
+    color: #ff695b;
+}
 .bundle_timeRadioTagList .item_timeRadioTagList {
     position: relative;
     display: inline-block;
@@ -286,9 +292,15 @@ button {
     vertical-align: top;
     -webkit-appearance: none;
 }
+
+
 .bundle_timeRadioTagList .item_timeRadioTagList .item_radio:checked+.item_label {
     color: #fff;
     background-color: #111;
+}
+.bundle_timeRadioTagList .item_timeRadioTagList .item_radio.reserved+.item_label {
+    color: #ff695b;
+    background-color: #fff;
 }
 .bundle_timeRadioTagList .item_timeRadioTagList .item_label {
     display: -moz-box;

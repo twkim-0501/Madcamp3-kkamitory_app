@@ -18,4 +18,25 @@ router.post("/add", (req,res) => {
     );
 })
 
+router.get("/myreserve/:kakaoID", (req,res) => {
+    db.getReserves(
+        req.params.kakaoID,
+        (item) => {res.send(item)}
+    )
+})
+router.post("/checkreserved", (req,res)=> {
+    db.checkReserved(
+        req.body,
+        (item) => {res.send(item)}
+    )
+})
+
+router.get("/deleteAll", (req,res) => {
+    db.deleteAll(
+        () => {
+            res.status(200).send();
+        }
+    );
+})
+
 module.exports = router;
