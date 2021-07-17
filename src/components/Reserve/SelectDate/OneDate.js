@@ -14,7 +14,6 @@ class OneDate extends Component {
     handleRadio = (e) => {
         this.setState({selectDate: e.target.value});
         this.props.onSelect(e.target.value);
-        console.log(e.target.name);
     }
     render(){
         const {day, date, isToday} = this.props;

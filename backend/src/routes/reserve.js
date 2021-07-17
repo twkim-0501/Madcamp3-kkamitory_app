@@ -24,6 +24,12 @@ router.get("/myreserve/:kakaoID", (req,res) => {
         (item) => {res.send(item)}
     )
 })
+router.post("/checkreserved", (req,res)=> {
+    db.checkReserved(
+        req.body,
+        (item) => {res.send(item)}
+    )
+})
 
 router.get("/deleteAll", (req,res) => {
     db.deleteAll(

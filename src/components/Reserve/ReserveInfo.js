@@ -29,6 +29,7 @@ class ReserveInfo extends Component {
     }
     render(){
         const {json1} = this.state;
+        //console.log(this.props.reservable);
         return(
             <div class= "area_reservePage">
                 <h2 class="title_subpage">예약 정보</h2>
@@ -45,7 +46,12 @@ class ReserveInfo extends Component {
                 <div class="group_info">
                     <span class = "title_info">가능 여부:</span>
                     <div class="item_info">
-                        <span class = "txt_item">가능</span>
+                        {
+                            this.props.reservable ?
+                            <span class = "txt_item">가능</span> :
+                            <span class = "txt_item">불가능</span>
+                        }
+                        
                     </div>
                 </div>
             </div>

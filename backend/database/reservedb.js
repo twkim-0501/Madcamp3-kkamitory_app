@@ -24,6 +24,22 @@ function getReserves(kakaoID, callback){
         callback(res);
     })
 }
+function checkReserved(body, callback){
+    ReserveModel.findOne({
+        reserve_date: body.date,
+        //dormitory: body.dorm,
+        washer_no: body.washer,
+        reserve_time: body.time
+    },(err,res) => {
+        if(res){
+            callback({isReserved: true});
+        }
+        else{
+            callback({isReserved: false});
+        }
+        
+    })
+}
 function deleteAll(callback){
     ReserveModel.remove({}, (error,result) => {
         callback(result)
@@ -35,5 +51,6 @@ module.exports = {
     getAll,
     add,
     deleteAll,
-    getReserves
+    getReserves,
+    checkReserved
 };
