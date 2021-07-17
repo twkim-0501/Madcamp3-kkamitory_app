@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { BrowserRouter, Route, Switch , Link} from "react-router-dom";
-import Posts from '../Posts/Posts.js'
-import BuyTogether from '../BuyTogether/BuyTogether.js'
-import EatTogether from '../EatTogether/EatTogether.js'
+import Posts from './Posts/Posts.js'
+import BuyTogether from './BuyTogether/BuyTogether.js'
+import EatTogether from './EatTogether/EatTogether.js'
 import './PostsHome.css'
 
 class PostsHome extends Component {

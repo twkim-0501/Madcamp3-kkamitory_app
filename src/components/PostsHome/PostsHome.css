@@ -14,7 +14,14 @@
     padding : 0 20px;
     background : #eee;
     border-radius : 20px;
+    text-decoration: none; 
     color : black;
+    font-weight : 600;
+}
+
+.post_board_btn.on{
+    background_color : #1F2247;
+    color : white;
 }
 .post_board_name{
     list-style : none;

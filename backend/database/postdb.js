@@ -11,7 +11,7 @@ function add(body, callback){
         //dormitory: body.dormitory,
         brdwriter: body.brdwriter,
         brdtitle: body.brdtitle,
-        brdcontent: body.content,
+        brdcontent: body.brdcontent,
         hashtag: body.hashtag,
         brddate: body.brddate
     })

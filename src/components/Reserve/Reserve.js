@@ -19,7 +19,11 @@ class Reserve extends Component {
             reservable: true
         }
     }
-    
+    componentDidUpdate(prevProps,prevState){
+        if(this.state.s !== prevProps.reservable){
+            
+        }
+    }
     componentDidMount(){
         const GetID = this;
         window.Kakao.API.request({

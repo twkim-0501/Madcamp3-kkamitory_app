@@ -1,5 +1,5 @@
 const express = require("express");
-const db = require("../../database/eat_postdb");
+const db = require("../../database/buy_postdb");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -22,7 +22,8 @@ router.post("/remove", (req,res) => {
         req.body._id,
         () =>{
             res.status(200).send();
-        });
+        }
+    );
 })
 router.post("/update", (req,res) => {
     db.update(
@@ -33,4 +34,5 @@ router.post("/update", (req,res) => {
         }
     );
 })
+
 module.exports = router;

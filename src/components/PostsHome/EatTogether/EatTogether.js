@@ -10,7 +10,6 @@ class EatTogether extends Component {
         super(props);
         this.state = {
           profile : "",
-          email : "", 
           nickname : "",
           alertopen : false,
           isModalOpen : false,
@@ -152,14 +151,14 @@ class EatTogether extends Component {
                     </div>
                     <div className = "modal_wraper">
                         <Modal isOpen={this.state.isModalOpen} close={this.closeModal} >
-                            { <EatTogetherForm selectedBoard = {selectedBoard} onSaveData={this.handleSaveData} onBackButtonClicked={this.onBackButtonClicked}/> }
+                            { <EatTogetherForm selectedBoard = {selectedBoard} onSaveData={this.handleSaveData} onBackButtonClicked={this.onBackButtonClicked}kakao_id={this.state.kakao_id} nickname = {this.state.nickname}/> }
                     </Modal>
           </div>
           
           <ul id = "postsList">
           { 
                       eat_boards.map(row => 
-                          (<EatTogetherItem key={row._id} row={row} onRemove={this.handleRemove} onSaveData={this.handleSaveData} nickname = {row.brdwriter} profile = {row.profile} kakao_id={this.state.kakao_id} onSelectRow={this.handleSelectRow}/>) 
+                          (<EatTogetherItem key={row._id} row={row} onRemove={this.handleRemove} onSaveData={this.handleSaveData} nickname = {row.brdwriter} profile = {row.profile} join_profile = {this.state.profile}  onSelectRow={this.handleSelectRow}/>) 
                       )
                   } 
           </ul>

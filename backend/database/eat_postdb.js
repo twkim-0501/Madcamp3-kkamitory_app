@@ -48,11 +48,6 @@ function update(_id, body, callback) {
             }, (error) => {callback(400)});
         }
     });
-    //추가해야할 것! 고치려고 하는 total member가 join_profile_list수보다 적을 때 요청 거부하기.
-    //const selectedBrd = EatPostModel.findOne({_id : _id});
-    // if(body.total_member < selectedBrd.join_profile_list.length //total_member 잘못 수정했을 때 (update요청)
-    //     || body.total_member < body.join_profile_list.length){ //member 다 찼을 때 (join요청)
-    //     callback({update_apr : "NUMBER_MISMATCH"})
 }
 
 module.exports = {

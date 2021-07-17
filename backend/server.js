@@ -3,7 +3,12 @@ const path = require("path");
 const bodyParser = require('body-parser');
 const postRouter = require('./src/routes/post');
 const eatpostRouter = require('./src/routes/eat_post');
+
 const reserveRouter = require('./src/routes/reserve')
+
+const buypostRouter = require('./src/routes/buy_post');
+const reportRouter = require('./src/routes/report');
+
 const userRouter = require('./src/routes/user');
 
 
@@ -28,8 +33,14 @@ app.use(bodyParser.urlencoded({
 /*Router for requests*/
 app.use('/post', postRouter);
 app.use('/eat_post', eatpostRouter);
+app.use('/buy_post', buypostRouter);
 app.use('/user', userRouter);
+
 app.use('/reserve', reserveRouter);
+
+app.use('/report', reportRouter);
+
+
 app.get('/', (req, res) => {
     res.status(418).send("Project Kkamitory");
 });

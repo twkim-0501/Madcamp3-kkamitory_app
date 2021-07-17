@@ -153,14 +153,7 @@ class Posts extends Component {
             
             return (
                 <div>
-                    <div className = "modal_btn_wraper">
-                        <button onClick={this.handleNewPost} className = "plus_btn"><img className = "plus_btn_img" src = "/img/addBtn.png"></img></button>
-                    </div>
-                    <div className = "modal_wraper">
-                        <Modal isOpen={this.state.isModalOpen} close={this.closeModal} >
-                            <PostForm selectedBoard = {selectedBoard} onSaveData={this.handleSaveData} onBackButtonClicked={this.onBackButtonClicked}/>
-                        </Modal>
-                    </div>
+                    
                     <Snackbar open={this.state.alertopen} autoHideDuration={6000} onClose={this.handleCloseAlert}>
                         <Alert onClose={this.handleCloseAlert} severity="warning">
                         로그인이 되어 있지 않습니다
@@ -181,6 +174,15 @@ class Posts extends Component {
                         </span>
                     </h3> 
                     
+                    <div className = "modal_btn_wraper">
+                        <button onClick={this.handleNewPost} className = "plus_btn"><img className = "plus_btn_img" src = "/img/addBtn.png"></img></button>
+                    </div>
+                    <div className = "modal_wraper">
+                        <Modal isOpen={this.state.isModalOpen} close={this.closeModal} >
+                            <PostForm selectedBoard = {selectedBoard} onSaveData={this.handleSaveData} onBackButtonClicked={this.onBackButtonClicked}/>
+                        </Modal>
+                    </div>
+
                     <ul id = "postsList">
                     { 
                                 boards.map(row => 

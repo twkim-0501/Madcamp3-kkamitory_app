@@ -1,12 +1,41 @@
-div.navbar {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    display: table;
+
+ul,li {margin:0; padding:0;}
+.navbar {
+    display : block;
+    text-align: center;
+    max-width: 952px;
+    margin:0 auto;
+}
+.list_navbar{
+    text-decoration: none;
+    display : inline-block;
+    margin-left: -105px;
+    font-size : 16px;
+    letter-spacing: -.5px;
+}
+.main{
+    float : left;
+    margin-left : 10px;
+    font-size : 28px;
+    line-height : 72px;
+    font-weight : 900;
+    text-decoration : none;
+    /* background-color : #1F2247; */
+    /* color :white; */
+    color : #1F2247; 
 }
 
-div.navbar > * {
-    margin-right: 30px;
-    text-decoration: none;
+.navbar_content{
+    display : inline-block;
+    position : relative;
+    padding : 0 28px;
+    line-height : 72px;
+    font-weight : 700;
+    text-decoration : none;
+    color : black;
+}
+
+.list_navbar_wraper{
+    margin : 0 auto;
+    display : inline-block;
 }

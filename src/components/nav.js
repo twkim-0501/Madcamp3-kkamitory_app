@@ -4,20 +4,14 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => 
   <div className="navbar">
-    <Link to="/main">
-      Home
-    </Link>
-    <Link to="/posts">
-      Posts
-    </Link>
-    <Link to="/reserve">
-      Reserve
-    </Link>
-    <Link to="/report">
-      Report
-    </Link>
-    <Link to="/login">
-      Login
-    </Link>
+    <div className = "main"><Link to="/main" className = " main">Home</Link></div>
+    <div className = "list_navbar_wraper">
+      <ul class = "list_navbar">
+        <li><Link to="/posts" className = "navbar_content posts">Posts</Link></li>
+        <li><Link to="/reserve" className = "navbar_content reserve">Reserve</Link></li>
+        <li><Link to="/report" className = "navbar_content report"> Report</Link></li>
+        <li><Link to="/login" className = "navbar_content login">Login</Link></li>
+      </ul>
+    </div>
   </div>
 export default Navigation;
