@@ -23,7 +23,8 @@ class Reserve extends Component {
             dormitory: "",
             reservable: true,
             alertReserve: false,
-            alertCancel: false
+            alertCancel: false,
+            reserveInfo: {}
         }
     }
     
@@ -49,12 +50,11 @@ class Reserve extends Component {
                 //예약 가능여부 체크
                 axios.get(`/api/reserve/myreserve/${id}`)
                 .then(response => {
-                    console.log(response.data);
                     if(response.data.length >= 1){
-                        GetID.setState({reservable: false});
+                        GetID.setState({reservable: false, reserveInfo: response.data[0]});
                     }
                     else{
-                        GetID.setState({reservable: true});
+                        GetID.setState({reservable: true, reserveInfo: {}});
                     }
                 })
             },
@@ -128,10 +128,11 @@ class Reserve extends Component {
     }
     render() {
         const {kakaoID} = this.props;
-        const {reservable,selectDate} = this.state;
+        const {reservable,selectDate,reserveInfo} = this.state;
+        console.log(reserveInfo);
         return (
             <body>
-                <ReserveInfo kakaoID={kakaoID} reservable={reservable}/>
+                <ReserveInfo kakaoID={kakaoID}/>
                 <SelectDate handleDate={this.handleDate}/>
                 <SelectWasher handleTime={this.handleTime} selectDate={selectDate}/>
                 <div class="group_bottom_btn fixed">
