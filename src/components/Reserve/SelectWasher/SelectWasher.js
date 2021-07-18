@@ -4,11 +4,13 @@ import LocalLaundryServiceIcon from '@material-ui/icons/LocalLaundryService';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import Washer from './Washer';
 class SelectWasher extends Component {
+    /*
     componentDidUpdate(prevProps){
-        if(this.props.selectDate !== prevProps.selectDate){
-            this.setState({selectDate: this.props.selectDate})
+        
+        if(this.props.reservable !== prevProps.reservable){
+            this.render();
         }
-    }
+    }*/
     render(){
         const {handleTime,selectDate, reserveInfos} = this.props;
         //console.log(reserveInfos);

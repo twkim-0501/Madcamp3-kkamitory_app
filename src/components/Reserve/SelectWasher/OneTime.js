@@ -19,19 +19,15 @@ class OneTime extends Component {
     shouldComponentUpdate(nextProps, nextState){
         return (this.state.isReserved !== nextState.isReserved);
     }*/
-    checkReserved = (reserve_date,reserve_time,washer_no) => {
-        var reserveInfo = this.props.reserveInfos;
-
-    }
     componentDidUpdate(prevProps,prevState){
         
-        if(this.props.selectDate !== prevProps.selectDate){
+        if((this.props.selectDate !== prevProps.selectDate) || (this.props.reserveInfos !== prevProps.reserveInfos) ){
             this.setState({selectDate: this.props.selectDate})
-            console.log("here!"+this.props.selectDate);
+            //console.log("here!"+this.props.selectDate);
             
             //console.log(this.state.userInfo.dormitory);
             //최적화용
-            if(this.props.reserveInfos(this.props.time)){
+            if(this.props.reserveInfos(this.props.time, this.props.washername)){
                 axios.post(`/api/reserve/checkreserved`, {
                     date: this.props.selectDate,
                     washer: this.props.washername,

@@ -28,6 +28,7 @@ class Reserve extends Component {
             reserveInfo: {},
             reserveInfos: [],
         }
+        
     }
     
     componentDidMount(){
@@ -50,7 +51,7 @@ class Reserve extends Component {
                     }
                 });
                 //모든 예약시간정보 리스트 가져오기(최적화용)
-                axios.get(`/api/reserve/timelist`)
+                axios.get(`/api/reserve/`)
                 .then(response => { 
                     GetID.setState({reserveInfos: response.data});
                 });
@@ -135,19 +136,22 @@ class Reserve extends Component {
         this.setState({selectTime: selectTime, selectWasher: selectWasher});
         //console.log(selectWasher, selectTime);
     }
-    shouldCheck = (time) => {
-        return this.state.reserveInfos.includes(time);
+    reserveInfos = (time, washer_no) => {
+        const {reserveInfos} = this.state;
+        var timelist = reserveInfos.map(item => item.reserve_time);
+        var washerlist = reserveInfos.map(item => item.washer_no);
+        //console.log(washerlist);
+        return timelist.includes(time) && washerlist.includes(String(washer_no));
     }
     render() {
         const {kakaoID} = this.props;
         const {reservable,selectDate,reserveInfos,reserveInfo} = this.state;
-        console.log(reserveInfos);
-        console.log(this.shouldCheck("13:00"));
+        
         return (
             <body>
-                <ReserveInfo kakaoID={kakaoID}/>
-                <SelectDate handleDate={this.handleDate}/>
-                <SelectWasher handleTime={this.handleTime} selectDate={selectDate} reserveInfos={this.shouldCheck}/>
+                <ReserveInfo kakaoID={kakaoID} reservable={reservable}/>
+                <SelectDate handleDate={this.handleDate} reservable={reservable}/>
+                <SelectWasher handleTime={this.handleTime} selectDate={selectDate} reserveInfos={this.reserveInfos} reservable={reservable}/>
                 <div class="group_bottom_btn fixed">
                     <div class="item_bottom_btn">
                         {
