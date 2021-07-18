@@ -4,7 +4,12 @@ import EatTogetherForm from './EatTogetherForm.js'
 import Modal from 'react-modal'
 import axios from "axios";
 import './EatTogether.css'
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
+function Alert(props) {
+  return <MuiAlert elevation={3} variant="filled" {...props} />;
+}
 class EatTogether extends Component {
   constructor(props){
         super(props);
@@ -24,7 +29,9 @@ class EatTogether extends Component {
             //     join_profile_list : []
             // },
           ],
-          selectedBoard:{}
+          selectedBoard:{},
+          kakao_id: "",
+          alertfull: false
         }
     }
     
@@ -76,6 +83,8 @@ class EatTogether extends Component {
           this.setState({alertopen: false});
           if (!data._id) { // new : Insert
             //서버통신
+            console.log("add")
+            console.log(this.state.kakao_id)
                axios.post(`/api/eat_post/add`, 
                   {
                     brddate: new Date(), 
@@ -94,24 +103,27 @@ class EatTogether extends Component {
                });
           // Update
           } else {
+            console.log("update")
                axios.post(`/api/eat_post/update`, {
                    brddate: new Date(), ...data, profile: this.state.profile
                })
-               .then(() => axios.get(`/api/eat_post/`))
-               .then(response => {
-                 if(response.status == 200){
-                  this.setState({
-                      selectedBoard: {},
-                      eat_boards: [...response.data],
-                  })
-                 }
-                 else{
-                   console.log("err!");
-                   //인원초과 메세지 띄우기!
-                   //태우
-                 }
-                   
-               });
+               .then((res) => 
+               { console.log(res.data==400);
+                if(res.data==200){
+                  axios.get(`/api/eat_post/`)
+                  .then(response => {
+                    this.setState({
+                        selectedBoard: {},
+                        eat_boards: [...response.data],
+                    })
+                  });
+                }
+                else{
+                  console.log("꽉참");
+                  this.setState({alertfull: true});
+                }
+                 
+               })
           }
           this.setState({addalert: true});
           this.closeModal();
@@ -131,9 +143,18 @@ class EatTogether extends Component {
     onBackButtonClicked = () => { //새글 등록 취소
       this.closeModal();
   }
+  handleCloseAlert = (event, reason) => {
+    if (reason === 'clickaway') {
+        return;
+    }
+    this.setState({
+        alertfull: false,
+    });
+}
     
   render(){
     const { eat_boards , selectedBoard } = this.state;
+    //console.log(this.state.eat_boards);
     return (
       <div>
           <h3 class= "page_title">
@@ -156,12 +177,18 @@ class EatTogether extends Component {
           </div>
           
           <ul id = "postsList">
-          { 
+                  { 
                       eat_boards.map(row => 
-                          (<EatTogetherItem key={row._id} row={row} onRemove={this.handleRemove} onSaveData={this.handleSaveData} nickname = {row.brdwriter} profile = {row.profile} join_profile = {this.state.profile}  onSelectRow={this.handleSelectRow}/>) 
+                          (<EatTogetherItem key={row._id} row={row} onRemove={this.handleRemove} onSaveData={this.handleSaveData} nickname = {row.brdwriter} profile = {row.profile} join_profile = {this.state.profile}  onSelectRow={this.handleSelectRow} kakao_id={this.state.kakao_id} usernickname={this.state.nickname}/>) 
                       )
                   } 
           </ul>
+
+        <Snackbar open={this.state.alertfull} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+          <Alert onClose={this.handleCloseAlert} severity="warning">
+            인원이 꽉 찼습니다ㅠㅠ
+          </Alert>
+        </Snackbar>
       </div>
     );
   }

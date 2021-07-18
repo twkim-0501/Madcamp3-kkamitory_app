@@ -11,7 +11,7 @@ import './Posts.css'
 
 
 function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
+    return <MuiAlert elevation={3} variant="filled" {...props} />;
   }
 class Posts extends Component {
     constructor(props){
@@ -25,7 +25,8 @@ class Posts extends Component {
             profile: "",
             isLogin: false,
             alertopen: false,
-            addalert: false
+            addalert: false,
+            alertinput: false
         }
     }
     //첫로딩
@@ -74,7 +75,12 @@ class Posts extends Component {
       };
     
     handleSaveData = (data) => { //새글 등록하기
-    //console.log("handleSaveData");
+        console.log(data);
+        if(!(data.brdtitle && data.brdcontent && data.hashtag)){
+            console.log("입력안됨");
+            this.setState({alertinput: true});
+            return;
+        }
         this.setState({alertopen: false});
         if (!data._id) { // new : Insert
             axios.post(`/api/post/add`, 
@@ -112,7 +118,8 @@ class Posts extends Component {
         }
         this.setState({
             alertopen: false,
-            addalert: false
+            addalert: false,
+            alertinput: false,
         });
     }
 
@@ -154,17 +161,6 @@ class Posts extends Component {
             const { boards , selectedBoard} = this.state;
             return (
                 <div>
-                    
-                    <Snackbar open={this.state.alertopen} autoHideDuration={6000} onClose={this.handleCloseAlert}>
-                        <Alert onClose={this.handleCloseAlert} severity="warning">
-                        로그인이 되어 있지 않습니다
-                        </Alert>
-                    </Snackbar>
-                    <Snackbar open={this.state.addalert} autoHideDuration={6000} onClose={this.handleCloseAlert}>
-                        <Alert onClose={this.handleCloseAlert} severity="success">
-                        새로운 게시물이 추가되었습니다
-                        </Alert>
-                    </Snackbar>
                     <h3 className= "page_title">
                         <img className = "main_img" src= "/img/house.png"></img>
                         <em className="main_text">
@@ -191,6 +187,22 @@ class Posts extends Component {
                                 )
                             } 
                     </ul>
+
+                    <Snackbar open={this.state.alertopen} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+                        <Alert onClose={this.handleCloseAlert} severity="warning">
+                        로그인이 되어 있지 않습니다
+                        </Alert>
+                    </Snackbar>
+                    <Snackbar open={this.state.addalert} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+                        <Alert onClose={this.handleCloseAlert} severity="success">
+                        새로운 게시물이 추가되었습니다
+                        </Alert>
+                    </Snackbar>
+                    <Snackbar open={this.state.alertinput} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+                        <Alert onClose={this.handleCloseAlert} severity="warning">
+                        입력되지 않은 항목이 존재합니다
+                        </Alert>
+                    </Snackbar>
                 </div>
             );
         }
