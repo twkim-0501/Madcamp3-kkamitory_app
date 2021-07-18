@@ -6,8 +6,6 @@ import MuiAlert from '@material-ui/lab/Alert';
 import ReserveInfo from './ReserveInfo';
 import SelectDate from './SelectDate/SelectDate';
 import SelectWasher from './SelectWasher/SelectWasher';
-import { ViewArraySharp } from '@material-ui/icons';
-
 
 function Alert(props) {
     return <MuiAlert elevation={3} variant="filled" {...props} />;

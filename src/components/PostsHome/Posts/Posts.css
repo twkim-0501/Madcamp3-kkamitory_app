@@ -125,9 +125,12 @@ li{
     border-width : 0px;
 }
 .plus_btn_img{
+    position:fixed;
+    float: right;
     width :100px;
     height : 100px;
-
+    right: 50px;
+    bottom: 50px;
 }
 
 .post_form_box_category{
