@@ -12,7 +12,7 @@ function getAll(callback){
 function add(body, callback){
     const newEatPost = new EatPostModel({
         profile: body.profile,
-        //dormitory: body.dormitory,
+        profile_id: body.profile_id,
         brdwriter: body.brdwriter,
         brdtitle: body.brdtitle,
         brdcontent: body.brdcontent,
@@ -33,9 +33,12 @@ function remove(_id, callback) {
 }
 
 function update(_id, body, callback) {
+    //console.log(body.join_profile_list);
     EatPostModel.findOne({_id: _id}, (err, res) => {
+        //console.log(res);
         if(body.total_member < body.join_profile_list.length){
-             callback(200);
+            console.log(400);
+             callback("400");
         }
         else{
             EatPostModel.findOneAndUpdate({_id: _id}, {
@@ -45,7 +48,7 @@ function update(_id, body, callback) {
                 total_member: body.total_member,
                 join_profile_list : body.join_profile_list,
                 brddate: body.brddate
-            }, (error) => {callback(400)});
+            }, (error) => {callback("200")});
         }
     });
 }

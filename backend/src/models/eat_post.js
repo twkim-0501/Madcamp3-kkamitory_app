@@ -9,7 +9,8 @@ const EatPostSchema = new mongoose.Schema({
     brdcontent: String,
     total_member: Number,
     join_profile_list : Array,
-    brddate: String
+    brddate: String,
+    profile_id: String,
 });
 
 const EatPostModel = mongoose.model("eatpost", EatPostSchema);
