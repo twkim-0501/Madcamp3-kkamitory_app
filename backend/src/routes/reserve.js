@@ -31,6 +31,15 @@ router.post("/checkreserved", (req,res)=> {
     )
 })
 
+router.post("/cancel", (req,res)=> {
+    db.cancel(
+        req.body.kakaoID,
+        () => {
+            res.status(200).send();
+        }
+    )
+})
+
 router.get("/deleteAll", (req,res) => {
     db.deleteAll(
         () => {

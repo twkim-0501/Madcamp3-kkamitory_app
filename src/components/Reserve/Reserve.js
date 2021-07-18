@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import './Reserve.css'
-import LocalLaundryServiceIcon from '@material-ui/icons/LocalLaundryService';
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import ReserveInfo from './ReserveInfo';
 import SelectDate from './SelectDate/SelectDate';
 import SelectWasher from './SelectWasher/SelectWasher';
+
+
+function Alert(props) {
+    return <MuiAlert elevation={3} variant="filled" {...props} />;
+}
 class Reserve extends Component {
     constructor(props){
         super(props);
@@ -16,14 +21,12 @@ class Reserve extends Component {
             selectTime: "",
             selectWasher: 0,
             dormitory: "",
-            reservable: true
+            reservable: true,
+            alertReserve: false,
+            alertCancel: false
         }
     }
-    componentDidUpdate(prevProps,prevState){
-        if(this.state.s !== prevProps.reservable){
-            
-        }
-    }
+    
     componentDidMount(){
         const GetID = this;
         window.Kakao.API.request({
@@ -46,13 +49,13 @@ class Reserve extends Component {
                 //예약 가능여부 체크
                 axios.get(`/api/reserve/myreserve/${id}`)
                 .then(response => {
-                    if(response.data.length > 2){
+                    console.log(response.data);
+                    if(response.data.length >= 1){
                         GetID.setState({reservable: false});
                     }
                     else{
                         GetID.setState({reservable: true});
                     }
-                    
                 })
             },
             fail: function (error) {
@@ -72,11 +75,44 @@ class Reserve extends Component {
                 reserve_time: selectTime,
                 user_ID: this.props.kakaoID
             })
+            //예약 가능여부 체크
+            axios.get(`/api/reserve/myreserve/${this.state.kakaoID}`)
+            .then(response => {
+                this.setState({alertReserve: true});
+                if(response.data.length >= 1){
+                    this.setState({reservable: false});
+                }
+                else{
+                    this.setState({reservable: true});
+                }
+            })
         }
         else{
             console.log("예약할 수 없음")
         }
-        
+    }
+    handleCancel = () => {
+        const {kakaoID}= this.state;
+        axios.post(`/api/reserve/cancel`, {kakaoID: kakaoID})
+        .then(() => axios.get(`/api/reserve/myreserve/${this.state.kakaoID}`))
+        .then(response => {
+            this.setState({alertCancel: true});
+            if(response.data.length >= 1){
+                this.setState({reservable: false});
+            }
+            else{
+                this.setState({reservable: true});
+            }
+        })
+    }
+    handleCloseAlert = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.setState({
+            alertReserve: false,
+            alertCancel: false
+        });
     }
     getDorm = (dorm) => {
         this.setState({dormitory: dorm});
@@ -94,20 +130,35 @@ class Reserve extends Component {
         const {kakaoID} = this.props;
         const {reservable,selectDate} = this.state;
         return (
-
             <body>
                 <ReserveInfo kakaoID={kakaoID} reservable={reservable}/>
                 <SelectDate handleDate={this.handleDate}/>
                 <SelectWasher handleTime={this.handleTime} selectDate={selectDate}/>
                 <div class="group_bottom_btn fixed">
                     <div class="item_bottom_btn">
-                        <button type="button" class="btn_bottom_btn" onClick={this.handleSave}>
+                        {
+                            reservable ?
+                            <button type="button" class="btn_bottom_btn" onClick={this.handleSave}>
                             예약하기
-                        </button>
+                            </button> :
+                            <button type="button" class="btn_bottom_btn reserved" onClick={this.handleCancel}>
+                            예약취소
+                            </button>
+                        }
                     </div>
                 </div>
-                
+                <Snackbar open={this.state.alertReserve} autoHideDuration={2000} onClose={this.handleCloseAlert}>
+                    <Alert onClose={this.handleCloseAlert} severity="success">
+                    예약이 완료되었습니다
+                    </Alert>
+                </Snackbar>
+                <Snackbar open={this.state.alertCancel} autoHideDuration={2000} onClose={this.handleCloseAlert}>
+                    <Alert onClose={this.handleCloseAlert} severity="success">
+                    예약이 취소되었습니다
+                    </Alert>
+                </Snackbar>
             </body>
+            
         );
     }
 }

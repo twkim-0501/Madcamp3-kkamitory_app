@@ -18,9 +18,14 @@ function add(body,callback){
         callback(res)
     });
 }
+function cancel(kakaoID,callback){
+    ReserveModel.deleteOne({user_ID: kakaoID}, (error) => {
+        callback();
+    });
+}
+
 function getReserves(kakaoID, callback){
     ReserveModel.find({user_ID: kakaoID}, (err,res) => {
-        console.log(res);
         callback(res);
     })
 }
@@ -52,5 +57,6 @@ module.exports = {
     add,
     deleteAll,
     getReserves,
-    checkReserved
+    checkReserved,
+    cancel
 };
