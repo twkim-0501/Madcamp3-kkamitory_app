@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Modal from 'react-modal';
 import PostItem from './PostItem.js'
 import PostForm from './PostForm.js'
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import axios from "axios";
@@ -150,7 +152,6 @@ class Posts extends Component {
     
     render() {
             const { boards , selectedBoard} = this.state;
-            
             return (
                 <div>
                     
@@ -173,7 +174,7 @@ class Posts extends Component {
                             가장 빠른 기숙사 새소식 업데이트
                         </span>
                     </h3> 
-                    
+                   
                     <div className = "modal_btn_wraper">
                         <button onClick={this.handleNewPost} className = "plus_btn"><img className = "plus_btn_img" src = "/img/addBtn.png"></img></button>
                     </div>
