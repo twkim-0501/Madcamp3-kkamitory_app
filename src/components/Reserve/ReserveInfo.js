@@ -10,6 +10,12 @@ class ReserveInfo extends Component {
         reservable: true,
         reserveInfo: {}
     }
+    componentDidUpdate(prevProps){
+        if(this.props.reservable !== prevProps.reservable){
+            this.componentDidMount();
+            //this.setState({reservable: this.props.reservable})
+        }
+    }
     componentDidMount(){
     const GetID = this;
     window.Kakao.API.request({

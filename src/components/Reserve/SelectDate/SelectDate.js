@@ -14,7 +14,6 @@ class SelectDate extends Component {
             selectDate: 0
         }
     }
-
     componentDidMount() {
         let today = new Date();
         let temp = new Date();
