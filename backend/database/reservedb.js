@@ -5,6 +5,11 @@ function getAll(callback){
         callback(result);
     });
 }
+function getTimelist(callback){
+    ReserveModel.find({}, (error,result)=> {
+        callback(result.map(reserve => reserve.reserve_time));
+    });
+}
 function add(body,callback){
     const newReserve = new ReserveModel({
         reserve_date: body.reserve_date,
@@ -58,5 +63,6 @@ module.exports = {
     deleteAll,
     getReserves,
     checkReserved,
-    cancel
+    cancel,
+    getTimelist
 };

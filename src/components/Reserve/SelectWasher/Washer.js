@@ -17,7 +17,7 @@ class Washer extends Component {
         }
     }
     render(){
-        const {washername, washerno, handleTime, selectDate} = this.props;
+        const {washername, washerno, handleTime, selectDate, reserveInfos} = this.props;
         return(
             <div class="group_washer">
                         <div class="card_washer">
@@ -26,15 +26,15 @@ class Washer extends Component {
                             </strong>
                         </div>
                         <div class="bundle_timeRadioTagList">
-                            <OneTime time="13:00" washername={washerno} handleTime={handleTime} selectDate={selectDate}/>
-                            <OneTime time="14:00" washername={washerno} handleTime={handleTime} selectDate={selectDate}/>
-                            <OneTime time="15:00" washername={washerno} handleTime={handleTime} selectDate={selectDate}/>
-                            <OneTime time="16:00" washername={washerno} handleTime={handleTime} selectDate={selectDate}/>
-                            <OneTime time="17:00" washername={washerno} handleTime={handleTime} selectDate={selectDate}/>
-                            <OneTime time="18:00" washername={washerno} handleTime={handleTime} selectDate={selectDate}/>
-                            <OneTime time="19:00" washername={washerno} handleTime={handleTime} selectDate={selectDate}/>
-                            <OneTime time="20:00" washername={washerno} handleTime={handleTime} selectDate={selectDate}/>
-                            <OneTime time="21:00" washername={washerno} handleTime={handleTime} selectDate={selectDate}/>
+                            <OneTime time="13:00" washername={washerno} handleTime={handleTime} selectDate={selectDate} reserveInfos={reserveInfos}/>
+                            <OneTime time="14:00" washername={washerno} handleTime={handleTime} selectDate={selectDate} reserveInfos={reserveInfos}/>
+                            <OneTime time="15:00" washername={washerno} handleTime={handleTime} selectDate={selectDate} reserveInfos={reserveInfos}/>
+                            <OneTime time="16:00" washername={washerno} handleTime={handleTime} selectDate={selectDate} reserveInfos={reserveInfos}/>
+                            <OneTime time="17:00" washername={washerno} handleTime={handleTime} selectDate={selectDate} reserveInfos={reserveInfos}/>
+                            <OneTime time="18:00" washername={washerno} handleTime={handleTime} selectDate={selectDate} reserveInfos={reserveInfos}/>
+                            <OneTime time="19:00" washername={washerno} handleTime={handleTime} selectDate={selectDate} reserveInfos={reserveInfos}/>
+                            <OneTime time="20:00" washername={washerno} handleTime={handleTime} selectDate={selectDate} reserveInfos={reserveInfos}/>
+                            <OneTime time="21:00" washername={washerno} handleTime={handleTime} selectDate={selectDate} reserveInfos={reserveInfos}/>
                         </div>
                     </div>
         );

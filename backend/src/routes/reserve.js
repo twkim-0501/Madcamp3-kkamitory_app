@@ -4,8 +4,15 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
     db.getAll(
-        (posts)=> {
-        res.json(posts);
+        (item)=> {
+        res.json(item);
+    })
+});
+
+router.get("/timelist", (req, res) => {
+    db.getTimelist(
+        (item)=> {
+        res.json(item);
     })
 });
 
