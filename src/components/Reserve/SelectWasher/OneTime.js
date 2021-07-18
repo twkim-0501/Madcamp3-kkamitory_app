@@ -15,6 +15,14 @@ class OneTime extends Component {
             selectDate: ""
         }
     }
+    /*
+    shouldComponentUpdate(nextProps, nextState){
+        return (this.state.isReserved !== nextState.isReserved);
+    }*/
+    checkReserved = (reserve_date,reserve_time,washer_no) => {
+        var reserveInfo = this.props.reserveInfos;
+
+    }
     componentDidUpdate(prevProps,prevState){
         
         if(this.props.selectDate !== prevProps.selectDate){
@@ -22,15 +30,18 @@ class OneTime extends Component {
             console.log("here!"+this.props.selectDate);
             
             //console.log(this.state.userInfo.dormitory);
-            
-            axios.post(`/api/reserve/checkreserved`, {
-                date: this.props.selectDate,
-                washer: this.props.washername,
-                time: this.props.time
-            })
-            .then(response => {
-                this.setState({isReserved: response.data.isReserved});
-            });
+            //최적화용
+            if(this.props.reserveInfos(this.props.time)){
+                axios.post(`/api/reserve/checkreserved`, {
+                    date: this.props.selectDate,
+                    washer: this.props.washername,
+                    time: this.props.time
+                })
+                .then(response => {
+                    console.log("here!"+response.data.isReserved);
+                    this.setState({isReserved: response.data.isReserved});
+                });
+            }
         }
     }
     componentDidMount(){
@@ -56,7 +67,7 @@ class OneTime extends Component {
         this.props.handleTime(this.props.washername, e.target.value);
     }
     render(){
-        const { time, selectDate } = this.props;
+        const { time, selectDate, reserveInfos } = this.props;
         const { isReserved } = this.state;
         return(
             <div class="item_timeRadioTagList">

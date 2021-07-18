@@ -6,6 +6,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import ReserveInfo from './ReserveInfo';
 import SelectDate from './SelectDate/SelectDate';
 import SelectWasher from './SelectWasher/SelectWasher';
+import { ViewArraySharp } from '@material-ui/icons';
 
 
 function Alert(props) {
@@ -24,7 +25,8 @@ class Reserve extends Component {
             reservable: true,
             alertReserve: false,
             alertCancel: false,
-            reserveInfo: {}
+            reserveInfo: {},
+            reserveInfos: [],
         }
     }
     
@@ -47,6 +49,11 @@ class Reserve extends Component {
                         console.log("기숙사나 유저네임이 null임");
                     }
                 });
+                //모든 예약시간정보 리스트 가져오기(최적화용)
+                axios.get(`/api/reserve/timelist`)
+                .then(response => { 
+                    GetID.setState({reserveInfos: response.data});
+                });
                 //예약 가능여부 체크
                 axios.get(`/api/reserve/myreserve/${id}`)
                 .then(response => {
@@ -66,7 +73,7 @@ class Reserve extends Component {
     }
     handleSave = () => {
         const {username, selectDate, selectTime, selectWasher, dormitory,reservable}=this.state;
-        if(reservable){
+        if(reservable && selectDate && selectTime){
             axios.post(`/api/reserve/add`,{
                 reserve_date: selectDate,
                 reserve_user: username,
@@ -88,6 +95,7 @@ class Reserve extends Component {
             })
         }
         else{
+            this.setState({alertCheck: true});
             console.log("예약할 수 없음")
         }
     }
@@ -111,30 +119,35 @@ class Reserve extends Component {
         }
         this.setState({
             alertReserve: false,
-            alertCancel: false
+            alertCancel: false,
+            alertCheck: false
         });
     }
     getDorm = (dorm) => {
         this.setState({dormitory: dorm});
-        console.log(dorm);
+        //console.log(dorm);
     }
     handleDate = (date) => {
         this.setState({selectDate: date});
-        console.log("date is!!!: "+date);
+        //console.log("date is!!!: "+date);
     }
     handleTime = (selectWasher, selectTime ) => {
         this.setState({selectTime: selectTime, selectWasher: selectWasher});
-        console.log(selectWasher, selectTime);
+        //console.log(selectWasher, selectTime);
+    }
+    shouldCheck = (time) => {
+        return this.state.reserveInfos.includes(time);
     }
     render() {
         const {kakaoID} = this.props;
-        const {reservable,selectDate,reserveInfo} = this.state;
-        console.log(reserveInfo);
+        const {reservable,selectDate,reserveInfos,reserveInfo} = this.state;
+        console.log(reserveInfos);
+        console.log(this.shouldCheck("13:00"));
         return (
             <body>
                 <ReserveInfo kakaoID={kakaoID}/>
                 <SelectDate handleDate={this.handleDate}/>
-                <SelectWasher handleTime={this.handleTime} selectDate={selectDate}/>
+                <SelectWasher handleTime={this.handleTime} selectDate={selectDate} reserveInfos={this.shouldCheck}/>
                 <div class="group_bottom_btn fixed">
                     <div class="item_bottom_btn">
                         {
@@ -156,6 +169,11 @@ class Reserve extends Component {
                 <Snackbar open={this.state.alertCancel} autoHideDuration={2000} onClose={this.handleCloseAlert}>
                     <Alert onClose={this.handleCloseAlert} severity="success">
                     예약이 취소되었습니다
+                    </Alert>
+                </Snackbar>
+                <Snackbar open={this.state.alertCheck} autoHideDuration={2000} onClose={this.handleCloseAlert}>
+                    <Alert onClose={this.handleCloseAlert} severity="warning">
+                    선택하지 않은 항목이 존재합니다
                     </Alert>
                 </Snackbar>
             </body>
