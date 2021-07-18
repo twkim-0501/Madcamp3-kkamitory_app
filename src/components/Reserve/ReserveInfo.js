@@ -7,7 +7,8 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 class ReserveInfo extends Component {
     state = {
         json1: {},
-        reservable: true
+        reservable: true,
+        reserveInfo: {}
     }
     componentDidMount(){
     const GetID = this;
@@ -22,7 +23,7 @@ class ReserveInfo extends Component {
                 axios.get(`/api/reserve/myreserve/${id}`)
                 .then(response => {
                     if(response.data.length >= 1){
-                        GetID.setState({reservable: false});
+                        GetID.setState({reservable: false, reserveInfo: response.data[0]});
                     }
                     else{
                         GetID.setState({reservable: true});
@@ -38,7 +39,8 @@ class ReserveInfo extends Component {
     
     }
     render(){
-        const {json1, reservable} = this.state;
+        const {json1, reservable,reserveInfo} = this.state;
+        const {reserve_date,reserve_time,washer_no} = reserveInfo;
         return(
             <div class= "area_reservePage">
                 <h2 class="title_subpage">예약 정보</h2>
@@ -60,7 +62,16 @@ class ReserveInfo extends Component {
                             <span class = "txt_item">가능</span> :
                             <span class = "txt_item">불가능</span>
                         }
-                        
+                    </div>
+                </div>
+                <div class="group_info">
+                    <span class = "title_info">예약 현황:</span>
+                    <div class="item_info">
+                        {
+                            reservable ?
+                            <span class = "txt_item">-</span> :
+                            <span class = "txt_item">{reserve_date}일 {reserve_time}에 {washer_no}번 세탁기로 예약됨</span>
+                        }
                     </div>
                 </div>
             </div>
