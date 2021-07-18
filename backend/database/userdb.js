@@ -12,7 +12,6 @@ function getUser(kakaoID, callback){
 }
 function add(userInfo, callback){
     UserModel.findOne({kakaoID: userInfo.kakaoID}, (err,res) => {
-        console.log(res);
         if(res){
             if(userInfo.dormitory==null){
                 UserModel.findOneAndUpdate({kakaoID: userInfo.kakaoID}, {
