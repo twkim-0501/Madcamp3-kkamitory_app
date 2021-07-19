@@ -7,7 +7,7 @@
 .list_tab{
     display:inline-block;
 }
-.post_board_btn{
+.unactive_post_btn{
     display : inline-block;
     margin : 10px 15px 0 0;
     height : 44px;
@@ -19,16 +19,38 @@
     font-weight : 600;
 }
 
-.post_board_btn.on{
-    background_color : #1F2247;
+.active_post_btn{
+    display : inline-block;
+    margin : 10px 15px 0 0;
+    height : 44px;
+    padding : 0 20px;
+    border-radius : 20px;
+    text-decoration: none; 
+    background : #1F2247;
     color : white;
+    font-weight : 600;
 }
+
+.active_post_btn .post_board_name{
+    color: white;
+}
+
 .post_board_name{
     list-style : none;
     text-decoration-line : none;
     display : inline-block;
-    
+    text-decoration: none;
     font-size : 16px;
     line-height : 43px;
     letter-spacing : -.5px;
+}
+
+
+
+.post_board_name:visited{
+    text-decoration : none;
+}
+
+a:-webkit-any-link {
+    text-decoration : none;
 }

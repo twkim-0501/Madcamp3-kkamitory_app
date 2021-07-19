@@ -44,7 +44,7 @@ class App extends Component {
               <div>main</div>
             </Route>
             <Route path="/posts">
-              <PostsHome kakaoID = {kakaoID}/>
+              <PostsHome kakaoID = {kakaoID} />
             </Route>
             <Route exact path="/report">
               <ReportHome kakaoID={kakaoID}/>

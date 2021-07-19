@@ -7,14 +7,31 @@ import './PostsHome.css'
 
 class PostsHome extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      active : "post"
+    }
+  }
+
+  componentWillUnmount() {
+    this.setState({active:""});
+  }
+
+  pageList = ["post", "eat", "buy"];
+
+  navClicked = (num) => {
+    this.setState({active : this.pageList[num]});
+  };
+
   render(){
     return (
       <div>
         <div class = "list_tab_wrap">
                 <ul class="list_tab">
-                    <li class="post_board_btn"><Link to="/posts/" class="post_board_name">자유게시판</Link></li>
-                    <li class="post_board_btn"><Link to="/posts/eat_together" class="post_board_name">배달팟 모으기</Link></li>
-                    <li class="post_board_btn"><Link to="/posts/buy_together" class="post_board_name">공구하기</Link></li>
+                    <li className = {this.state.active ==="post" ? "active_post_btn": "unactive_post_btn"}><Link to="/posts/" class="post_board_name" onClick= {() => this.navClicked(0)}>자유게시판</Link></li>
+                    <li className = {this.state.active ==="eat" ? "active_post_btn": "unactive_post_btn"}><Link to="/posts/eat_together" class="post_board_name" onClick= {() => this.navClicked(1)}>배달팟 모으기</Link></li>
+                    <li className = {this.state.active ==="buy" ? "active_post_btn": "unactive_post_btn"}><Link to="/posts/buy_together" class="post_board_name"onClick= {() => this.navClicked(2)}>공구하기</Link></li>
                 </ul>
         </div>
         <Route path = "/posts/"  exact={true} component={Posts}/>
