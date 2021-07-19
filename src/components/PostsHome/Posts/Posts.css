@@ -180,6 +180,7 @@ li{
     color : #1F2247;
     font-weight : 300px;
     font-size : 12px;
+    cursor: pointer;
 }
 
 .modifyButton:hover{

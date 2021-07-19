@@ -15,11 +15,12 @@ class Reserve extends Component {
         super(props);
         this.state = {
             kakaoID: "",
+            profile: "",
             username: "",
             selectDate: 0,
             selectTime: "",
             selectWasher: 0,
-            dormitory: "",
+            //dormitory: "",
             reservable: true,
             alertReserve: false,
             alertCancel: false,
@@ -34,18 +35,17 @@ class Reserve extends Component {
         const GetID = this;
         window.Kakao.API.request({
             url: "/v2/user/me",
-            success: function ({ id }) {
+            success: function ({ id, kakao_account }) {
                 GetID.setState({
-                kakaoID: id
+                kakaoID: id,
+                profile: kakao_account.profile_image_url
                 });
                 //id로 유저 정보 받아옴
                 axios.get(`/api/user/${id}`)
                 .then(response => { 
                     console.log(response.data.nickname);
-                    if(response.data.nickname && response.data.dormitory){
-                        console.log(response.data.dormitory)
-                        GetID.setState({username: response.data.nickname
-                        ,dormitory: response.data.dormitory});
+                    if(response.data.nickname ){
+                        GetID.setState({username: response.data.nickname});
                     }
                     else{
                         console.log("기숙사나 유저네임이 null임");
@@ -74,9 +74,8 @@ class Reserve extends Component {
         
     }
     handleSave = () => {
-        const {username, selectDate, selectTime, selectWasher, dormitory,reservable}=this.state;
-        console.log(username);
-        if(username.length ==0){
+        const {username, selectDate, selectTime, selectWasher,reservable}=this.state;
+        if(this.state.profile ==0){
             this.setState({alertLogin: true});
             return;
         }
@@ -84,7 +83,6 @@ class Reserve extends Component {
             axios.post(`/api/reserve/add`,{
                 reserve_date: selectDate,
                 reserve_user: username,
-                dormitory: dormitory,
                 washer_no: selectWasher,
                 reserve_time: selectTime,
                 user_ID: this.props.kakaoID
@@ -131,10 +129,9 @@ class Reserve extends Component {
             alertLogin: false,
         });
     }
-    getDorm = (dorm) => {
-        this.setState({dormitory: dorm});
-        //console.log(dorm);
-    }
+
+    
+
     handleDate = (date) => {
         this.setState({selectDate: date});
         //console.log("date is!!!: "+date);

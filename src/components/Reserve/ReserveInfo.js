@@ -6,7 +6,7 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 
 class ReserveInfo extends Component {
     state = {
-        json1: {},
+        json: {},
         reservable: true,
         reserveInfo: {}
     }
@@ -45,21 +45,11 @@ class ReserveInfo extends Component {
     
     }
     render(){
-        const {json1, reservable,reserveInfo} = this.state;
+        const { reservable,reserveInfo} = this.state;
         const {reserve_date,reserve_time,washer_no} = reserveInfo;
         return(
             <div class= "area_reservePage">
                 <h2 class="title_subpage">예약 정보</h2>
-                <div class="group_info">
-                    <span class = "title_info">기숙사:</span>
-                    <div class="item_info">
-                        {
-                             json1.dormitory ?
-                            <span class = "txt_item">{json1.dormitory}</span> :
-                            null
-                        }
-                    </div>
-                </div>
                 <div class="group_info">
                     <span class = "title_info">가능 여부:</span>
                     <div class="item_info">

@@ -8,16 +8,11 @@ class GetUser extends React.Component {
   state = {
     nickname: 0,
     profile_image: "",
-    dormitory: "",
     kakaoID: ""
   };
 
-  getInfo = (dorm) => {
-    this.setState({dormitory: dorm
-    });
-    this.props.getInfo(dorm,this.state.kakaoID);
-    
-    //console.log(dorm);
+  getInfo = () => {
+    this.props.getInfo(this.state.kakaoID);
   }
 
 
