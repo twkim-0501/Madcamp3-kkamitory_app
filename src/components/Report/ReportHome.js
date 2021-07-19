@@ -1,18 +1,15 @@
 import React, {Component} from 'react'
 import axios from "axios";
 import ReportStudent from './ReportStudent.js'
+import ReportAdmin from './ReportAdmin.js'
 
 class ReportHome extends Component {
-  constructor(props){
-          
-        }
     
     
   render(){
-    const { e } = this.state;
     return (
       <div>
-      
+        <ReportAdmin></ReportAdmin>
         <ReportStudent></ReportStudent>
       </div>
       
