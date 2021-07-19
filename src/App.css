@@ -10,3 +10,19 @@ a { text-decoration: none; color: black; }
     a:hover { text-decoration: none; }
     a:focus { text-decoration: none; }
     a:hover, a:active { text-decoration: none; }
+
+.loginbtn{
+  position: absolute;
+  height : 72px;
+  right : 0px;
+  padding: 0px 28px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  vertical-align: auto;
+  top: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: KHDS-Regular,system-ui,AppleSDGothicNeo-Regular,맑은 고딕,Malgun Gothic,돋움,dotum,sans-serif;
+
+}

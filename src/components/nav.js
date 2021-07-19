@@ -26,7 +26,7 @@ class Navigation extends Component {
             <li><Link to="/posts" className = {this.state.active ==="post" ? "activebtn": "unactivebtn"} onClick= {() => this.navClicked(0)}>Posts</Link></li>
             <li><Link to="/reserve" className = {this.state.active==="reserve" ? "activebtn": "unactivebtn"} onClick= {() => this.navClicked(1)}>Reserve</Link></li>
             <li><Link to="/report"  className = {this.state.active==="report" ? "activebtn": "unactivebtn"} onClick= {() => this.navClicked(2)}> Report</Link></li>
-            <li><Link to="/login" className = {this.state.active==="login" ? "activebtn": "unactivebtn"} onClick= {() => this.navClicked(3)}>Login</Link></li>
+            <li><Link to="/login" className = {this.state.active==="login" ? "activebtn": "unactivebtn"} onClick= {() => this.navClicked(3)}>Mypage</Link></li>
           </ul>
         </div>
       </div>

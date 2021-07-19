@@ -5,6 +5,9 @@ import Reserve from './components/Reserve/Reserve';
 import ReportHome from './components/Report/ReportStudent.js'
 import PostsHome from './components/PostsHome/PostsHome.js'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import Loginbtn from './components/LoginPage/Loginbtn';
 import './App.css';
 
 class App extends Component {
@@ -36,7 +39,8 @@ class App extends Component {
     const {kakaoID} = this.state;
     console.log(kakaoID);
     return (
-      <BrowserRouter>
+      <div>
+        <BrowserRouter>
         <Navigation/>
         <article class="content-article" >
           <Switch>
@@ -58,6 +62,9 @@ class App extends Component {
           </Switch>
         </article>
       </BrowserRouter>
+      <div class="loginbtn"><Loginbtn/></div>
+      </div>
+      
     );
   }
 }

@@ -42,6 +42,9 @@ class OneTime extends Component {
     }
     componentDidMount(){
         const GetID = this;
+        if (window.Kakao.Auth.getAccessToken() == null) {
+            return;
+        }
         window.Kakao.API.request({
             url: "/v2/user/me",
             success: function ({ id }) {
