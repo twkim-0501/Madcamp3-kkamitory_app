@@ -23,6 +23,7 @@ class Reserve extends Component {
             reservable: true,
             alertReserve: false,
             alertCancel: false,
+            alertLogin: false,
             reserveInfo: {},
             reserveInfos: [],
         }
@@ -71,7 +72,11 @@ class Reserve extends Component {
         
     }
     handleSave = () => {
-        const {username, selectDate, selectTime, selectWasher, dormitory,reservable}=this.state;
+        const {username, selectDate, selectTime, selectWasher, dormitory,reservable,nickname}=this.state;
+        if(nickname == null){
+            this.setState({alertLogin: true});
+            return;
+        }
         if(reservable && selectDate && selectTime){
             axios.post(`/api/reserve/add`,{
                 reserve_date: selectDate,
@@ -119,7 +124,8 @@ class Reserve extends Component {
         this.setState({
             alertReserve: false,
             alertCancel: false,
-            alertCheck: false
+            alertCheck: false,
+            alertLogin: false,
         });
     }
     getDorm = (dorm) => {
@@ -176,6 +182,11 @@ class Reserve extends Component {
                 <Snackbar open={this.state.alertCheck} autoHideDuration={2000} onClose={this.handleCloseAlert}>
                     <Alert onClose={this.handleCloseAlert} severity="warning">
                     선택하지 않은 항목이 존재합니다
+                    </Alert>
+                </Snackbar>
+                <Snackbar open={this.state.alertLogin} autoHideDuration={2000} onClose={this.handleCloseAlert}>
+                    <Alert onClose={this.handleCloseAlert} severity="warning">
+                    로그인이 되어 있지 않습니다
                     </Alert>
                 </Snackbar>
             </body>
