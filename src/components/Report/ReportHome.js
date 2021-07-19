@@ -11,7 +11,11 @@ class ReportHome extends Component {
   render(){
     const { e } = this.state;
     return (
-      <ReportStudent></ReportStudent>
+      <div>
+      
+        <ReportStudent></ReportStudent>
+      </div>
+      
     );
   }
 }

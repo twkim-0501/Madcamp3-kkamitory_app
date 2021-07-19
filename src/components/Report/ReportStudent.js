@@ -67,6 +67,15 @@ class ReportStudent extends Component {
     const {  } = this.state;
     return (
       <div>
+        <h3 className= "page_title">
+                        <img className = "main_img" src= "/img/alert.png"></img>
+                        <em className="main_text">
+                            신고하기
+                        </em>
+                        <span className="detail_text">
+                            실시간 신고 접수
+                        </span>
+          </h3> 
           <form  name = "report_upload" class = "report_form_box" onSubmit={this.handleSubmit}> 
                 <input type="checkbox" name="anonymous" onChange = {(e) => this.checkHandler(e)}></input>
                 <input class = "report_form_box_category" placeholder="title" ref={node => this.title = node}/>

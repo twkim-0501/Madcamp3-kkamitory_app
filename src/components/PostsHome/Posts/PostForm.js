@@ -21,7 +21,7 @@ class PostForm extends Component {
         let selectedBoard = this.props.selectedBoard; 
         let data = { 
             brdtitle: this.brdtitle.value,
-            brdcontent:this.brdcontent.value,
+            brdcontent:this.brdcontent.value.replace(/\n/g, '<br />'),
             hashtag: this.hashtag.value
         }
         
@@ -41,6 +41,7 @@ class PostForm extends Component {
             <form  name = "post_upload" class = "post_form_box" onSubmit={this.handleSubmit}> 
                 <input class = "post_form_box_category" placeholder="title" ref={node => this.brdtitle = node}/>
                 <input class = "post_form_box_category" placeholder="hashtag" ref={node => this.hashtag = node}/>
+                <input hidden="hidden" />
                 <input class = "post_form_box_category form_brdcontent" placeholder="brdcontent" ref ={node => this.brdcontent = node}/>
                 <button type="submit">Save</button> 
                 <button type="back" onClick = {this.backBtnClicked}>cancel</button> 

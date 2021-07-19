@@ -10,6 +10,11 @@ class PostItem extends Component {
         onSelectRow(row);
     }    
 
+    handleDetailShow = () => {
+        const {row, onDetailShow} = this.props;
+        onDetailShow(row);
+    }
+
     render() { 
         return( 
             <li>
@@ -25,12 +30,13 @@ class PostItem extends Component {
                                 </div>
                             </span>
                             <div class = "title_text">
-                                <strong onClick={this.handleSelectRow}>{this.props.row.brdtitle}</strong>
+                                <strong onClick={this.handleDetailShow}>{this.props.row.brdtitle}</strong>
                                 <button onClick={this.handleRemove}>X</button>
                             </div>
                             <span class = "hashtag_text">
                                 <a>{this.props.row.hashtag}</a> 
                             </span>
+                            <div onClick={this.handleSelectRow}>수정하기</div>
                         </span>
                     </div>
                 </div>  

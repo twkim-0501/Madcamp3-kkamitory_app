@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Modal from 'react-modal';
 import PostItem from './PostItem.js'
 import PostForm from './PostForm.js'
+import PostDetail from './PostDetail.js'
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -17,7 +18,8 @@ class Posts extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isModalOpen : false, //flag for modal window
+            isModalOpen : false, // modal for post add or update
+            isDetailModelOpen : false, // modal for 
             boards: [        //important list which contains core data of posts
             ],
             selectedBoard:{},  //selected board contains one or zero board content to rewrite/remove
@@ -66,13 +68,22 @@ class Posts extends Component {
           });
     }
 
-    openModal = () => { //등록 / 수정창 열기 (front)
+    openModal = () => { //등록 / 수정창 열기 
         this.setState({ isModalOpen: true });
       };
     
-    closeModal = () => { //등록 / 수정창 닫기 (front)
+    closeModal = () => { //등록 / 수정창 닫기 
         this.setState({ isModalOpen: false });
       };
+
+    openDetailModal = () => { //자세히보기 창 열기
+        this.setState({isDetailModalOpen : true});
+    };
+    
+    closeDetailModal = () => {
+        this.setState({isDetailModalOpen : false});
+    }
+
     
     handleSaveData = (data) => { //새글 등록하기
         console.log(data);
@@ -155,6 +166,15 @@ class Posts extends Component {
         
     }
 
+    handleDetailShow = (row) => {
+        this.setState({selectedBoard:row})
+        this.openDetailModal();
+    }
+
+    onDetailBackButtonClicked = () => { //새글 등록 취소
+        this.closeDetailModal();
+    }
+
 
     
     render() {
@@ -172,7 +192,7 @@ class Posts extends Component {
                     </h3> 
                    
                     <div className = "modal_btn_wraper">
-                        <button onClick={this.handleNewPost} className = "plus_btn"><img className = "plus_btn_img" src = "/img/addBtn.png"></img></button>
+                        <button onClick={this.handleNewPost} className = "plus_btn"><img className = "plus_btn_img" src = "/img/addBtn_blue.png"></img></button>
                     </div>
                     <div className = "modal_wraper">
                         <Modal isOpen={this.state.isModalOpen} close={this.closeModal} >
@@ -180,10 +200,16 @@ class Posts extends Component {
                         </Modal>
                     </div>
 
+                    <div className = "modal_wraper">
+                        <Modal isOpen = {this.state.isDetailModalOpen} close = {this.closeDetailModal}>
+                            <PostDetail selectedBoard = {selectedBoard} onBackButtonClicked = {this.onDetailBackButtonClicked}></PostDetail>
+                        </Modal>
+                    </div>
+
                     <ul id = "postsList">
                     { 
                                 boards.map(row => 
-                                    (<PostItem key={row._id} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow}/>) 
+                                    (<PostItem key={row._id} row={row} onRemove={this.handleRemove}onDetailShow = {this.handleDetailShow} closeDetailShow = {this.closeDetailModal} onSelectRow={this.handleSelectRow}/>) 
                                 )
                             } 
                     </ul>
