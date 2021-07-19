@@ -107,9 +107,8 @@ class Posts extends Component {
 
 
         } else {                                                        // Update
-
             axios.post(`/api/post/update`, {
-                brddate: new Date(), ...data, profile: this.state.profile
+                brddate: new Date(), ...data, profile: this.state.profile, brdwriter : this.state.nickname
             })
             .then(() => axios.get(`/api/post/`))
             .then(response => {

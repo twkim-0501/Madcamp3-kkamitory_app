@@ -81,25 +81,27 @@ class EatTogetherItem extends Component {
             <li>
                 <div class = "div-box">
                     <div class = "EatTogetherItem">
-                        <span class = "wrap_content">
+                        <span class = "eat_wrap_content">
                             <span class = "info_text">
-                                <div class="profile_box">
-                                    <img class="profile" src={this.props.profile}></img>
+                                <div class="eat_profile_box">
+                                    <img class="eat_profile" src={this.props.profile}></img>
                                 </div>
                                 <div class="name">
                                 <a>{this.props.nickname}</a>
                                 </div>
                                 
                             </span>
-                            <div class = "title_text">
-                                <strong onClick={this.handleSelectRow}>{this.props.row.brdtitle}</strong>
-                                <button onClick={this.handleRemove}>X</button>
+                            <div class = "brd_title_text">
+                                <strong >{this.props.row.brdtitle}</strong>
+                                <button onClick={this.handleRemove}><img class = "xButton" src = "/img/xButton.png"></img></button>
                             </div>
                             <span class = "content_text">
                                 <a>{this.props.row.brdcontent}</a>
                             </span>
-                            <div className = "join_btn_wraper">
-                                <button onClick={this.handleJoin}>함께하기</button>
+                            <div className = "eat_btn_wraper">
+                                <button className = "join_btn" onClick={this.handleJoin}>함께하기</button>
+                                <button className = "modifyButton eatmodify" onClick={this.handleSelectRow}>수정하기</button>
+
                             </div>
                             <div className = "join_profile_list_box">
                                 { 

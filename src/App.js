@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Home from './components/Main/Main.js'
 import Navigation from './components/nav';
 import Login from './components/LoginPage/Login';
 import Reserve from './components/Reserve/Reserve';
@@ -45,7 +46,7 @@ class App extends Component {
         <article class="content-article" >
           <Switch>
             <Route exact path="/">
-              <div>main</div>
+                <Home/>
             </Route>
             <Route path="/posts">
               <PostsHome kakaoID = {kakaoID} />

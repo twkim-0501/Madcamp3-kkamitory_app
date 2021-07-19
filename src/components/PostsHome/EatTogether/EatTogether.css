@@ -25,46 +25,17 @@ li{
     box-shadow : 4px 12px 30px 6px rgb(0 0 0 / 9%);
 }
 
-.wrap_content{
+.eat_wrap_content{
     display:block;
     position:relative;
     width : 270px;
     padding:25px 24px 0;
     box-sizing : border-box;
-    height: 250px;
+    height: 220px;
 }
 
-.info_text{
-    display:inline-block;
-    height:36px;
-    margin-top:-1px;
-    padding-right:20px;
-}
-.name{
-    display:inline-block;
-}
-.title_text{
-    max-height:64px;
-    font-size:22px;
-    line-height:32px;
-    width : 200px;
 
-    /* 두줄 이상 넘어가면 생략표시*/
-    overflow: hidden;
-    white-space: normal;
-    text-overflow: ellipsis;
-    text-align: left;
-    -webkit-line-clamp:3; /* 라인수 */
-    -webkit-box-orient:vertical;
-}
-.content_text{
-    margin-top:18px;
-    font-size:13px;
-    line-height:19px;
-    display:block;
-}
-
-.profile_box {
+.eat_profile_box {
     display:inline-block;
     margin-right:10px;
     width: 40px;
@@ -73,7 +44,7 @@ li{
     overflow: hidden;
     vertical-align:middle;
 }
-.profile {
+.eat_profile {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -92,64 +63,28 @@ li{
     border-radius: 100%;
     background-color : gray;
 }
-
-.main_img{
-    width : 50px;
-    height: 50px;
-    vertical-align : middle;
-}
-.main_text{
-    font-size:36px;
-    line-height:52px;
-    font-weight:700;
-    font-style:normal;
-    vertical-align : middle;
-}
-.detail_text{
+.join_btn{
     display : block;
-    margin-top : 3px;
-    font-size:28px;
-    line-height:52px;
+    position : absolute;
+    bottom : 15px;
+    left : 50%;
+    margin-left : -75px;
+    width : 60px;
+    height : 25px;
+    line-height: 25px;
+    text-align : center;
+    border-radius: 20px;
+    background : #eee;
+    color : #1F2247;
+    font-weight : 300px;
+    font-size : 12px;
 }
-.page_title{
-    margin-top:50px;
-    margin-left:20px;
-}
-
-.post_form_box{
-    display : inline-block;
-    margin : 0 auto;
-}
-.modal_wraper{
-    display: flex;
-    align-items: center;
-}
-
-.ReactModal__Content{
-    display : inline-block;
-    width : 700px;
-    height : 500px;
-    margin : 0 auto;
-    margin-top : 100px;
-    vertical-align : middle;
+.join_btn:hover{
+    background : #1F2247;
+    color : #eee;
 }
 
-.plus_btn{
-
-    border-width : 0px;
-}
-.plus_btn_img{
-    width :100px;
-    height : 100px;
-
+.eatmodify{
+    margin-left : 15px
 }
 
-.post_form_box_category{
-    display : block;
-    margin : 10px;
-    width : 500px;
-    height : 30px;
-}
-.form_brdcontent{
-    height : 100px;
-}

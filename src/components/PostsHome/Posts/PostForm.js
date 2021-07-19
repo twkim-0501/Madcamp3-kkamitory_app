@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Posts.css'
 class PostForm extends Component {
     componentDidMount(){
         let selectedBoard = this.props.selectedBoard;
@@ -21,7 +22,7 @@ class PostForm extends Component {
         let selectedBoard = this.props.selectedBoard; 
         let data = { 
             brdtitle: this.brdtitle.value,
-            brdcontent:this.brdcontent.value.replace(/\n/g, '<br />'),
+            brdcontent:this.brdcontent.value,
             hashtag: this.hashtag.value
         }
         
@@ -38,10 +39,12 @@ class PostForm extends Component {
 
     render(){
         return(
-            <form  name = "post_upload" class = "post_form_box" onSubmit={this.handleSubmit}> 
+            <form  name = "post_upload" class = "post_form_box"  onSubmit={this.handleSubmit}> 
+                <strong>제목</strong>
                 <input class = "post_form_box_category" placeholder="title" ref={node => this.brdtitle = node}/>
-                <input class = "post_form_box_category" placeholder="hashtag" ref={node => this.hashtag = node}/>
-                <input hidden="hidden" />
+                <a>부제목</a>
+                <input class = "post_form_box_category" placeholder="subtitle" ref={node => this.hashtag = node}/>
+                <a>본문</a>
                 <input class = "post_form_box_category form_brdcontent" placeholder="brdcontent" ref ={node => this.brdcontent = node}/>
                 <button type="submit">Save</button> 
                 <button type="back" onClick = {this.backBtnClicked}>cancel</button> 

@@ -29,14 +29,14 @@ class PostItem extends Component {
                                 <a>{this.props.row.brdwriter}</a>
                                 </div>
                             </span>
-                            <div class = "title_text">
+                            <div class = "brd_title_text">
                                 <strong onClick={this.handleDetailShow}>{this.props.row.brdtitle}</strong>
-                                <button onClick={this.handleRemove}>X</button>
+                                <button onClick={this.handleRemove}><img class = "xButton" src = "/img/xButton.png"></img></button>
                             </div>
                             <span class = "hashtag_text">
                                 <a>{this.props.row.hashtag}</a> 
                             </span>
-                            <div onClick={this.handleSelectRow}>수정하기</div>
+                            <div className = "modifyButton" onClick={this.handleSelectRow}>수정하기</div>
                         </span>
                     </div>
                 </div>  

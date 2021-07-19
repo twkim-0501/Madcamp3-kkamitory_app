@@ -54,7 +54,7 @@ class BuyTogetherItem extends Component {
                             <div>인당 가격 : {parseInt(Number(this.props.row.total_price) / Number(this.props.row.total_member))} </div>
                             <div>모집 현황 : {this.props.row.join_profile_list.length}/{this.props.row.total_member}</div>
                             <div className = "join_btn_wraper">
-                                <button onClick={this.handleJoin}>함께하기</button>
+                                <button  onClick={this.handleJoin}>함께하기</button>
                             </div>
                         </span>
                     </div>
