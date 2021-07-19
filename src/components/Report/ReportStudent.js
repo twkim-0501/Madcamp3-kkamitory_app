@@ -15,6 +15,8 @@ class ReportStudent extends Component {
     }
 
     componentDidMount = () => {
+
+      
       const GetUser = this;
       window.Kakao.API.request({
         url: "/v2/user/me",
@@ -54,14 +56,14 @@ class ReportStudent extends Component {
         }else{
           this.state.report_name = this.state.name //카카오 이름 그대로
         }
-        axios.post(`/api/report/add`, 
-              {
-                    report_name : this.state.report_name,
+        const data = {
+          report_name : this.state.report_name,
                     report_title : this.title.value,
                     report_content : this.content.value,
                     report_address : this.address.value
-              }
-            )
+        }
+        console.log(data);
+        axios.post(`/api/report/add`, data).then(response => {console.log(response.data);});
     }
     
   render(){
@@ -95,7 +97,7 @@ class ReportStudent extends Component {
                   <input class = "report_form_box_category report_content" placeholder="content" ref={node => this.content = node}/>
                 </div>
                 <div class = "submitbutton_wrapper">
-                  <div class = "submitbutton" onCliick = {this.saveBtnClicked}>Save</div> 
+                  <div class = "submitbutton" onClick = {this.saveBtnClicked}>Save</div> 
                 </div>
                 
             </form>

@@ -28,7 +28,7 @@ function update(_id, body, callback) {
     PostModel.findOneAndUpdate({_id: _id}, {
         brdwriter: body.brdwriter,
         brdtitle: body.brdtitle,
-        brdcontent: body.content,
+        brdcontent: body.brdcontent,
         hashtag: body.hashtag,
         brddate: body.brddate
     },

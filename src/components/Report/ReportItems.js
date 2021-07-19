@@ -23,30 +23,27 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ReportItems() {
+export default function ReportItems(props) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-
+  const {report_name, report_title, report_content, report_address} = props.row;
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
+          {report_name}
         </Typography>
         <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
+          {report_title}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          adjective
+          {report_address}
         </Typography>
         <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+          {report_content}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small">확인</Button>
       </CardActions>
     </Card>
   );

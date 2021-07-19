@@ -12,7 +12,6 @@ class ReportHome extends Component {
       isAdmin: null,
     }
   }
-  
   componentDidMount(){
     const GetID = this;
     window.Kakao.API.request({
