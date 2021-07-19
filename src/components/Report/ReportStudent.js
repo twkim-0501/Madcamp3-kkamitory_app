@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from "axios";
+import "./ReportStudent.css"
 // import ReportAdmin from './ReportAdmin.js'
 
 class ReportStudent extends Component {
@@ -76,12 +77,27 @@ class ReportStudent extends Component {
                             실시간 신고 접수
                         </span>
           </h3> 
-          <form  name = "report_upload" class = "report_form_box" onSubmit={this.handleSubmit}> 
-                <input type="checkbox" name="anonymous" onChange = {(e) => this.checkHandler(e)}></input>
-                <input class = "report_form_box_category" placeholder="title" ref={node => this.title = node}/>
-                <input class = "report_form_box_category" placeholder="content" ref={node => this.content = node}/>
-                <input class = "report_form_box_category" placeholder="address" ref ={node => this.address = node}/>
-                <button type="submit" onCliick = {this.saveBtnClicked}>Save</button> 
+          <form  name = "report_upload" class = "report_form_box" onSubmit={this.handleSubmit}>
+                <div class = "checkbox_wrapper">
+                  <input type="checkbox" name="anonymous" onChange = {(e) => this.checkHandler(e)}></input>
+                  <span class = "checkbox_text">익명</span>
+                </div> 
+                <div>
+                  <div class = "report_text">제목</div>
+                  <input class = "report_form_box_category" placeholder="title" ref={node => this.title = node}/>
+                </div>
+                <div>
+                  <div class = "report_text">기숙사 / 호수</div>
+                  <input class = "report_form_box_category" placeholder="address" ref ={node => this.address = node}/>
+                </div>
+                <div>
+                  <div class = "report_text">신고내역</div>
+                  <input class = "report_form_box_category report_content" placeholder="content" ref={node => this.content = node}/>
+                </div>
+                <div class = "submitbutton_wrapper">
+                  <div class = "submitbutton" onCliick = {this.saveBtnClicked}>Save</div> 
+                </div>
+                
             </form>
       </div>
     );

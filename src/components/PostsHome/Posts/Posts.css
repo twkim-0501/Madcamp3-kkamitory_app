@@ -42,12 +42,15 @@ li{
 }
 .name{
     display:inline-block;
+    font-size : 20px;
+    font-weight : 500;
 }
-.title_text{
+.brd_title_text{
     max-height:64px;
-    font-size:22px;
+    font-size:20px;
     line-height:32px;
     width : 200px;
+    margin-top : 10px;
 
     /* 두줄 이상 넘어가면 생략표시*/
     overflow: hidden;
@@ -58,7 +61,7 @@ li{
     -webkit-box-orient:vertical;
 }
 .hashtag_text{
-    margin-top:18px;
+    margin-top:10px;
     font-size:13px;
     line-height:19px;
     display:block;
@@ -67,8 +70,8 @@ li{
 .box {
     display:inline-block;
     margin-right:10px;
-    width: 30px;
-    height: 30px; 
+    width: 40px;
+    height: 40px; 
     border-radius: 70%;
     overflow: hidden;
     vertical-align:middle;
@@ -107,6 +110,17 @@ li{
     display : inline-block;
     margin : 0 auto;
 }
+.post_form_box a{
+    margin : 10px;
+    font-size : 17px;
+}
+.post_form_box strong{
+    margin : 10px;
+    font-size : 17px;
+}
+.modal_btn_wraper {
+    height: 0;
+}
 .modal_wraper{
     display: flex;
     align-items: center;
@@ -136,9 +150,39 @@ li{
 .post_form_box_category{
     display : block;
     margin : 10px;
-    width : 500px;
+    width : 650px;
     height : 30px;
 }
 .form_brdcontent{
     height : 100px;
+}
+
+.xButton{
+    width : 18px;
+    height : 18px;
+    position:absolute;
+    top : 30px;
+    right : 30px;
+}
+
+.modifyButton{
+    display : block;
+    position : absolute;
+    bottom : 15px;
+    left : 50%;
+    margin-left : -30px;
+    width : 60px;
+    height : 25px;
+    line-height: 25px;
+    text-align : center;
+    border-radius: 20px;
+    background : #eee;
+    color : #1F2247;
+    font-weight : 300px;
+    font-size : 12px;
+}
+
+.modifyButton:hover{
+    background : #1F2247;
+    color : #eee;
 }
