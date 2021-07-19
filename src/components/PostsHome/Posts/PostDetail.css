@@ -1,0 +1,20 @@
+.post_detail_box{
+    margin : 30px;
+}
+.post_detail_content{
+    margin-bottom : 20px;
+}
+.brdtitle{
+    font-size : 30px;
+    line-height : 64px;
+    font-weight : 1000;
+}
+
+.brdcontent{
+    font-size : 20px;
+}
+.okay_button{
+    position : absolute;
+    bottom : 100px;
+    right :100px;
+}

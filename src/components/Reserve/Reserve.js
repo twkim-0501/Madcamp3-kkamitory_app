@@ -147,6 +147,15 @@ class Reserve extends Component {
         
         return (
             <body>
+                <h3 className= "page_title">
+                        <img className = "main_img" src= "/img/washer.png"></img>
+                        <em className="main_text">
+                            세탁기 예약하기
+                        </em>
+                        <span className="detail_text">
+                            클릭 한번에 편안한 예약
+                        </span>
+                </h3> 
                 <ReserveInfo kakaoID={kakaoID} reservable={reservable}/>
                 <SelectDate handleDate={this.handleDate} reservable={reservable}/>
                 <SelectWasher handleTime={this.handleTime} selectDate={selectDate} reserveInfos={this.reserveInfos} reservable={reservable}/>

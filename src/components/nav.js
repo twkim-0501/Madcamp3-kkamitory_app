@@ -10,7 +10,7 @@ class Navigation extends Component {
     }
   }
 
-  pageList = ["post", "reserve", "report", "login"];
+  pageList = ["post", "reserve", "report", "login", ""];
 
   navClicked = (num) => {
     this.setState({active : this.pageList[num]});
@@ -20,7 +20,7 @@ class Navigation extends Component {
     
     return (
       <div className="navbar">
-        <div className = "main"><Link to="/main" className = " main">Home</Link></div>
+        <div className = "main"><Link to="/main" className = " main" onClick= {() => this.navClicked(4)}>Home</Link></div>
         <div className = "list_navbar_wraper">
           <ul class = "list_navbar">
             <li><Link to="/posts" className = {this.state.active ==="post" ? "activebtn": "unactivebtn"} onClick= {() => this.navClicked(0)}>Posts</Link></li>

@@ -168,7 +168,7 @@ class EatTogether extends Component {
           </h3> 
 
           <div className = "modal_btn_wraper">
-                    <button onClick={this.handleNewPost} className = "plus_btn"><img className = "plus_btn_img" src = "/img/addBtn.png"></img></button>
+                    <button onClick={this.handleNewPost} className = "plus_btn"><img className = "plus_btn_img" src = "/img/addBtn_blue.png"></img></button>
                     </div>
                     <div className = "modal_wraper">
                         <Modal isOpen={this.state.isModalOpen} close={this.closeModal} >
