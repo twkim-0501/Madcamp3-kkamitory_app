@@ -17,8 +17,14 @@ function add(body, callback){
         callback(res);
     });
 }
+function removeOne(_id, callback) {
+    ReportModel.deleteOne({_id: _id}, (error) => {
+        callback();
+    });
+}
 
 module.exports = {
     getAll,
-    add
+    add,
+    removeOne
 };

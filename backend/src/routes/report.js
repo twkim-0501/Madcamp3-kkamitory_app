@@ -12,6 +12,16 @@ router.post("/add", (req,res) => {
     );
 })
 
+router.post("/deleteone", (req,res) => {
+    console.log("check")
+    db.removeOne(
+        req.body._id,
+        () => {
+            res.status(200).send();
+        }
+    )
+})
+
 router.get("/", (req, res) => {
     db.getAll(
         (posts)=> {

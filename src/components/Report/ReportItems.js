@@ -5,6 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import axios from "axios";
 
 const useStyles = makeStyles({
   root: {
@@ -23,9 +24,16 @@ const useStyles = makeStyles({
   },
 });
 
+
 export default function ReportItems(props) {
   const classes = useStyles();
-  const {report_name, report_title, report_content, report_address} = props.row;
+  const {report_name, report_title, report_content, report_address, _id} = props.row;
+  function handleDeleteOne() {
+        axios.post(`/api/report/deleteone`, {_id: _id})
+        .then(() => {props.handleRender()})
+    }
+
+
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
@@ -43,7 +51,7 @@ export default function ReportItems(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">확인</Button>
+        <Button size="small" onClick={handleDeleteOne}>확인</Button>
       </CardActions>
     </Card>
   );

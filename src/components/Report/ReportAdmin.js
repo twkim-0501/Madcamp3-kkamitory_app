@@ -26,6 +26,13 @@ class ReportAdmin extends Component {
                 this.setState({reports: response.data})
             });
     }
+    handleRender = () => {
+        axios.get(`/api/report/`)
+        .then(response => 
+            {
+                this.setState({reports: response.data})
+            });
+    }
     render(){
         return (
         <div>
@@ -38,7 +45,7 @@ class ReportAdmin extends Component {
             <ul id = "reportsList">
                 { 
                     this.state.reports.map(row => 
-                        (<ReportItems key={row._id} row={row}/>) 
+                        (<ReportItems key={row._id} row={row} handleRender={this.handleRender}/>) 
                     )
                 } 
             </ul>
