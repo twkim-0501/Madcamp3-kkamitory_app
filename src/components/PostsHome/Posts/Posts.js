@@ -147,10 +147,16 @@ class Posts extends Component {
     }
     
     handleSelectRow = (row) => {
-        this.setState({selectedBoard:row});
-        console.log("selectedRow is "+ row.brdtitle);
-        this.openModal();
-    }
+        console.log(this.state.kakao_id);
+        console.log(row.profile_id);
+        if(row.profile_id == undefined || this.state.kakao_id==row.profile_id){
+          this.setState({selectedBoard:row});
+          this.openModal();
+        }
+        else{
+          console.log("id not match");
+        }
+      }
 
     handleNewPost = ()=>{
         if(this.state.isLogin){
