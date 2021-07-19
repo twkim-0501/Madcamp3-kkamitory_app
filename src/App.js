@@ -3,7 +3,7 @@ import Home from './components/Main/Main.js'
 import Navigation from './components/nav';
 import Login from './components/LoginPage/Login';
 import Reserve from './components/Reserve/Reserve';
-import ReportHome from './components/Report/ReportStudent.js'
+import ReportHome from './components/Report/ReportHome.js'
 import PostsHome from './components/PostsHome/PostsHome.js'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Button from '@material-ui/core/Button';

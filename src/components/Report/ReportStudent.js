@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from "axios";
 import "./ReportStudent.css"
-// import ReportAdmin from './ReportAdmin.js'
+
 
 class ReportStudent extends Component {
   constructor(props){
