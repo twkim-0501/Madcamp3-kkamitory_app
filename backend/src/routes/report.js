@@ -2,12 +2,6 @@ const express = require("express");
 const db = require("../../database/reportdb");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    db.getAll(
-        (posts)=> {
-        res.json(posts);
-    })
-});
 
 router.post("/add", (req,res) => {
     db.add(
@@ -17,5 +11,14 @@ router.post("/add", (req,res) => {
         }
     );
 })
+
+router.get("/", (req, res) => {
+    db.getAll(
+        (posts)=> {
+        res.json(posts);
+    })
+});
+
+
 
 module.exports = router;

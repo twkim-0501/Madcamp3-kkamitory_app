@@ -37,10 +37,9 @@ app.use('/post', postRouter);
 app.use('/eat_post', eatpostRouter);
 app.use('/buy_post', buypostRouter);
 app.use('/user', userRouter);
-
+app.use('/report', reportRouter);
 app.use('/reserve', reserveRouter);
 
-app.use('/report', reportRouter);
 
 
 app.get('/', (req, res) => {

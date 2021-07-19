@@ -6,6 +6,7 @@ function getAll(callback){
     });
 }
 function add(body, callback){
+    console.log(body.report_name);
     const newPost = new ReportModel({
         report_name : body.report_name,
         report_title : body.report_title,
