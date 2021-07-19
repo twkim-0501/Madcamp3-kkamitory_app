@@ -4,8 +4,7 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+import axios from "axios";
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 class Loginbtn extends React.Component {
@@ -40,11 +39,29 @@ class Loginbtn extends React.Component {
           console.log(`is set?: ${window.Kakao.Auth.getAccessToken()}`);
           loginResult = true;
           home.setState({ loginResult });
+
+          window.Kakao.API.request({
+            url: "/v2/user/me",
+            success: function ({ id, kakao_account }) {
+                const { profile } = kakao_account;
+                // 수집한 사용자 정보로 페이지를 수정하기 위해 setState
+                axios.post(`/api/user/login/`, {
+                nickname: profile.nickname,
+                profile_image: profile.profile_image_url,
+                kakaoID: id
+                })
+            },
+            fail: function (error) {
+                console.log(error);
+            },
+            });
+
         },
         fail: function (error) {
           console.log(error);
         },
       });
+    
   }
   handleLogout = () => {
     if (window.Kakao.Auth.getAccessToken()) {

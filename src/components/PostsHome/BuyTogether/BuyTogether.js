@@ -4,7 +4,12 @@ import BuyTogetherForm from './BuyTogetherForm'
 import axios from "axios";
 import Modal from 'react-modal'
 import './BuyTogether.css'
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
+function Alert(props) {
+  return <MuiAlert elevation={3} variant="filled" {...props} />;
+}
 class BuyTogether extends Component {
     state = {
       selected_board : {},
@@ -14,7 +19,10 @@ class BuyTogether extends Component {
       alertopen : false,
       isModalOpen : false,
       eat_boards: [],
-      selectedBoard:{}
+      selectedBoard:{},
+      alertlogin: false,
+      addalert: false,
+      alertinput: false
     }
   
     openModal = () => { //등록 or 수정창 열기 (front)
@@ -49,13 +57,26 @@ class BuyTogether extends Component {
             }
           });
       }
-  
+      handleCloseAlert = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.setState({
+            alertinput: false,
+            alertlogin: false,
+            addalert: false,
+        });
+      }
       handleSelectRow = (row) => {
         this.setState({selectedBoard:row});
         this.openModal();
       }
   
       handleNewPost = ()=> {
+        if(this.state.profile.length == 0){
+          this.setState({alertlogin: true});
+          return;
+        }
         this.handleSelectRow({});
       };
 
@@ -72,6 +93,11 @@ class BuyTogether extends Component {
 
     handleSaveData = (data) => { 
       this.setState({alertopen: false});
+      console.log(data);
+      if(!(data.brditem && data.brdcontent && data.total_member && data.total_price)){
+        this.setState({alertinput: true});
+        return;
+      }
       if (!data._id) { // new : Insert
         //서버통신
            axios.post(`/api/buy_post/add`, 
@@ -119,6 +145,16 @@ class BuyTogether extends Component {
     onBackButtonClicked = () => { //새글 등록 취소
       this.closeModal();
   }
+  handleCloseAlert = (event, reason) => {
+    if (reason === 'clickaway') {
+        return;
+    }
+    this.setState({
+        alertinput: false,
+        alertlogin: false,
+        addalert: false,
+    });
+}
 
   render(){
     const { eat_boards , selectedBoard } = this.state;
@@ -150,6 +186,21 @@ class BuyTogether extends Component {
                       )
                   } 
           </ul>
+          <Snackbar open={this.state.alertlogin} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+              <Alert onClose={this.handleCloseAlert} severity="warning">
+              로그인이 되어 있지 않습니다
+              </Alert>
+          </Snackbar>
+          <Snackbar open={this.state.addalert} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+              <Alert onClose={this.handleCloseAlert} severity="success">
+              새로운 게시물이 추가되었습니다
+              </Alert>
+          </Snackbar>
+          <Snackbar open={this.state.alertinput} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+              <Alert onClose={this.handleCloseAlert} severity="warning">
+              입력되지 않은 항목이 존재합니다
+              </Alert>
+          </Snackbar>
       </div>
     );
   }

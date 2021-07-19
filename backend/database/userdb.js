@@ -46,8 +46,20 @@ function add(userInfo, callback){
         }
     })
 }
+
+function deleteAll(callback){
+    console.log("jere!");
+    UserModel.remove({}, (error,result) => {
+        console.log(error);
+        console.log(result);
+        callback();
+    }
+    );
+}
+
 module.exports = {
     getAll,
     getUser,
-    add
+    add,
+    deleteAll,
 }

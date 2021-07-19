@@ -41,8 +41,10 @@ class Reserve extends Component {
                 //id로 유저 정보 받아옴
                 axios.get(`/api/user/${id}`)
                 .then(response => { 
+                    console.log(response.data.nickname);
                     if(response.data.nickname && response.data.dormitory){
-                    GetID.setState({username: response.data.nickname
+                        console.log(response.data.dormitory)
+                        GetID.setState({username: response.data.nickname
                         ,dormitory: response.data.dormitory});
                     }
                     else{
@@ -72,8 +74,9 @@ class Reserve extends Component {
         
     }
     handleSave = () => {
-        const {username, selectDate, selectTime, selectWasher, dormitory,reservable,nickname}=this.state;
-        if(nickname == null){
+        const {username, selectDate, selectTime, selectWasher, dormitory,reservable}=this.state;
+        console.log(username);
+        if(username.length ==0){
             this.setState({alertLogin: true});
             return;
         }

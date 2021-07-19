@@ -3,6 +3,7 @@ const path = require("path");
 const bodyParser = require('body-parser');
 const postRouter = require('./src/routes/post');
 const eatpostRouter = require('./src/routes/eat_post');
+const morgan = require('morgan');
 
 const reserveRouter = require('./src/routes/reserve')
 
@@ -31,6 +32,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 /*Router for requests*/
+app.use(morgan('dev'));
 app.use('/post', postRouter);
 app.use('/eat_post', eatpostRouter);
 app.use('/buy_post', buypostRouter);

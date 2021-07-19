@@ -31,7 +31,10 @@ class EatTogether extends Component {
           ],
           selectedBoard:{},
           kakao_id: "",
-          alertfull: false
+          alertfull: false,
+          alertlogin: false,
+          addalert: false,
+          alertinput: false
         }
     }
     
@@ -75,12 +78,23 @@ class EatTogether extends Component {
     }
 
     handleNewPost = ()=> {
+      console.log(this.state.profile.length);
+      if(this.state.profile.length == 0){
+        this.setState({alertlogin: true});
+        return;
+      }
       this.handleSelectRow({});
     };
     
 
     handleSaveData = (data) => { 
           this.setState({alertopen: false});
+          console.log(data);
+          if(!(data.brdtitle && data.brdcontent && data.total_member)){
+            this.setState({alertinput: true});
+            return;
+          }
+          
           if (!data._id) { // new : Insert
             //서버통신
             console.log("add")
@@ -149,6 +163,9 @@ class EatTogether extends Component {
     }
     this.setState({
         alertfull: false,
+        alertinput: false,
+        alertlogin: false,
+        addalert: false,
     });
 }
     
@@ -188,6 +205,21 @@ class EatTogether extends Component {
           <Alert onClose={this.handleCloseAlert} severity="warning">
             인원이 꽉 찼습니다ㅠㅠ
           </Alert>
+        </Snackbar>
+        <Snackbar open={this.state.alertlogin} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+            <Alert onClose={this.handleCloseAlert} severity="warning">
+            로그인이 되어 있지 않습니다
+            </Alert>
+        </Snackbar>
+        <Snackbar open={this.state.addalert} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+            <Alert onClose={this.handleCloseAlert} severity="success">
+            새로운 게시물이 추가되었습니다
+            </Alert>
+        </Snackbar>
+        <Snackbar open={this.state.alertinput} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+            <Alert onClose={this.handleCloseAlert} severity="warning">
+            입력되지 않은 항목이 존재합니다
+            </Alert>
         </Snackbar>
       </div>
     );

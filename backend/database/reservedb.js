@@ -64,5 +64,5 @@ module.exports = {
     getReserves,
     checkReserved,
     cancel,
-    getTimelist
+    getTimelist,
 };

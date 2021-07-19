@@ -34,9 +34,9 @@ class BuyTogetherForm extends Component {
         this.props.onSaveData(data);
     }
 
-    // backBtnClicked = () => {
-    //     this.props.onBackButtonClicked();
-    // }
+    backBtnClicked = () => {
+        this.props.onBackButtonClicked();
+    }
 
     render(){
         return(
