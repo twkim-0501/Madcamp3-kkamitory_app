@@ -71,7 +71,6 @@ class Reserve extends Component {
                 console.log(error);
             },
         });
-        
     }
     handleSave = () => {
         const {username, selectDate, selectTime, selectWasher,reservable}=this.state;
@@ -79,6 +78,7 @@ class Reserve extends Component {
             this.setState({alertLogin: true});
             return;
         }
+
         if(reservable && selectDate && selectTime){
             axios.post(`/api/reserve/add`,{
                 reserve_date: selectDate,

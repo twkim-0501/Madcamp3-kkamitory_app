@@ -3,8 +3,6 @@ import Modal from 'react-modal';
 import PostItem from './PostItem.js'
 import PostForm from './PostForm.js'
 import PostDetail from './PostDetail.js'
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import axios from "axios";

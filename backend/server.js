@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 /*Router for requests*/
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 app.use('/post', postRouter);
 app.use('/eat_post', eatpostRouter);
 app.use('/buy_post', buypostRouter);

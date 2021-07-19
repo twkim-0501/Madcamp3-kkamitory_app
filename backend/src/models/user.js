@@ -4,7 +4,8 @@ const UserSchema = new mongoose.Schema({
     kakaoID: String,
     nickname: String,
     profile_image: String,
-    dormitory: String
+    dormitory: String,
+    isAdmin: Boolean,
 });
 const UserModel = mongoose.model("user", UserSchema);
 module.exports = UserModel;

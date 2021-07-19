@@ -14,20 +14,31 @@ function add(userInfo, callback){
     UserModel.findOne({kakaoID: userInfo.kakaoID}, (err,res) => {
         if(res){
             if(userInfo.dormitory==null){
+                var isAdmin = false;
+                if(userInfo.kakaoID == "1807412007"){
+                    isAdmin = true;
+                }
+                console.log(isAdmin)
                 UserModel.findOneAndUpdate({kakaoID: userInfo.kakaoID}, {
                     kakaoID: userInfo.kakaoID,
                     nickname: userInfo.nickname,
                     profile_image: userInfo.profile_image,
+                    isAdmin: isAdmin
                 },
                 (err) => {callback();}
                 )
             }
             else{
+                var isAdmin = false;
+                if(userInfo.kakaoID == "1807412007"){
+                    isAdmin = true;
+                }
                 UserModel.findOneAndUpdate({kakaoID: userInfo.kakaoID}, {
                     kakaoID: userInfo.kakaoID,
                     nickname: userInfo.nickname,
                     profile_image: userInfo.profile_image,
-                    dormitory: userInfo.dormitory
+                    dormitory: userInfo.dormitory,
+                    isAdmin: isAdmin
                 },
                 (err) => {callback();}
                 )
@@ -35,11 +46,16 @@ function add(userInfo, callback){
             
         }
         else{
+            var isAdmin = false;
+                if(userInfo.kakaoID == "1807412007"){
+                    isAdmin = true;
+                }
             const newUser = new UserModel({
                 kakaoID: userInfo.kakaoID,
                 nickname: userInfo.nickname,
                 profile_image: userInfo.profile_image,
-                dormitory: userInfo.dormitory
+                dormitory: userInfo.dormitory,
+                isAdmin: isAdmin
             });
             newUser.save();
             callback();
