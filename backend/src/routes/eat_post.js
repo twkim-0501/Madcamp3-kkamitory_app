@@ -24,6 +24,13 @@ router.post("/remove", (req,res) => {
             res.status(200).send();
         });
 })
+router.get("/deleteAll", (req,res) => {
+    db.removeall(
+        req.body._id,
+        () =>{
+            res.status(200).send();
+        });
+})
 router.post("/update", (req,res) => {
     db.update(
         req.body._id,

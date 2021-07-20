@@ -4,6 +4,8 @@ class EatTogetherForm extends Component {
         let selectedBoard = this.props.selectedBoard;
         if(selectedBoard._id!=undefined){
             console.log("modify post");
+            this.join_profile_list = selectedBoard.join_profile_list;
+            console.log(this.join_profile_list)
             this.brdtitle.value = selectedBoard.brdtitle; 
             this.total_member.value = selectedBoard.total_member;
             this.brdcontent.value = selectedBoard.brdcontent;
@@ -22,7 +24,8 @@ class EatTogetherForm extends Component {
         let data = { 
             brdtitle: this.brdtitle.value,
             brdcontent:this.brdcontent.value,
-            total_member: this.total_member.value
+            total_member: this.total_member.value,
+            join_profile_list: this.join_profile_list
         }
         
         if (selectedBoard._id) { 
