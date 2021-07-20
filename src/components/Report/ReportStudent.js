@@ -17,6 +17,7 @@ class ReportStudent extends Component {
           report_name : "",
           alertsave: false,
           alertlogin: false,
+          alertinput: false,
         }
     }
 
@@ -59,7 +60,7 @@ class ReportStudent extends Component {
     saveBtnClicked = () => {
       if(this.title.value==="" || this.content.value==="" || this.address.value===""){ //빈칸 존재
         console.log("이혜민 고쳤다!!!!"); //이혜민이혜민이혜민이혜민이혜민이혜민이혜민이혜민이혜민
-        this.setState({alertlogin: true})
+        this.setState({alertinput: true})
       }
       else{
         if(this.state.bChecked){                  //익명처리
@@ -86,6 +87,7 @@ class ReportStudent extends Component {
       this.setState({
           alertsave: false,
           alertlogin: false,
+          alertinput: false
       });
   }
     
@@ -132,6 +134,11 @@ class ReportStudent extends Component {
             <Snackbar open={this.state.alertlogin} autoHideDuration={3000} onClose={this.handleCloseAlert}>
                 <Alert onClose={this.handleCloseAlert} severity="warning">
                 로그인이 되어 있지 않습니다
+                </Alert>
+            </Snackbar>
+            <Snackbar open={this.state.alertinput} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+                <Alert onClose={this.handleCloseAlert} severity="warning">
+                입력되지 않는 칸이 있습니다
                 </Alert>
             </Snackbar>
       </div>
