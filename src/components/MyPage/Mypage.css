@@ -29,7 +29,6 @@
     display: block;
     font-weight: bold;
     font-size: 12px;
-    color: #4a4a4a;
 }
 strong {
     font-weight: bold;
@@ -37,10 +36,8 @@ strong {
 .desc_manage {
     margin-top: 4px;
     font-size: 12px;
-    color: #959595;
 }
 a {
-    color: #4c4c4c;
     text-decoration: none;
 }
 element.style {
@@ -61,7 +58,6 @@ p {
     padding: 10px 25px 20px 0;
     border-bottom: 1px solid #ebebeb;
     font-size: 16px;
-    color: #252525;
 }
 label, button, a, input {
     -webkit-tap-highlight-color: rgba(255,255,255,0);
@@ -96,7 +92,6 @@ body, th, td, input, select, textarea, button {
     font-size: 16px;
     line-height: 1.5;
     font-family: NotoSans-Regular,AppleSDGothicNeo-Regular,"맑은 고딕",Malgun Gothic,"돋움",dotum,sans-serif;
-    color: #7c7c7c;
     letter-spacing: -0.03em;
     word-wrap: break-word;
 }
