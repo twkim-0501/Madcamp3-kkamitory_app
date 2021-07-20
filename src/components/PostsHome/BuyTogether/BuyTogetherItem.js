@@ -74,18 +74,27 @@ class BuyTogetherItem extends Component {
                                 </div>
                                 
                             </span>
-                            <div class = "title_text">
+                            <div class = "title_text_buy">
                                 <strong onClick={this.handleSelectRow}>{this.props.row.brditem}</strong>
                                 <button onClick={this.handleRemove}><img class = "xButton" src = "/img/xButton.png"></img></button>
                             </div>
-                            <span class = "content_text">
+                            <span class = "content_text_buy">
                                 <a>{this.props.row.brdcontent}</a>
                             </span>
-                            <div>가격 합산 : {this.props.row.total_price}</div>
-                            <div>인당 가격 : {parseInt(Number(this.props.row.total_price) / Number(this.props.row.total_member))} </div>
-                            <div>모집 현황 : {this.props.row.join_profile_list.length}/{this.props.row.total_member}</div>
+                            <div className = "total_price_buy">
+                                <div className = "number1">{this.props.row.total_price}</div>
+                                <div>가격 합산</div>
+                            </div>
+                            <div className = "person_price_buy">
+                                <div className = "number1">{parseInt(Number(this.props.row.total_price) / Number(this.props.row.total_member))}</div>
+                                <div>인당 가격</div>
+                            </div>
+                            <div className = "join_people_buy">
+                                <div className = "number1">{this.props.row.join_profile_list.length}/{this.props.row.total_member}</div>
+                                <div>모집 현황</div> 
+                            </div>
                             <div className = "join_btn_wraper">
-                                <button  onClick={this.handleJoin}>함께하기</button>
+                                <div  onClick={this.handleJoin}>함께하기</div>
                             </div>
                         </span>
                     </div>

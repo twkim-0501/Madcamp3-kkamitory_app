@@ -23,7 +23,68 @@ li{
     border-radius : 14px;
     background-color : white;
     box-shadow : 4px 12px 30px 6px rgb(0 0 0 / 9%);
+    height : 300px;
+    padding-bottom : 20px;
+}
+.title_text_buy{
+    font-size : 20px;
+    font-weight : 700;
+    margin-top : 10px;
+    line-height : 30px;
+    height : 30px;
+}
+.content_text_buy{
+    display : inline-block;
+    height : 50px;
+    margin : 5px 0 5px 0;
+}
+.total_price_buy {
+    display : inline-block;
+    width : 50%;
+    text-align: center;
+}
+.total_price_buy div{
+    display : inline-block;
+    width : 100%;
+}
+.person_price_buy{
+    display : inline-block;
+    width : 50%;
+    text-align: center;
+}
+.person_price_buy div{
+    display : inline-block;
+    width : 100%;
+}
+.join_people_buy{
+    width : 100%;
+    text-align: center;
+    border : 1px #000 solid;
+}
+.join_people_buy div{
+    display : inline-block;
+    width : 100%;
+}
+.number1{
+    font-size : 20px;
+    font-weight : 650;
+    text-align: center;
+}
+.join_btn_wraper{
+    margin : 10px auto ;
+    text-align : center;
+    width : 80px;
+    height : 25px;
+    line-height: 25px;
+    border-radius: 20px;
+    background : #eee;
+    color : #1F2247;
+    font-weight : 300px;
+    font-size : 12px;
+    cursor: pointer;
 }
 
-
-
+.join_btn_wraper:hover{
+    background : #1F2247;
+    color : #eee;
+}
