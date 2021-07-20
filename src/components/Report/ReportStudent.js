@@ -51,13 +51,13 @@ class ReportStudent extends Component {
     
     
     saveBtnClicked = () => {
-        if(this.state.bChecked){ //익명처리
-          this.state.report_name = ""
+        if(this.state.bChecked){                  //익명처리
+          this.setState({report_name : ""})
         }else{
-          this.state.report_name = this.state.name //카카오 이름 그대로
+          this.setState({report_name : this.state.name})  //카카오 이름 그대로
         }
         const data = {
-          report_name : this.state.report_name,
+                    report_name : this.state.report_name,
                     report_title : this.title.value,
                     report_content : this.content.value,
                     report_address : this.address.value

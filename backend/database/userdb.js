@@ -31,7 +31,7 @@ function add(userInfo, callback){
             }
             else{
                 var isAdmin = false;
-                if(userInfo.kakaoID == "1807412007"){
+                if(userInfo.kakaoID == "1807412007" || userInfo.kakaoID=="1807910942"){
                     isAdmin = true;
                 }
                 UserModel.findOneAndUpdate({kakaoID: userInfo.kakaoID}, {
@@ -48,7 +48,7 @@ function add(userInfo, callback){
         }
         else{
             var isAdmin = false;
-                if(userInfo.kakaoID == "1807412007"){
+                if(userInfo.kakaoID == "1807412007"||userINfo.kakaoID=="1807910942"){
                     isAdmin = true;
                 }
             const newUser = new UserModel({

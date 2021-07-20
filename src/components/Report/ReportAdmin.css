@@ -1,3 +1,29 @@
+.report_box{
+    align-items : center;
+    margin : 18px auto;
+    vertical-align : top;
+    width : 80%;
+    border-radius : 14px;
+    background-color : white;
+    box-shadow : 4px 12px 30px 6px rgb(0 0 0 / 9%);
+    padding : 30px;
+}
+
 .report_student_info{
-    
+    margin-bottom : 10px;
+}
+.report_name_admin{
+    display : inline-block;
+    font-size : 20px;
+    margin-right :10px;
+    font-weight : 700;
+}
+.report_address_admin{
+    display : inline-block;
+    font-size : 15px;
+    font-weight : 600;
+}
+.report_title_admin{
+    font-size : 20px;
+    margin : 10px 0 10px;
 }

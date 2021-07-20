@@ -25,6 +25,7 @@ class ReportHome extends Component {
             axios.get(`/api/user/${id}`)
             .then(response => { 
                 console.log(response.data.isAdmin);
+                console.log(GetID.state.kakaoID);
                 GetID.setState({isAdmin: response.data.isAdmin});
             });
         },
@@ -40,7 +41,8 @@ class ReportHome extends Component {
     return (
       <div>
         {
-          isAdmin ?
+          //isAdmin ?
+           true?
           <ReportAdmin/> :
           <ReportStudent></ReportStudent>
         }
