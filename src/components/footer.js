@@ -6,14 +6,18 @@ class Footer extends Component {
 
   render(){
     return (
-        // <div className = "footer_wraper">
+         <div className = "footer_wraper">
             <div className="footer_bar">
-                <div className = "footer_item_1">2021 MadCamp</div>
-                <div className = "footer_item">Taewoo Kim</div>
-                <div className = "footer_item">Hyemin Lee</div>
-                <div className = "footer_item">KKAMITORY</div>
+                <div className = "footer_item"><div className= "footer_text">김태우</div></div>
+                <div className = "footer_item"><div className= "footer_text">이혜민</div></div>
+                <div className = "footer_item"><div className= "footer_text">김태우</div></div>
+                <div className = "footer_item"><div className= "footer_text">이혜민</div></div>
+                <div className = "footer_item"><div className= "footer_text">김태우</div></div>
+                <div className = "footer_item"><div className= "footer_text">이혜민</div></div>
+                <div className = "footer_item"><div className= "footer_text">김태우</div></div>
+                <div className = "footer_item"><div className= "footer_text">이혜민</div></div>
             </div>
-        // </div>
+         </div>
       
     );
   }

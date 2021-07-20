@@ -34,9 +34,15 @@ class MyPage extends React.Component {
     const {nickname, profile_image} = this.state;
     return(
       <div class="mypagebox">
-        <div class = "km-page-active">
-          <h3 class="tit_kaccout">내 정보 관리</h3>
-        </div>
+        <h3 className= "page_title">
+                        <img className = "main_img" src= "/img/house.png"></img>
+                        <em className="main_text">
+                            내 정보 확인
+                        </em>
+                        <span className="detail_text">
+                            로그인 정보 확인하기
+                        </span>
+                    </h3> 
         <div class="wrap_kaccount">
           <div class="box_manage">
             <strong class="tit_manage">프로필</strong>

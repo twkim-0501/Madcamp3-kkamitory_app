@@ -22,7 +22,7 @@ ul,li {margin:0; padding:0;}
     text-decoration : none;
     /* background-color : #1F2247; */
     /* color :white; */
-    color : #1F2247; 
+    color : #1F2247 !important; 
 }
 
 .navbar_content{

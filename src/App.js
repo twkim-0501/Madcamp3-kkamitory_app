@@ -10,7 +10,6 @@ import Footer from './components/footer.js'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Loginbtn from './components/LoginPage/Loginbtn';
 import './App.css';
-import myPage from './components/LoginPage/myPage.js';
 
 class App extends Component {
   state = {

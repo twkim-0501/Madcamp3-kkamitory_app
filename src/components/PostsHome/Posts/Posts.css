@@ -20,6 +20,7 @@ li{
     margin-top : 36px;
     vertical-align : top;
     width : 270px;
+    height : 220px;
     border-radius : 14px;
     background-color : white;
     box-shadow : 4px 12px 30px 6px rgb(0 0 0 / 9%);
@@ -168,7 +169,7 @@ li{
 .modifyButton{
     display : block;
     position : absolute;
-    bottom : 15px;
+    bottom : 0px;
     left : 50%;
     margin-left : -30px;
     width : 60px;

@@ -1,7 +1,6 @@
 .mypagebox{
     width: 660px;
     height: 660px;
-    text-align: center;
     margin: 0 auto;
 
 }
@@ -18,7 +17,6 @@
 .wrap_kaccount {
     margin-top: 10px;
     padding-bottom: 80px;
-    border-top: 1px solid #7c7c7c;
 }
 .box_manage:first-child, .box_manage.box_address {
     margin-top: 30px;
@@ -141,4 +139,11 @@ body, th, td, input, select, textarea, button {
  .txt_set, .box_set .txt_set {
     float: right;
     color: #5066aa;
+}
+.main_text{
+    color : black;
+    flex : left;
+}
+.detail_text{
+    color : black;
 }
