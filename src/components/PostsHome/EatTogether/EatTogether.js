@@ -142,7 +142,7 @@ class EatTogether extends Component {
           } else {
             console.log("update")
                axios.post(`/api/eat_post/update`, {
-                   brddate: new Date(), ...data, profile: this.state.profile,
+                   brddate: new Date(), ...data, profile: this.state.profile, brdwriter : this.state.nickname
                })
                .then((res) => 
                { console.log(res.data==400);

@@ -42,6 +42,10 @@ class EatTogetherItem extends Component {
             this.setState({alertwriterjoin: true});
             return;
         }
+        if(parseInt(row.total_member)===row.join_profile_list.length){
+            console.log("이미 꽉참");
+            return;
+        }
         let data = {
             _id : row._id,
             profile_id: row.profile_id,
