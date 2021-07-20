@@ -8,7 +8,7 @@ class Footer extends Component {
     return (
         // <div className = "footer_wraper">
             <div className="footer_bar">
-                <div className = "footer_item">2021 MadCamp</div>
+                <div className = "footer_item_1">2021 MadCamp</div>
                 <div className = "footer_item">Taewoo Kim</div>
                 <div className = "footer_item">Hyemin Lee</div>
                 <div className = "footer_item">KKAMITORY</div>
