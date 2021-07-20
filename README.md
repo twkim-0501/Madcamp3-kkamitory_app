@@ -37,6 +37,7 @@ img 2,3
 The Report tab is a tab where students can report problems that occur while living in the dormitory to the administrator. 
 * In student accounts, there is a report registration page where they can report to the administrator.
 <img src="https://user-images.githubusercontent.com/68638211/126341091-ff508faf-1f59-46b8-982a-006b11cfa705.png" width="400" height="200">
+
 * In the administrator's account, he can collect and check the contents reported by students, and when they are resolved, he can delete them by clicking OK.
 <img src="https://user-images.githubusercontent.com/64680507/126341453-728dc689-b990-427e-bb7d-7830d6f46c5e.png" width="400" height="200">
 
