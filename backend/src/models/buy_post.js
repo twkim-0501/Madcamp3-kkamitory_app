@@ -9,7 +9,8 @@ const BuyPostSchema = new mongoose.Schema({
     brdcontent: String,
     total_member: String,
     total_price: String,
-    join_profile_list :Array
+    join_profile_list :Array,
+    profile_id: String,
 });
 
 const BuyPostModel = mongoose.model("buypost", BuyPostSchema);

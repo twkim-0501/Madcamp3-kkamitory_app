@@ -1,8 +1,17 @@
 import React, {Component} from 'react';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={3} variant="filled" {...props} />;
+}
 class BuyTogetherItem extends Component { 
+    state = {
+        alertwriter: false,
+      }
     handleRemove = () => {
         const { row, onRemove } = this.props;
-        onRemove(row._id);
+        onRemove(row._id,row);
     }    
     
     handleSelectRow = () => {
@@ -13,6 +22,20 @@ class BuyTogetherItem extends Component {
     handleJoin = (e) => {
         e.preventDefault();
         let row = this.props.row; 
+        let rowjoinlist = row.join_profile_list.map(member => member.profile_id);
+
+        console.log(row.profile_id)
+        console.log(this.props.kakao_id)
+        if(row.profile_id == this.props.kakao_id){
+            console.log("되면안됨")
+            this.setState({alertwriter: true})
+            return;
+        }
+        if(rowjoinlist.includes(this.props.kakao_id)){
+            console.log("되면안됨")
+            this.setState({alertwriter: true})
+            return;
+        }
         let data = {
             _id : row._id,
             brdwriter : row.brdwriter,
@@ -26,6 +49,14 @@ class BuyTogetherItem extends Component {
                 }]
         }
         this.props.onSaveData(data); //data
+    }
+    handleCloseAlert = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.setState({
+            alertwriter: false,
+        });
     }
 
     render() { 
@@ -58,6 +89,11 @@ class BuyTogetherItem extends Component {
                             </div>
                         </span>
                     </div>
+                    <Snackbar open={this.state.alertwriter} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+                        <Alert onClose={this.handleCloseAlert} severity="warning">
+                        중복 참가는 불가능합니다
+                        </Alert>
+                    </Snackbar>
                 </div>  
             </li>
         ); 

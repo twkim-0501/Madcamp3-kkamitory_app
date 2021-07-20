@@ -18,7 +18,7 @@ class EatTogetherItem extends Component {
 
     handleRemove = () => {
         const {row, onRemove } = this.props;
-        onRemove(row._id);
+        onRemove(row._id, row);
     }    
     
     handleSelectRow = () => {

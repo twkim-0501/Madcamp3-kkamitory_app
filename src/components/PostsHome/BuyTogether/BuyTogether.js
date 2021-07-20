@@ -22,7 +22,8 @@ class BuyTogether extends Component {
       selectedBoard:{},
       alertlogin: false,
       addalert: false,
-      alertinput: false
+      alertinput: false,
+      alertuser: false,
     }
   
     openModal = () => { //등록 or 수정창 열기 (front)
@@ -88,7 +89,13 @@ class BuyTogether extends Component {
         this.handleSelectRow({});
       };
 
-      handleRemove = (_id) => { //글 삭제하기
+      handleRemove = (_id,row) => { //글 삭제하기
+        console.log(row);
+        console.log(this.state.kakao_id)
+        if(row.profile_id != this.state.kakao_id){
+          this.setState({alertuser: true})
+          return;
+        }
         axios.post(`/api/buy_post/remove`, {_id: _id})
         .then(() => axios.get(`/api/buy_post/`))
         .then(response => {
@@ -97,12 +104,12 @@ class BuyTogether extends Component {
                 eat_boards: [...response.data]
             })
         });
-    }
+      }
 
     handleSaveData = (data) => { 
       this.setState({alertopen: false});
       console.log(data);
-      if(!(data.brditem && data.brdcontent && data.total_member && data.total_price)){
+      if(!(data.brditem && data.brdcontent && data.total_member)){
         this.setState({alertinput: true});
         return;
       }
@@ -161,6 +168,7 @@ class BuyTogether extends Component {
         alertinput: false,
         alertlogin: false,
         addalert: false,
+        alertuser: false,
     });
 }
 
@@ -207,6 +215,11 @@ class BuyTogether extends Component {
           <Snackbar open={this.state.alertinput} autoHideDuration={3000} onClose={this.handleCloseAlert}>
               <Alert onClose={this.handleCloseAlert} severity="warning">
               입력되지 않은 항목이 존재합니다
+              </Alert>
+          </Snackbar>
+          <Snackbar open={this.state.alertuser} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+              <Alert onClose={this.handleCloseAlert} severity="warning">
+              작성자만 삭제가 가능합니다
               </Alert>
           </Snackbar>
       </div>

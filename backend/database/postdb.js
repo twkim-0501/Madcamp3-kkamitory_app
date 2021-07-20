@@ -30,9 +30,9 @@ function remove(_id, kakaoID, callback) {
                 callback("success");
             });
         }
-        
+
     })
-    
+
 }
 function update(_id, body, callback) {
     PostModel.findOneAndUpdate({_id: _id}, {

@@ -14,7 +14,8 @@ function add(body, callback){
         brdcontent: body.brdcontent,
         total_member : body.total_member,
         total_price : body.total_price,
-        join_profile_list : body.join_profile_list
+        join_profile_list : body.join_profile_list,
+        profile_id: body.profile_id
     })
     newPost.save((err,res) => {
         callback(res);

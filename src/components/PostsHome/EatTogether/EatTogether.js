@@ -34,7 +34,8 @@ class EatTogether extends Component {
           alertfull: false,
           alertlogin: false,
           addalert: false,
-          alertinput: false
+          alertinput: false,
+          alertuser: false,
         }
     }
     
@@ -81,6 +82,7 @@ class EatTogether extends Component {
       }
       else{
         console.log("id not match");
+        this.setState({alertuser: true});
       }
     }
 
@@ -150,7 +152,11 @@ class EatTogether extends Component {
           this.closeModal();
         }
    
-    handleRemove = (_id) => { //글 삭제하기
+    handleRemove = (_id, row) => { //글 삭제하기
+      if(this.state.kakao_id!=row.profile_id){
+        this.setState({alertuser: true});
+        return;
+      }
         axios.post(`/api/eat_post/remove`, {_id: _id})
         .then(() => axios.get(`/api/eat_post/`))
         .then(response => {
@@ -173,6 +179,7 @@ class EatTogether extends Component {
         alertinput: false,
         alertlogin: false,
         addalert: false,
+        alertuser: false,
     });
 }
     
@@ -226,6 +233,11 @@ class EatTogether extends Component {
         <Snackbar open={this.state.alertinput} autoHideDuration={3000} onClose={this.handleCloseAlert}>
             <Alert onClose={this.handleCloseAlert} severity="warning">
             입력되지 않은 항목이 존재합니다
+            </Alert>
+        </Snackbar>
+        <Snackbar open={this.state.alertuser} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+            <Alert onClose={this.handleCloseAlert} severity="warning">
+            작성자만 수정/삭제가 가능합니다
             </Alert>
         </Snackbar>
       </div>
