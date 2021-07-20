@@ -1,9 +1,10 @@
 # KKAMITORY-App
 
-Web explanation
+KKAMITORY is the webpage which contains everything you need in your dormitory. It has Posts page for dormitory community, Reserve page for reservation of dormitory machines, and Report page for a quick report to dormitory teacher. This web is composed with React, Node.js, and Mongodb.
+
 The Web include:  
-- **Home & Login**: add explanation 
-- **Posts**: add explanation 
+- **Home & Login**: Contains fancy logo and navigation bar. You will see this page first.
+- **Posts**: 
 - **Reserve**: add explanation 
 - **Report**: add explanation 
 - **Mypage**: add explanation 
@@ -12,14 +13,47 @@ The Web include:
 
 ## Page Explanation
 ### 0. Home & Login
-add explanation  
-
+>Home page includes navigation bar, logo, and footer.
+>The logo responds to mouse cursor. Bottom footer design is made with css animation. The navigation is linked to Post, Reserve, Report, and MyPage window.
+<p>
+<img src ="https://user-images.githubusercontent.com/68638211/126341027-2bdb5518-bcd4-4325-b034-52fde6ef7ec6.png" width = 400 height = 200>
+<img src ="https://user-images.githubusercontent.com/68638211/126341029-d078a809-b585-48c3-9795-9df1586a76f3.png" width = 400 height = 200>
+</p>
 
 ### 1. Posts  
-add explanation    
-* function 1
-* function 2
-img1
+>Posts page includes 3 sub-pages - normal posts, gathering dinnermates posts, and gathering group buying posts. Each page contains post add, modify,and delete functions.
+>The Second page, which contains gathering dinnermates posts, shows the posts and the matching lists of people who are joining each dinner menu. The Third page, which contains gathering group buying posts, shows the posts and total cost, cost per person, and gathering status. Both Second and Third page contains "join" function that allows people to join the group of each posts.
+
+#### Posts summary
+자유게시판 (left top), 배달팟 모으기 (right top), 공구하기(left bottom) pages
+<p>
+  <img src ="https://user-images.githubusercontent.com/68638211/126341030-e81182e9-e7c9-4b4a-8072-2b24a3046670.png" width = 400 height = 200>
+  <img src ="https://user-images.githubusercontent.com/68638211/126341071-0f245648-ec8e-42e8-b1b3-d73d56e29f8e.png" width = 400 height = 200>
+  <img src ="https://user-images.githubusercontent.com/68638211/126341085-defb14b8-46db-4d33-9171-5e4e9f070ab6.png" width = 400 height = 200>
+ </p>
+ 
+#### Posts Add , Modify, Delete
+
+##### Add
+<p>
+  <img src = "https://user-images.githubusercontent.com/68638211/126341074-32a17aec-3bfd-48dc-9047-9446a83de980.png" width = 400 height = 200>
+  <img src = "https://user-images.githubusercontent.com/68638211/126341075-47d5c6cd-bcab-4ac9-aca7-cf14556ac8f2.png" width = 400 height = 200>
+  <img src = "https://user-images.githubusercontent.com/68638211/126341087-9a23ce25-eeb0-4d0c-8005-d8721b4b27fe.png" width = 400 height = 200>
+  <img src = "https://user-images.githubusercontent.com/68638211/126341088-5b551cec-6d86-40a5-9e1a-b8f06e20ace9.png" width = 400 height = 200>
+</p>
+
+##### Modify
+<p>
+  <img src = "https://user-images.githubusercontent.com/68638211/126341077-6247ce08-9a9b-48f5-8265-dfb6bf95f630.png" width = 400 height = 200>
+  <img src = "https://user-images.githubusercontent.com/68638211/126341079-5bba2ef8-1c1e-4559-a8a6-215b636f8dfe.png" width = 400 height = 200>
+ </p>
+ 
+#### Join Group
+<p>
+  <img src = "https://user-images.githubusercontent.com/68638211/126341079-5bba2ef8-1c1e-4559-a8a6-215b636f8dfe.png" width = 400 height = 200>
+  <img src = "https://user-images.githubusercontent.com/68638211/126341084-f1bfd5e5-6401-4f4b-adab-ba3c9fc5b40f.png" width = 400 height = 200>
+ </p>
+
 
 
 ### 2. Reserve
