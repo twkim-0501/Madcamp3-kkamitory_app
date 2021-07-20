@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import "./ReportAdmin.css"
 import axios from "axios";
-import ReportItems from './ReportItems';
+import ReportItem from './ReportItem';
 // import ReportAdmin from './ReportAdmin.js'
 
 class ReportAdmin extends Component {
@@ -45,7 +45,7 @@ class ReportAdmin extends Component {
             <ul id = "reportsList">
                 { 
                     this.state.reports.map(row => 
-                        (<ReportItems key={row._id} row={row} handleRender={this.handleRender}/>) 
+                        (<ReportItem key={row._id} row={row} handleRender={this.handleRender}/>) 
                     )
                 } 
             </ul>
