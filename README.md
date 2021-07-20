@@ -24,7 +24,7 @@ The Web include:
 >Posts page includes 3 sub-pages - normal posts, gathering dinnermates posts, and gathering group buying posts. Each page contains post add, modify,and delete functions.
 >The Second page, which contains gathering dinnermates posts, shows the posts and the matching lists of people who are joining each dinner menu. The Third page, which contains gathering group buying posts, shows the posts and total cost, cost per person, and gathering status. Both Second and Third page contains "join" function that allows people to join the group of each posts.
 
-#### Posts summary
+* Posts summary
 자유게시판 (left top), 배달팟 모으기 (right top), 공구하기(left bottom) pages
 <p>
   <img src ="https://user-images.githubusercontent.com/68638211/126341030-e81182e9-e7c9-4b4a-8072-2b24a3046670.png" width = 400 height = 200>
@@ -32,9 +32,10 @@ The Web include:
   <img src ="https://user-images.githubusercontent.com/68638211/126341085-defb14b8-46db-4d33-9171-5e4e9f070ab6.png" width = 400 height = 200>
  </p>
  
-#### Posts Add , Modify, Delete
+* Posts Add , Modify, Delete
 
-##### Add
+
+  * Add
 <p>
   <img src = "https://user-images.githubusercontent.com/68638211/126341074-32a17aec-3bfd-48dc-9047-9446a83de980.png" width = 400 height = 200>
   <img src = "https://user-images.githubusercontent.com/68638211/126341075-47d5c6cd-bcab-4ac9-aca7-cf14556ac8f2.png" width = 400 height = 200>
@@ -42,13 +43,13 @@ The Web include:
   <img src = "https://user-images.githubusercontent.com/68638211/126341088-5b551cec-6d86-40a5-9e1a-b8f06e20ace9.png" width = 400 height = 200>
 </p>
 
-##### Modify
+  * Modify
 <p>
   <img src = "https://user-images.githubusercontent.com/68638211/126341077-6247ce08-9a9b-48f5-8265-dfb6bf95f630.png" width = 400 height = 200>
   <img src = "https://user-images.githubusercontent.com/68638211/126341079-5bba2ef8-1c1e-4559-a8a6-215b636f8dfe.png" width = 400 height = 200>
  </p>
  
-#### Join Group
+  * Join Group
 <p>
   <img src = "https://user-images.githubusercontent.com/68638211/126341079-5bba2ef8-1c1e-4559-a8a6-215b636f8dfe.png" width = 400 height = 200>
   <img src = "https://user-images.githubusercontent.com/68638211/126341084-f1bfd5e5-6401-4f4b-adab-ba3c9fc5b40f.png" width = 400 height = 200>
