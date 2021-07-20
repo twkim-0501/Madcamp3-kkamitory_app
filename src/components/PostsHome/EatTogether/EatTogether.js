@@ -97,6 +97,10 @@ class EatTogether extends Component {
     
 
     handleSaveData = (data) => { 
+      if(this.state.profile.length == 0){
+        this.setState({alertlogin: true});
+        return;
+      }
           this.setState({alertopen: false});
           console.log(data);
           if(!(data.brdtitle && data.brdcontent && data.total_member)){
