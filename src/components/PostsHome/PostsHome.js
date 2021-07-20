@@ -15,7 +15,7 @@ class PostsHome extends Component {
   }
 
   componentWillUnmount() {
-    this.setState({active:""});
+    // this.setState({active:""});
   }
 
   pageList = ["post", "eat", "buy"];

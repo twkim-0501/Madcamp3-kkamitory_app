@@ -56,6 +56,10 @@ class ReportStudent extends Component {
     
     
     saveBtnClicked = () => {
+      if(this.title.value==="" || this.content.value==="" || this.address.value===""){ //빈칸 존재
+        console.log("태우야 일해"); //김태우 김태우 김태우 김태우 김태우
+      }
+      else{
         if(this.state.bChecked){                  //익명처리
           this.setState({report_name : ""})
         }else{
@@ -70,6 +74,8 @@ class ReportStudent extends Component {
         console.log(data);
         this.setState({alertsave: true})
         axios.post(`/api/report/add`, data).then(response => {console.log(response.data);});
+      }
+        
     }
     handleCloseAlert = (event, reason) => {
       if (reason === 'clickaway') {
