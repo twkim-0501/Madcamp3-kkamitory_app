@@ -1,6 +1,5 @@
 import React from 'react';
 import GetUser from './GetUser';
-import Logout from './Logout';
 
 class Login extends React.Component {
     state = {
@@ -52,10 +51,13 @@ componentDidMount() {
       // SDK 초기화 여부를 확인하자.
       console.log(window.Kakao.isInitialized());
     }
+    /*
+    <h1>kakologin{this.state.loginResult ? <GetUser getInfo={this.getInfo}/> : " not yet"}</h1>
+        <Logout/>
+    */
     return(
       <div>
         <h1>kakologin{this.state.loginResult ? <GetUser getInfo={this.getInfo}/> : " not yet"}</h1>
-        <Logout/>
       </div>
     );
   }

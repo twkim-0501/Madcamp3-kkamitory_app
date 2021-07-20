@@ -7,10 +7,9 @@ import ReportHome from './components/Report/ReportHome.js'
 import PostsHome from './components/PostsHome/PostsHome.js'
 import Footer from './components/footer.js'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Button from '@material-ui/core/Button';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import Loginbtn from './components/LoginPage/Loginbtn';
 import './App.css';
+import myPage from './components/LoginPage/myPage.js';
 
 class App extends Component {
   state = {
@@ -59,7 +58,7 @@ class App extends Component {
               <Reserve kakaoID = {kakaoID}/>
             </Route>
             <Route exact path="/login">
-              <Login getInfo = {this.getInfo}/>
+              <Login/>
             </Route>
           </Switch>
         </article>
