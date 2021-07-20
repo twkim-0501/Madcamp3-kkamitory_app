@@ -26,7 +26,9 @@ class Posts extends Component {
             isLogin: false,
             alertopen: false,
             addalert: false,
-            alertinput: false
+            alertinput: false,
+            alertuser: false,
+            kakaoID: ""
         }
     }
     //첫로딩
@@ -41,12 +43,13 @@ class Posts extends Component {
 
         window.Kakao.API.request({
             url: "/v2/user/me",
-            success: function ({ kakao_account }) {
+            success: function ({ kakao_account, id }) {
               const { profile } = kakao_account;
               // 수집한 사용자 정보로 페이지를 수정하기 위해 setState
               GetUser.setState({
                 nickname: profile.nickname,
                 profile: profile.profile_image_url,
+                kakaoID: id
               });
               if(profile.profile_image_url != null){
                 GetUser.setState({
@@ -93,7 +96,7 @@ class Posts extends Component {
         this.setState({alertopen: false});
         if (!data._id) { // new : Insert
             axios.post(`/api/post/add`, 
-                {brddate: new Date(), ...data, profile: this.state.profile, brdwriter: this.state.nickname}
+                {kakaoID: this.state.kakaoID, brddate: new Date(), ...data, profile: this.state.profile, brdwriter: this.state.nickname}
             )
             .then(() => axios.get(`/api/post/`))
             .then(response => {
@@ -106,7 +109,7 @@ class Posts extends Component {
 
         } else {                                                        // Update
             axios.post(`/api/post/update`, {
-                brddate: new Date(), ...data, profile: this.state.profile, brdwriter : this.state.nickname
+                kakaoID: this.state.kakaoID, brddate: new Date(), ...data, profile: this.state.profile, brdwriter : this.state.nickname
             })
             .then(() => axios.get(`/api/post/`))
             .then(response => {
@@ -128,6 +131,7 @@ class Posts extends Component {
             alertopen: false,
             addalert: false,
             alertinput: false,
+            alertuser: false,
         });
     }
 
@@ -136,19 +140,34 @@ class Posts extends Component {
     }
     
     handleRemove = (_id) => { //글 삭제하기
-        axios.post(`/api/post/remove`, {_id: _id})
-        .then(() => axios.get(`/api/post/`))
-        .then(response => {
-            this.setState({
-                selectedBoard: {},
-                boards: [...response.data]
-            })
-        });
+        console.log(this.state.kakaoID)
+        axios.post(`/api/post/remove`, {_id: _id, kakaoID: this.state.kakaoID})
+        .then((response) => {
+                        console.log(response.data)
+                        if(response.data == "fail"){
+                            this.setState({alertuser: true});
+                            console.log("작성자만 수정/삭제가 가능합니다");
+                            return;
+                        }
+                        axios.get(`/api/post/`)
+                        .then(response => {
+                            this.setState({
+                                selectedBoard: {},
+                                boards: [...response.data]
+                            })
+                        });
+                    })
+        
     }
     
     handleSelectRow = (row) => {
-        console.log(this.state.kakao_id);
-        console.log(row.profile_id);
+        console.log(this.state.kakaoID);
+        console.log(row)
+        if(row.kakaoID != null && row.kakaoID != this.state.kakaoID){
+            this.setState({alertuser: true});
+            console.log("작성자만 수정/삭제가 가능합니다");
+            return;
+        }
         if(row.profile_id == undefined || this.state.kakao_id==row.profile_id){
           this.setState({selectedBoard:row});
           this.openModal();
@@ -230,6 +249,11 @@ class Posts extends Component {
                     <Snackbar open={this.state.alertinput} autoHideDuration={3000} onClose={this.handleCloseAlert}>
                         <Alert onClose={this.handleCloseAlert} severity="warning">
                         입력되지 않은 항목이 존재합니다
+                        </Alert>
+                    </Snackbar>
+                    <Snackbar open={this.state.alertuser} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+                        <Alert onClose={this.handleCloseAlert} severity="warning">
+                        작성자만 수정/삭제가 가능합니다
                         </Alert>
                     </Snackbar>
                 </div>

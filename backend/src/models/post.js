@@ -8,7 +8,8 @@ const PostSchema = new mongoose.Schema({
     brdtitle: String,
     brdcontent: String,
     hashtag: String,
-    brddate: String
+    brddate: String,
+    kakaoID: String
 });
 
 const PostModel = mongoose.model("post", PostSchema);

@@ -29,12 +29,7 @@ class EatTogetherItem extends Component {
     handleJoin = (e) => {
         e.preventDefault();
         let row = this.props.row; 
-        //console.log(this.props.kakao_id)
-        //console.log(this.props.join_profile)
-        console.log(row);
-        console.log(row.join_profile_list);
         var join_id_list = row.join_profile_list.map(item => item.profile_id);
-        console.log(join_id_list)
         //이미 참여한 경우 참여못하게!!!!!!
         if(join_id_list.includes(this.props.kakao_id)){
             console.log("이미 참여한 사람")

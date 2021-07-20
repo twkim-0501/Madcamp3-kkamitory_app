@@ -13,16 +13,26 @@ function add(body, callback){
         brdtitle: body.brdtitle,
         brdcontent: body.brdcontent,
         hashtag: body.hashtag,
-        brddate: body.brddate
+        brddate: body.brddate,
+        kakaoID: body.kakaoID
     })
     newPost.save((err,res) => {
         callback(res);
     });
 }
-function remove(_id, callback) {
-    PostModel.deleteOne({_id: _id}, (error) => {
-        callback();
-    });
+function remove(_id, kakaoID, callback) {
+    PostModel.findOne({_id: _id, kakaoID: kakaoID}, (error,result) => {
+        if(result == null){
+            callback("fail");
+        }
+        else{
+            PostModel.deleteOne({_id: _id}, (error) => {
+                callback("success");
+            });
+        }
+        
+    })
+    
 }
 function update(_id, body, callback) {
     PostModel.findOneAndUpdate({_id: _id}, {
