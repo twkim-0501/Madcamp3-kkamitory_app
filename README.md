@@ -1,13 +1,15 @@
 # KKAMITORY-App
 
-KKAMITORY is the webpage which contains everything you need in your dormitory. It has Posts page for dormitory community, Reserve page for reservation of dormitory machines, and Report page for a quick report to dormitory teacher. This web is composed with React, Node.js, and Mongodb.
+KKAMITORY is the webpage which contains everything you need in your dormitory. It has Posts page for dormitory community, Reserve page for reservation of dormitory machines, and Report page for a quick report to dormitory teacher. 
+
+> This project is made of React, Node.js, and MongoDB
 
 The Web include:  
-- **Home & Login**: Contains fancy logo and navigation bar. You will see this page first.
-- **Posts**: 
-- **Reserve**: add explanation 
-- **Report**: add explanation 
-- **Mypage**: add explanation 
+- **Home & Login**
+- **Posts**
+- **Reserve** 
+- **Report** 
+- **Mypage**
 
 
 
