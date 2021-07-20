@@ -1,8 +1,12 @@
 import React, {Component} from 'react'
 import axios from "axios";
 import "./ReportStudent.css"
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
-
+function Alert(props) {
+  return <MuiAlert elevation={3} variant="filled" {...props} />;
+}
 class ReportStudent extends Component {
   constructor(props){
         super(props);
@@ -10,7 +14,8 @@ class ReportStudent extends Component {
           isLogin : false,
           name : "",
           bChecked : false,
-          report_name : ""
+          report_name : "",
+          alertsave: false,
         }
     }
 
@@ -63,8 +68,17 @@ class ReportStudent extends Component {
                     report_address : this.address.value
         }
         console.log(data);
+        this.setState({alertsave: true})
         axios.post(`/api/report/add`, data).then(response => {console.log(response.data);});
     }
+    handleCloseAlert = (event, reason) => {
+      if (reason === 'clickaway') {
+          return;
+      }
+      this.setState({
+          alertsave: false,
+      });
+  }
     
   render(){
     const {  } = this.state;
@@ -101,6 +115,11 @@ class ReportStudent extends Component {
                 </div>
                 
             </form>
+            <Snackbar open={this.state.alertsave} autoHideDuration={3000} onClose={this.handleCloseAlert}>
+                <Alert onClose={this.handleCloseAlert} severity="success">
+                접수가 완료되었습니다
+                </Alert>
+            </Snackbar>
       </div>
     );
   }

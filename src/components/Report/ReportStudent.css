@@ -12,10 +12,12 @@
     font-size : 25px;
     left : 50%;
     margin-left : -50px;
+    cursor: pointer;
     
 }
 .submitbutton_wraper{
     margin-top : -100px;
+    
 }
 .submitbutton:hover{
     background : #1F2247;

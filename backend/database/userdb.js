@@ -15,10 +15,10 @@ function add(userInfo, callback){
         if(res){
             if(userInfo.dormitory==null){
                 var isAdmin = false;
-                /*
+                
                 if(userInfo.kakaoID == "1807412007"){
                     isAdmin = true;
-                }*/
+                }
                 console.log(isAdmin)
                 UserModel.findOneAndUpdate({kakaoID: userInfo.kakaoID}, {
                     kakaoID: userInfo.kakaoID,
