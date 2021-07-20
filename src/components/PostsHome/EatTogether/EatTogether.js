@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import EatTogetherItem from './EatTogetherItem.js'
 import EatTogetherForm from './EatTogetherForm.js'
+import EatPostDetail from './EatTogetherDetail.js'
 import Modal from 'react-modal'
 import axios from "axios";
 import './EatTogether.css'
@@ -18,6 +19,7 @@ class EatTogether extends Component {
           nickname : "",
           alertopen : false,
           isModalOpen : false,
+          isDetailModalOpen : false,
           selectedBoard : {},
           eat_boards: [
             // {
@@ -47,6 +49,14 @@ class EatTogether extends Component {
     closeModal = () => { //등록 or 수정창 닫기 (front)
       this.setState({ isModalOpen: false });
     };
+
+    openDetailModal = () => { //자세히보기 창 열기
+      this.setState({isDetailModalOpen : true});
+    };
+  
+    closeDetailModal = () => {
+        this.setState({isDetailModalOpen : false});
+    }
 
     componentDidMount(){
       //db에서 getAll
@@ -171,8 +181,12 @@ class EatTogether extends Component {
         });
     }
 
-    onBackButtonClicked = () => { //새글 등록 취소
-      this.closeModal();
+  onBackButtonClicked = () => { //새글 등록 취소
+    this.closeModal();
+  }
+
+  onDetailBackButtonClicked = () => { //디테일샷 취소
+    this.closeDetailModal();
   }
   handleCloseAlert = (event, reason) => {
     if (reason === 'clickaway') {
@@ -186,6 +200,11 @@ class EatTogether extends Component {
         alertuser: false,
     });
 }
+
+  handleDetailShow = (row) => {
+    this.setState({selectedBoard:row})
+    this.openDetailModal();
+  }
     
   render(){
     const { eat_boards , selectedBoard } = this.state;
@@ -214,10 +233,16 @@ class EatTogether extends Component {
           <ul id = "postsList">
                   { 
                       eat_boards.map(row => 
-                          (<EatTogetherItem key={row._id} row={row} onRemove={this.handleRemove} onSaveData={this.handleSaveData} nickname = {row.brdwriter} profile = {row.profile} join_profile = {this.state.profile}  onSelectRow={this.handleSelectRow} kakao_id={this.state.kakao_id} usernickname={this.state.nickname}/>) 
+                          (<EatTogetherItem key={row._id} row={row} onRemove={this.handleRemove} onSaveData={this.handleSaveData} onDetailShow = {this.handleDetailShow} nickname = {row.brdwriter} profile = {row.profile} join_profile = {this.state.profile}  onSelectRow={this.handleSelectRow} kakao_id={this.state.kakao_id} usernickname={this.state.nickname}/>) 
                       )
                   } 
           </ul>
+
+          <div className = "modal_wraper">
+                        <Modal isOpen = {this.state.isDetailModalOpen} close = {this.closeDetailModal}>
+                            <EatPostDetail selectedBoard = {selectedBoard} onBackButtonClicked = {this.onDetailBackButtonClicked}></EatPostDetail>
+                        </Modal>
+          </div>
 
         <Snackbar open={this.state.alertfull} autoHideDuration={3000} onClose={this.handleCloseAlert}>
           <Alert onClose={this.handleCloseAlert} severity="warning">

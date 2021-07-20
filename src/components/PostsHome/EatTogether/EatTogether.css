@@ -20,6 +20,7 @@ li{
     margin-top : 36px;
     vertical-align : top;
     width : 270px;
+    height : 240px;
     border-radius : 14px;
     background-color : white;
     box-shadow : 4px 12px 30px 6px rgb(0 0 0 / 9%);
@@ -66,7 +67,7 @@ li{
 .join_btn{
     display : block;
     position : absolute;
-    bottom : 15px;
+    bottom : 0px;
     left : 50%;
     margin-left : -75px;
     width : 60px;
@@ -85,10 +86,23 @@ li{
 }
 
 .eatmodify{
+    bottom : 0px;
     margin-left : 15px
 }
 
 .brd_total_member{
     color :#1F2247;
     float : right;
+}
+.content_text_eat{
+    height : 40px;
+    width : 200px;
+    overflow : hidden;
+}
+.eatpost_detail_box{
+    padding : 30px;
+}
+.content_number{
+    font-size : 20px;
+    font-weight : 600;
 }

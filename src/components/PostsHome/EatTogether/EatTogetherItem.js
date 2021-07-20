@@ -69,6 +69,12 @@ class EatTogetherItem extends Component {
         });
     }
 
+    handleDetailShow = () => {
+        const {row, onDetailShow} = this.props;
+        onDetailShow(row);
+    }
+
+
 
     render() { 
         //console.log(this.props.row.join_profile_list)
@@ -87,13 +93,13 @@ class EatTogetherItem extends Component {
                                 
                             </span>
                             <div class = "brd_title_text">
-                                <strong>{this.props.row.brdtitle}</strong>
+                                <strong  onClick={this.handleDetailShow}>{this.props.row.brdtitle}</strong>
                                 <strong class = "brd_total_member">{this.props.row.total_member}명</strong>
                                 <button onClick={this.handleRemove}><img class = "xButton" src = "/img/xButton.png"></img></button>
                             </div>
-                            <span class = "content_text">
+                            <div class = "content_text_eat">
                                 <a>{this.props.row.brdcontent}</a>
-                            </span>
+                            </div>
                             <div className = "eat_btn_wraper">
                                 <button className = "join_btn" onClick={this.handleJoin}>함께하기</button>
                                 <button className = "modifyButton eatmodify" onClick={this.handleSelectRow}>수정하기</button>

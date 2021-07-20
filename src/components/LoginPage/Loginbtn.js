@@ -29,7 +29,7 @@ class Loginbtn extends React.Component {
 
 
     handleLogin = () => {
-    const scope = "profile_nickname, profile_image"; 
+    const scope = "profile_nickname, profile_image, age_range, gender"; 
     const home = this;
     let loginResult = false;
     window.Kakao.Auth.login({

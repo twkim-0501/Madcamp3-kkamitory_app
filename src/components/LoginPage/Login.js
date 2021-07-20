@@ -1,5 +1,6 @@
 import React from 'react';
 import GetUser from './GetUser';
+import Logout from './Logout';
 
 class Login extends React.Component {
     state = {
@@ -58,6 +59,7 @@ componentDidMount() {
     return(
       <div>
         <h1>kakologin{this.state.loginResult ? <GetUser getInfo={this.getInfo}/> : " not yet"}</h1>
+        <Logout/>
       </div>
     );
   }

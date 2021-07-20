@@ -1,0 +1,144 @@
+.mypagebox{
+    width: 660px;
+    height: 660px;
+    text-align: center;
+    margin: 0 auto;
+
+}
+.km-page-active {
+    display: block;
+}
+.tit_kaccount {
+    display: block;
+    font-weight: normal;
+    font-size: 20px;
+    letter-spacing: 0;
+    font-family: NotoSans-Regular,AppleSDGothicNeo-Regular,'맑은 고딕',Malgun Gothic,'돋움',dotum,sans-serif;
+}
+.wrap_kaccount {
+    margin-top: 10px;
+    padding-bottom: 80px;
+    border-top: 1px solid #7c7c7c;
+}
+.box_manage:first-child, .box_manage.box_address {
+    margin-top: 30px;
+}
+.box_manage {
+    margin-top: 40px;
+    text-align: left;
+}
+.tit_manage {
+    display: block;
+    font-weight: bold;
+    font-size: 12px;
+    color: #4a4a4a;
+}
+strong {
+    font-weight: bold;
+}
+.desc_manage {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #959595;
+}
+a {
+    color: #4c4c4c;
+    text-decoration: none;
+}
+element.style {
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.link_set.link_profile {
+    margin-top: 10px;
+}
+.link_set, .box_set {
+    display: block;
+    position: relative;
+    padding: 10px 25px 20px 0;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 16px;
+    color: #252525;
+}
+label, button, a, input {
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+
+
+.info_kaccount .thumb_profile {
+    float: left;
+    margin: 0 10px 0 10px;
+    width: 40px;
+    height: 40px;
+    margin: 2px 12px 0 0;
+}
+.thumb_profile {
+    position: relative;
+    
+}
+ .thumb_profile .img_profile {
+    display: block;
+    width: 40px;
+    height: 40px;
+    
+}
+fieldset, img {
+    border: 0 none;
+}
+body, th, td, input, select, textarea, button {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: NotoSans-Regular,AppleSDGothicNeo-Regular,"맑은 고딕",Malgun Gothic,"돋움",dotum,sans-serif;
+    color: #7c7c7c;
+    letter-spacing: -0.03em;
+    word-wrap: break-word;
+}
+.thumb_profile .img_frame {
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    background: url("https://accounts.kakao.com/assets/weblogin/techin/mask_bg_40x40-f140e77847223b05d930a7e59670458fec711885fc9454f4f1dbbc807d48bdb1.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+.link_set .txt_accounts {
+    display: block;
+    color: #000;
+    font-family: NotoSans-Regular,AppleSDGothicNeo-Regular,"맑은 고딕",Malgun Gothic,"돋움",dotum,sans-serif;
+}
+.ico_arr {
+    top: 23px;
+    display: inline-block;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+    vertical-align: top;
+    background: url("https://accounts.kakao.com/assets/weblogin/techin/mask_bg_40x40-f140e77847223b05d930a7e59670458fec711885fc9454f4f1dbbc807d48bdb1.png");
+}
+
+.tit_set, .box_set .tit_set {
+    font-weight: normal;
+}
+.ico_arr {
+    position: absolute;
+    top: 16px;
+    right: 0;
+    width: 9px;
+    height: 14px;
+    background-position: 0 -80px;
+}
+ .txt_set, .box_set .txt_set {
+    float: right;
+    color: #5066aa;
+}
