@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import axios from "axios";
 import ReportStudent from './ReportStudent.js'
 import ReportAdmin from './ReportAdmin.js'
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 class ReportHome extends Component {
   constructor(props){
@@ -10,6 +12,7 @@ class ReportHome extends Component {
       kakaoID: "",
       profile: "",
       isAdmin: null,
+      backdropopen: true,
     }
   }
   componentDidMount(){
@@ -34,10 +37,24 @@ class ReportHome extends Component {
         },
     });
   }
+  handleClose = () => {
+    this.setState({backdropopen: false});
+  };
     
   render(){
-    const {kakaoID, profile, isAdmin } = this.state;
+    const {kakaoID, profile, isAdmin, backdropopen } = this.state;
+
+    if(isAdmin == null) {
+      return (
+      <div>
+      <Backdrop open={backdropopen} onClick={this.handleClose}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      </div>
+      );
+    }
     
+
     return (
       <div>
         {
@@ -46,8 +63,9 @@ class ReportHome extends Component {
           <ReportStudent></ReportStudent>
         }
       </div>
-      
+        
     );
+    
   }
 }
 export default ReportHome;
