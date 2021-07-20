@@ -5,6 +5,7 @@ import Login from './components/LoginPage/Login';
 import Reserve from './components/Reserve/Reserve';
 import ReportHome from './components/Report/ReportHome.js'
 import PostsHome from './components/PostsHome/PostsHome.js'
+import Footer from './components/footer.js'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
@@ -62,6 +63,7 @@ class App extends Component {
             </Route>
           </Switch>
         </article>
+        <Footer/>
       </BrowserRouter>
       <div class="loginbtn"><Loginbtn/></div>
       </div>

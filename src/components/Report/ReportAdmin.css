@@ -27,3 +27,23 @@
     font-size : 20px;
     margin : 10px 0 10px;
 }
+
+.checkButton{
+    display : block;
+    margin-top : 20px;
+    width : 60px;
+    height : 25px;
+    line-height: 25px;
+    text-align : center;
+    border-radius: 20px;
+    background : #eee;
+    color : #1F2247;
+    font-weight : 300px;
+    font-size : 12px;
+    cursor: pointer;
+}
+
+.checkButton:hover{
+    background : #1F2247;
+    color : #eee;
+}

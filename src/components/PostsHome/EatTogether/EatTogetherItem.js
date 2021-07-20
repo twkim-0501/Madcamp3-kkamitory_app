@@ -87,7 +87,8 @@ class EatTogetherItem extends Component {
                                 
                             </span>
                             <div class = "brd_title_text">
-                                <strong >{this.props.row.brdtitle}</strong>
+                                <strong>{this.props.row.brdtitle}</strong>
+                                <strong class = "brd_total_member">{this.props.row.total_member}명</strong>
                                 <button onClick={this.handleRemove}><img class = "xButton" src = "/img/xButton.png"></img></button>
                             </div>
                             <span class = "content_text">

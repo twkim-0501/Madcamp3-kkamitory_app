@@ -12,13 +12,7 @@ class ReportAdmin extends Component {
         }
     }
     // reports = db에서 받아온 json list
-    reports =[{ 
-        _id: "",
-        report_name :"이혜민",
-        report_title : "아름관 바선생",
-        report_content : "아름관 1층 복도에서",
-        report_address : "아름관 150호"
-    }]
+    reports =[]
     componentDidMount() {
         axios.get(`/api/report/`)
         .then(response => 

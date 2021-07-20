@@ -41,8 +41,7 @@ class ReportHome extends Component {
     return (
       <div>
         {
-          //isAdmin ?
-           true?
+          isAdmin ?
           <ReportAdmin/> :
           <ReportStudent></ReportStudent>
         }
