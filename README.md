@@ -23,14 +23,12 @@ img1
 
 
 ### 2. Reserve
-add explanation    
-* function 1
-* function 2
-img1
-
-<p float="left">
-img 2,3
-</p>
+Reserve tab is a page where you can reserve a washing machine.  
+* Users can check their reservation status and availability in real time.
+* Users can select a reservation date up to one week from today's date and day.
+* For each washing machine, the available time slots are displayed in chips, and "Closed" is displayed in case of the closing time.
+* Users can make a reservation by clicking the Reservation button at the bottom and cancel the reservation by pressing it again.
+<img src="https://user-images.githubusercontent.com/64680507/126344483-adb4c2a4-f752-4fe5-9e40-7657d9950d43.png" width="300" height="400">
 
 
 ### 3. Report   
