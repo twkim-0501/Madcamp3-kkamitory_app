@@ -49,7 +49,7 @@ class ReportStudent extends Component {
     }
 
     checkHandler = (e) => {
-      if(e.checked==true){
+      if(e.checked==false){
         this.setState({bChecked: true})
       }else{
         this.setState({bChecked:false})

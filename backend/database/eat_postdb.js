@@ -42,16 +42,16 @@ function update(_id, body, callback) {
     //console.log(body.join_profile_list);
     EatPostModel.findOne({_id: _id}, (err, res) => {
         //console.log(res);
-        /*
+        
         EatPostModel.findOneAndUpdate({_id: _id}, {
-            brdwriter: body.brdwriter,
+            //brdwriter: body.brdwriter,
             brdtitle: body.brdtitle,
             brdcontent: body.brdcontent,
             total_member: body.total_member,
             join_profile_list : body.join_profile_list,
             brddate: body.brddate
-        }, (error) => {callback("200")});*/
-        
+        }, (error) => {callback("200")});
+        /*
         if(body.total_member < body.join_profile_list.length){
             console.log(400);
              callback("400");
@@ -65,7 +65,7 @@ function update(_id, body, callback) {
                 //join_profile_list : body.join_profile_list,
                 brddate: body.brddate
             }, (error) => {callback("200")});
-        }
+        }*/
     });
 }
 
